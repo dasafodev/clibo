@@ -1,0 +1,36 @@
+.container-content{
+  margin: 20px;
+
+}
+.grid-container{
+    margin: 20px 0 20px 0;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    gap: 10px;
+
+}
+.card {
+    max-width: 400px;
+    padding: 0;
+    padding-top: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+.bottom-card{
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  border-radius: 5px;
+}
+.button-card{
+  margin: 0;
+}
+  
+.material-icons{
+  font-size: 40px;
+}
+
+.mat-icon{
+  line-height: 40px!important;
+}

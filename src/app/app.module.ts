@@ -12,9 +12,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

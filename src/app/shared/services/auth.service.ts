@@ -15,38 +15,92 @@ export class AuthService {
 
 
   constructor(
-    public afAuth: AngularFireAuth
+    public afs: AngularFirestore,
+    public afAuth: AngularFireAuth,
+    public ngZone: NgZone,
+    public router: Router
   ) {
     /**
      * Guardamos los datos en localstorage al iniciar sesion, se eliminan al cerrar sesion
      */
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
-      }
-    })
+
   }
 
-  signUp(email:string, password:string){
-    return this.afAuth.createUserWithEmailAndPassword(email,password)
+  signUp(email: string, password: string, role: string) {
+    return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(result => {
-        this.sendVerificationEmail();
+        // this.sendVerificationEmail();
+        this.updateLocalStorage(result.user);
+        this.setUserData(result.user, role);
       })
       .catch(err => console.error(err))
   }
 
-  sendVerificationEmail(){
+  signIn(email, password) {
+    return this.afAuth.signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        console.log('result:', result)
+        this.updateLocalStorage(result.user);
+        this.ngZone.run(() => {
+          this.router.navigate(['producer/list']);
+        });
+      }).catch((error) => {
+        window.alert(error.message)
+      })
+  }
+
+
+  sendVerificationEmail() {
     return this.afAuth.currentUser
-    .then(res => {
-      res.sendEmailVerification()
+      .then(res => {
+        res.sendEmailVerification()
+      })
+  }
+
+  setUserData(user: any, role: string) {
+
+    let temp: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified
+    }
+
+    return this.afs.collection(role).add(temp);
+  }
+
+  signOut() {
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['home']);
     })
   }
-  
+
+  updateLocalStorage(user) {
+    let temp: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified
+    }
+
+    localStorage.setItem('user', JSON.stringify(temp));
+
+
+    // this.afAuth.authState.subscribe(user => {
+    //   if (user) {
+    //     this.userData = user;
+    //     localStorage.setItem('user', JSON.stringify(this.userData));
+    //     JSON.parse(localStorage.getItem('user'));
+    //   } else {
+    //     localStorage.setItem('user', null);
+    //     JSON.parse(localStorage.getItem('user'));
+    //   }
+    // })
+  }
+
 
 
 }

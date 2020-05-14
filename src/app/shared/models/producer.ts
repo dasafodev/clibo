@@ -1,7 +1,7 @@
 import { User } from './user';
 import { Stream } from 'stream';
 
-export interface Producer extends User{
+export class Producer extends User{
     
-    stream_list?:Stream
+    stream_list?:Stream;
 }

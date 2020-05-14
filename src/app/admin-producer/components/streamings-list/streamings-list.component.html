@@ -1,0 +1,20 @@
+<section class="container-content">
+  <button mat-icon-button color="primary" (click)="fillDatabase()" class="icon">
+    <mat-icon>add_circle_outline</mat-icon>
+  </button>
+  <section class="grid-container">
+    <mat-card *ngFor="let streaming of streamings" class="card" style="background-image: url({{streaming.photoURL}});">
+      <div class="bottom-card">
+      <mat-card-content class="content">
+        <p>
+          {{streaming.description_short}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="button-card">
+        <button mat-button>Edit</button>
+        <button mat-button>Delete</button>
+      </mat-card-actions>
+    </div>
+    </mat-card>
+  </section>
+</section>

@@ -1,8 +1,8 @@
 import { User } from './user';
-import { Stream } from 'stream';
+import { Streaming } from './streaming';
 
-export interface Viewer extends User  {
+export class Viewer extends User  {
 
-    favorite_streams:Stream[]
+    favorite_streams:Streaming[];
     
 }

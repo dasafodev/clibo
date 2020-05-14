@@ -1,1 +1,15 @@
-<p>sign-in works!</p>
+<form [formGroup]="dataUser" (ngSubmit)="signIn($event)" class="example-form">
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>email</mat-label>
+        <input matInput type="email" formControlName="email" >
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field></td>
+    </tr></table>
+    <button mat-raised-button color="primary" type="submit">Registrarse</button>
+   
+</form>
+  

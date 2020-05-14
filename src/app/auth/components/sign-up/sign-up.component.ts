@@ -10,26 +10,36 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class SignUpComponent implements OnInit {
 
-  dataUser:FormGroup;
+  options = [
+    { value: 'producer', viewValue: 'Producer' },
+    { value: 'viewer', viewValue: 'Viewer' }
+  ]
+  dataUser: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService
   ) {
     this.buildForm();
-   }
+  }
+
 
   ngOnInit(): void {
   }
 
-  signUp(event:Event){
+  signUp(event: Event) {
     event.preventDefault();
-    this.auth.signUp(this.dataUser.value.email,this.dataUser.value.password)
-    console.log('form :', this.dataUser.value.email)
+    this.auth.signUp(
+      this.dataUser.value.email, 
+      this.dataUser.value.password, 
+      this.dataUser.value.role)
   }
-  private buildForm(){
+
+  private buildForm() {
     this.dataUser = this.formBuilder.group({
-      email:['',[Validators.required]],
-      password:['',[Validators.required]]
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      role: ['', [Validators.required]]
     })
   }
 
