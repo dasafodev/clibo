@@ -16,6 +16,9 @@ export class StreamingService {
   getStreamings(id_producer:string){
     return this.afs.collection('streamings', query => query.where('id_producer','==',id_producer)).valueChanges();
   }
+  getAllStreamings(){
+    return this.afs.collection('streamings').valueChanges();
+  }
 
   postStreaming(streaming){
     return this.afs.collection('streamings').add(streaming)
