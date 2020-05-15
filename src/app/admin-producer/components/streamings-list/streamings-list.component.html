@@ -1,5 +1,5 @@
 <section class="container-content">
-  <button mat-icon-button color="primary" (click)="fillDatabase()" class="icon">
+  <button mat-icon-button color="primary"  routerLink="/producer/add-streaming" class="icon">
     <mat-icon>add_circle_outline</mat-icon>
   </button>
   <section class="grid-container">
@@ -7,12 +7,12 @@
       <div class="bottom-card">
       <mat-card-content class="content">
         <p>
-          {{streaming.description_short}}
+          {{streaming.short_description}}
         </p>
       </mat-card-content>
       <mat-card-actions class="button-card">
-        <button mat-button>Edit</button>
-        <button mat-button>Delete</button>
+        <button mat-raised-button color="primary">Edit</button>
+        <button mat-raised-button color="primary">Delete</button>
       </mat-card-actions>
     </div>
     </mat-card>

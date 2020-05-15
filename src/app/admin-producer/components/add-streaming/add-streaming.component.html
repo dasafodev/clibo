@@ -1,1 +1,36 @@
-<p>add-streaming works!</p>
+<div class="container">
+    <h2>Crear Streaming</h2>
+    <form action="" [formGroup]="form" (ngSubmit)="postStreaming($event)">
+        <mat-form-field class="input-add" appearance="fill">
+            <mat-label>Titulo</mat-label>
+            <input formControlName="name" matInput>
+        </mat-form-field>
+        <!-- <br>  Aqui iran los tags seleccionables
+    <mat-form-field class="input-add" appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+            <mat-option value="option">Option</mat-option>
+        </mat-select>
+    </mat-form-field>
+    -->
+        <br>
+        <mat-form-field class="input-add" appearance="fill">
+            <mat-label>Portada URL</mat-label>
+            <input formControlName="photoURL" matInput>
+        </mat-form-field>
+        <mat-form-field class="input-add" appearance="fill">
+            <mat-label>Video URL</mat-label>
+            <input formControlName="url" matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input-add" appearance="fill">
+            <mat-label>Descripcion Corta</mat-label>
+            <textarea formControlName="short_description" matInput></textarea>
+        </mat-form-field>
+        <mat-form-field class="input-add" appearance="fill">
+            <mat-label>Descripcion Larga</mat-label>
+            <textarea formControlName="long_description" matInput></textarea>
+        </mat-form-field>
+        <button mat-raised-button  type="submit" color="primary">Primary</button>
+    </form>
+</div>

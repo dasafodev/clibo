@@ -17,6 +17,11 @@ export class StreamingService {
     return this.afs.collection('streamings', query => query.where('id_producer','==',id_producer)).valueChanges();
   }
 
+  postStreaming(streaming){
+    return this.afs.collection('streamings').add(streaming)
+    .catch(err => console.error( err));
+  }
+
   fillDatabase(){
     let data1 = [
       {
@@ -24,8 +29,8 @@ export class StreamingService {
           "name": "Jerry Maguire",
           "url": "https://npr.org/eu/felis/fusce/posuere/felis/sed/lacus.aspx",
           "photoURL": "http://dummyimage.com/194x181.png/5fa2dd/ffffff",
-          "description_short": "Spontaneous rupture of extensor tendons, lower leg",
-          "description_long": "Neuroendocrine cell hyperplasia of infancy",
+          "short_description": "Spontaneous rupture of extensor tendons, lower leg",
+          "long_description": "Neuroendocrine cell hyperplasia of infancy",
           "date_start": "11/1/2020",
           "category": "Drama|Romance",
           "id_producer": "044QpjQbJchpO1579Ta5Nj89uW62"
@@ -35,8 +40,8 @@ export class StreamingService {
           "name": "Profit, The",
           "url": "https://latimes.com/praesent/id/massa.jpg",
           "photoURL": "http://dummyimage.com/124x128.png/ff4444/ffffff",
-          "description_short": "Cervicalgia",
-          "description_long": "Ureteral fistula",
+          "short_description": "Cervicalgia",
+          "long_description": "Ureteral fistula",
           "date_start": "27/7/2019",
           "category": "Drama",
           "id_producer": "044QpjQbJchpO1579Ta5Nj89uW62"
@@ -46,8 +51,8 @@ export class StreamingService {
           "name": "Prince of Pennsylvania, The",
           "url": "http://latimes.com/consectetuer/adipiscing/elit/proin/interdum/mauris.aspx",
           "photoURL": "http://dummyimage.com/200x240.png/ff4444/ffffff",
-          "description_short": "Unsp pedl cyclst injured in nonclsn trnsp accident nontraf",
-          "description_long": "Sector or arcuate visual field defects",
+          "short_description": "Unsp pedl cyclst injured in nonclsn trnsp accident nontraf",
+          "long_description": "Sector or arcuate visual field defects",
           "date_start": "28/8/2019",
           "category": "Comedy|Drama",
           "id_producer": "044QpjQbJchpO1579Ta5Nj89uW62"
@@ -57,8 +62,8 @@ export class StreamingService {
           "name": "Bad Sleep Well, The (Warui yatsu hodo yoku nemuru)",
           "url": "https://va.gov/malesuada/in/imperdiet.js",
           "photoURL": "http://dummyimage.com/176x171.png/dddddd/000000",
-          "description_short": "Toxic effect of venom of wasps, undetermined, init encntr",
-          "description_long": "Other fall",
+          "short_description": "Toxic effect of venom of wasps, undetermined, init encntr",
+          "long_description": "Other fall",
           "date_start": "1/4/2020",
           "category": "Drama|Thriller",
           "id_producer": "044QpjQbJchpO1579Ta5Nj89uW62"
@@ -70,8 +75,8 @@ export class StreamingService {
         "name": "Guy Named Joe, A",
         "url": "https://forbes.com/purus/eu/magna/vulputate/luctus.png",
         "photoURL": "http://dummyimage.com/137x204.png/cc0000/ffffff",
-        "description_short": "Congenital malformations of great arteries",
-        "description_long": "Second-degree perineal laceration, delivered, with or without mention of antepartum condition",
+        "short_description": "Congenital malformations of great arteries",
+        "long_description": "Second-degree perineal laceration, delivered, with or without mention of antepartum condition",
         "date_start": "17/5/2019",
         "category": "Drama|Fantasy|Romance|War",
         "id_producer": "BjHgqjUetiduExbhB7B4O05ZrMf2"
@@ -81,8 +86,8 @@ export class StreamingService {
         "name": "Pauline & Paulette (Pauline en Paulette)",
         "url": "http://fc2.com/mattis/odio/donec/vitae.html",
         "photoURL": "http://dummyimage.com/168x156.png/cc0000/ffffff",
-        "description_short": "Unsp injury of great saphenous at hip and thi lev, left leg",
-        "description_long": "Candidal meningitis",
+        "short_description": "Unsp injury of great saphenous at hip and thi lev, left leg",
+        "long_description": "Candidal meningitis",
         "date_start": "21/1/2020",
         "category": "Comedy|Drama",
         "id_producer": "BjHgqjUetiduExbhB7B4O05ZrMf2"
@@ -92,8 +97,8 @@ export class StreamingService {
         "name": "Knockout",
         "url": "http://who.int/felis/eu/sapien.json",
         "photoURL": "http://dummyimage.com/190x159.png/ff4444/ffffff",
-        "description_short": "Encounter for screening for other disorder",
-        "description_long": "Referred otogenic pain",
+        "short_description": "Encounter for screening for other disorder",
+        "long_description": "Referred otogenic pain",
         "date_start": "7/5/2020",
         "category": "Action|Drama",
         "id_producer": "BjHgqjUetiduExbhB7B4O05ZrMf2"
@@ -103,14 +108,14 @@ export class StreamingService {
         "name": "Mask of Dimitrios, The",
         "url": "http://unblog.fr/porta/volutpat/quam/pede.xml",
         "photoURL": "http://dummyimage.com/214x182.png/ff4444/ffffff",
-        "description_short": "Left anterior fascicular block",
-        "description_long": "Slow transit constipation",
+        "short_description": "Left anterior fascicular block",
+        "long_description": "Slow transit constipation",
         "date_start": "18/11/2019",
         "category": "Crime|Drama|Film-Noir|Mystery",
         "id_producer": "BjHgqjUetiduExbhB7B4O05ZrMf2"
     }
 ]
-  data2.forEach(element => {
+  data1.forEach(element => {
     this.afs.collection('streamings').add(element)
       .catch(err => console.error( err));
     

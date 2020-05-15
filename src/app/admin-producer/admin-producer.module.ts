@@ -5,6 +5,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { MaterialModule } from '../material/material.module';
 import { StreamingsListComponent } from './components/streamings-list/streamings-list.component';
 import { AddStreamingComponent } from './components/add-streaming/add-streaming.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { AddStreamingComponent } from './components/add-streaming/add-streaming.
   imports: [
     CommonModule,
     AdminProducerRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
     
   ]
 })
