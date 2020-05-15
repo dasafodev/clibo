@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
+        path: 'streaming',
+        loadChildren: () => import('./streaming/streaming.module').then(m => m.StreamingModule)
+      },
+      {
         path: 'user',
         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
       },
