@@ -1,0 +1,14 @@
+.icon {
+    padding: 0 14px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  a{
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: white;
+  }
