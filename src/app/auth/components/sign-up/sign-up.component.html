@@ -1,4 +1,5 @@
 <form [formGroup]="dataUser" (ngSubmit)="signUp($event)" class="example-form">
+  <mat-card-title>Registro</mat-card-title>
   <mat-form-field class="example-full-width">
     <mat-label>email</mat-label>
     <input matInput type="email" formControlName="email">
@@ -15,6 +16,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button color="primary" type="submit">Registrarse</button>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="submit">Registrarse</button>
+  </mat-card-actions>
 </form>
-<p>¿ Ya tienes cuenta ?  <a (click)="changeBool()">Inicia sesion</a></p>
+<p>¿ Ya tienes cuenta ?  <a (click)="changeBool()">Inicia sesión</a></p>

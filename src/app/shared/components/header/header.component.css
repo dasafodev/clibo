@@ -1,5 +1,11 @@
 .icon {
     padding: 0 14px;
+    cursor: pointer;
+  }
+
+  span{
+    outline:none;
+    cursor:pointer;
   }
   
   .spacer {
