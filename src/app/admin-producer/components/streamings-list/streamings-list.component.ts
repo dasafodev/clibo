@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { StreamingService } from 'src/app/shared/services/streaming.service';
-import { Streaming } from 'src/app/shared/models/streaming';
 
 @Component({
   selector: 'app-streamings-list',
@@ -13,21 +12,22 @@ export class StreamingsListComponent implements OnInit {
     private streamingService: StreamingService,
   ) { }
 
-  streamings:any;
+  streamings: any;
+
 
   ngOnInit(): void {
 
     this.streamingService.getStreamings(JSON.parse(localStorage.getItem('user')).uid)
       .subscribe(resp => {
-        this.streamings= resp;
+        this.streamings = resp;
         console.log('resp:', resp)
       })
-    
+
   }
-  fillDatabase(){
+  fillDatabase() {
     this.streamingService.fillDatabase();
   }
 
-  
+
 
 }

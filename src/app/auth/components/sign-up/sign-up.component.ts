@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -9,6 +9,12 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+
+  @Output()
+  cerrarVentana = new EventEmitter<string>();
+
+  @Output()
+  changeView = new EventEmitter<Boolean>();
 
   options = [
     { value: 'producer', viewValue: 'Producer' },
@@ -33,7 +39,14 @@ export class SignUpComponent implements OnInit {
       this.dataUser.value.email, 
       this.dataUser.value.password, 
       this.dataUser.value.role)
+    this.cerrarVentana.emit("cerrar");
+
   }
+
+  changeBool(){
+    this.changeView.emit(true);
+  }
+
 
   private buildForm() {
     this.dataUser = this.formBuilder.group({

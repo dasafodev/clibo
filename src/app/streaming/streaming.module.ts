@@ -12,6 +12,7 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     StreamingRoutingModule,
     MaterialModule,
-  ]
+  ],
+  exports: [StreamingListComponent ]
 })
 export class StreamingModule { }

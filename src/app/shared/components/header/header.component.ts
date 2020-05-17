@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogUser } from './dialog-user.component';
 
@@ -10,6 +10,7 @@ import { DialogUser } from './dialog-user.component';
 export class HeaderComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
+
 
   ngOnInit(): void {
   }
@@ -24,6 +25,9 @@ export class HeaderComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  
+  
 
 }
 

@@ -1,3 +1,14 @@
-<app-sign-in
+<ng-container *ngIf="signUp; else elseTemplate">
+    <app-sign-in
     (cerrarVentana)="onNoClick()"
-    ></app-sign-in>
+    (changeView)="changeBool()"
+></app-sign-in>
+</ng-container>
+<ng-template #elseTemplate>
+    <app-sign-up
+    (cerrarVentana)="onNoClick()"
+    (changeView)="changeBool()">
+</app-sign-up>
+</ng-template>
+
+

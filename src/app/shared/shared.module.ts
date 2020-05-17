@@ -16,7 +16,6 @@ import { RouterModule } from '@angular/router';
     MaterialModule,
     AuthModule,
     RouterModule
-    
   ],
   exports: [ HeaderComponent, FooterComponent, DialogUser]
 })

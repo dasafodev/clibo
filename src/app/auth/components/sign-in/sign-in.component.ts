@@ -14,6 +14,9 @@ export class SignInComponent implements OnInit {
   @Output()
   cerrarVentana = new EventEmitter<string>();
 
+  @Output()
+  changeView = new EventEmitter<Boolean>();
+
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService
@@ -30,6 +33,10 @@ export class SignInComponent implements OnInit {
     this.auth.signIn(this.dataUser.value.email,this.dataUser.value.password)
     this.cerrarVentana.emit("cerrar");
     console.log('form :', this.dataUser.value.email)
+  }
+
+  changeBool(){
+    this.changeView.emit(true);
   }
 
 
