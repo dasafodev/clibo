@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "ibm-challenge"
+  "defaultProject": "ibm-challenge",
+  "cli": {
+    "analytics": "4a539549-e969-44d3-98b2-88a0df860d73"
+  }
 }

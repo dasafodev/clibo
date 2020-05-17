@@ -1,1 +1,35 @@
-<p>streaming-list works!</p>
+<section class="container-content">
+    <div class="grid">
+        <mat-card *ngFor="let v of videos">
+            <mat-card-header>
+                <div mat-card-avatar></div>
+                <mat-card-title>{{v.name}}</mat-card-title>
+                <mat-card-subtitle>
+                    <div *ngIf="v.category; else elseBlock">
+                        {{v.category}}
+                    </div>
+                    <ng-template #elseBlock>
+                        No category
+                    </ng-template>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{v.photoURL}}"
+                alt="Video Image">
+            <mat-card-content>
+                <p>
+                    {{v.short_description}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button color="primary">LIKE</button>
+                <button mat-button color="secondary">SHARE</button>
+                <button mat-icon-button>
+                    <mat-icon>
+                        publish
+                    </mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</section>
