@@ -36,7 +36,7 @@ export class StreamingService {
           "long_description": "Neuroendocrine cell hyperplasia of infancy",
           "date_start": "11/1/2020",
           "category": "Drama|Romance",
-          "id_producer": "044QpjQbJchpO1579Ta5Nj89uW62"
+          "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
       },
       {
           "id": 2,
@@ -47,7 +47,7 @@ export class StreamingService {
           "long_description": "Ureteral fistula",
           "date_start": "27/7/2019",
           "category": "Drama",
-          "id_producer": "044QpjQbJchpO1579Ta5Nj89uW62"
+          "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
       },
       {
           "id": 3,
@@ -58,7 +58,7 @@ export class StreamingService {
           "long_description": "Sector or arcuate visual field defects",
           "date_start": "28/8/2019",
           "category": "Comedy|Drama",
-          "id_producer": "044QpjQbJchpO1579Ta5Nj89uW62"
+          "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
       },
       {
           "id": 4,
@@ -69,7 +69,7 @@ export class StreamingService {
           "long_description": "Other fall",
           "date_start": "1/4/2020",
           "category": "Drama|Thriller",
-          "id_producer": "044QpjQbJchpO1579Ta5Nj89uW62"
+          "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
       }
   ]
   let data2 =[
@@ -82,7 +82,7 @@ export class StreamingService {
         "long_description": "Second-degree perineal laceration, delivered, with or without mention of antepartum condition",
         "date_start": "17/5/2019",
         "category": "Drama|Fantasy|Romance|War",
-        "id_producer": "BjHgqjUetiduExbhB7B4O05ZrMf2"
+        "id_producer": "KLWKv39qniOTf2MKPcDLdGRy1wx1"
     },
     {
         "id": 2,
@@ -93,7 +93,7 @@ export class StreamingService {
         "long_description": "Candidal meningitis",
         "date_start": "21/1/2020",
         "category": "Comedy|Drama",
-        "id_producer": "BjHgqjUetiduExbhB7B4O05ZrMf2"
+        "id_producer": "KLWKv39qniOTf2MKPcDLdGRy1wx1"
     },
     {
         "id": 3,
@@ -104,7 +104,7 @@ export class StreamingService {
         "long_description": "Referred otogenic pain",
         "date_start": "7/5/2020",
         "category": "Action|Drama",
-        "id_producer": "BjHgqjUetiduExbhB7B4O05ZrMf2"
+        "id_producer": "KLWKv39qniOTf2MKPcDLdGRy1wx1"
     },
     {
         "id": 4,
@@ -115,10 +115,10 @@ export class StreamingService {
         "long_description": "Slow transit constipation",
         "date_start": "18/11/2019",
         "category": "Crime|Drama|Film-Noir|Mystery",
-        "id_producer": "BjHgqjUetiduExbhB7B4O05ZrMf2"
+        "id_producer": "KLWKv39qniOTf2MKPcDLdGRy1wx1"
     }
 ]
-  data1.forEach(element => {
+  data2.forEach(element => {
     this.afs.collection('streamings').add(element)
       .catch(err => console.error( err));
     

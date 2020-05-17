@@ -1,31 +1,36 @@
 <mat-card class="card">
-  <mat-card-header>
-    <mat-card-title>Ingresar</mat-card-title>
-  </mat-card-header>
-  <form [formGroup]="dataUser" (ngSubmit)="signIn($event)" >
-    <mat-card-content>
-      <table class="full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field class="full-width">
-              <mat-label>email</mat-label>
-              <input matInput type="email" formControlName="email">
-            </mat-form-field>
-          </td>
-        </tr>  
-        <tr>  
-          <td>
-            <mat-form-field class="full-width">
-              <mat-label>password</mat-label>
-              <input matInput type="password" formControlName="password">
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Entrar</button>
-    </mat-card-actions>
-  </form>
-  <p>¿ Aun no tienes cuenta ?  <a (click)="changeBool()">registrate</a></p>
+  <div class="left">
+    <mat-card-header>
+      <mat-card-title>Ingresar</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="dataUser" (ngSubmit)="signIn($event)">
+      <mat-card-content>
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Correo</mat-label>
+                <input matInput type="email" formControlName="email">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password">
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Entrar</button>
+      </mat-card-actions>
+    </form>
+    <p>¿ Aún no tienes cuenta ? <a (click)="changeBool()"><strong>Regístrate</strong></a></p>
+  </div>
+  <div class="container-image" >
+    <img class="image-right" src="https://cdn.pixabay.com/photo/2017/01/14/10/57/woman-1979272_960_720.jpg" alt="">
+  </div>
 </mat-card>

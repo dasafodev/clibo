@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogUser, {
-      width: '50%',
+      width: 'auto',
+      height:'auto'
     //  data: {name: this.name, animal: this.animal}
     });
 
