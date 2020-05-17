@@ -10,9 +10,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { LayoutComponent } from './layout/layout.component';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
 import { MaterialModule } from './material/material.module';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -21,8 +20,9 @@ import { MaterialModule } from './material/material.module';
   declarations: [
     AppComponent,
     LayoutComponent,
-    HeaderComponent,
-    FooterComponent,
+    // HeaderComponent,
+    // FooterComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -31,7 +31,9 @@ import { MaterialModule } from './material/material.module';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
