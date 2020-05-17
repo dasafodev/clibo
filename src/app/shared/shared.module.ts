@@ -5,6 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from '../material/material.module';
 import { AuthModule } from '../auth/auth.module';
 import { DialogUser } from './components/header/dialog-user.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,9 @@ import { DialogUser } from './components/header/dialog-user.component';
   imports: [
     CommonModule,
     MaterialModule,
-    AuthModule
+    AuthModule,
+    RouterModule
+    
   ],
   exports: [ HeaderComponent, FooterComponent, DialogUser]
 })
