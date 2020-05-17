@@ -1,23 +1,49 @@
-<form [formGroup]="dataUser" (ngSubmit)="signUp($event)" class="example-form">
-  <mat-card-title>Registro</mat-card-title>
-  <mat-form-field class="example-full-width">
-    <mat-label>email</mat-label>
-    <input matInput type="email" formControlName="email">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>password</mat-label>
-    <input matInput type="password" formControlName="password">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Role</mat-label>
-    <mat-select formControlName="role">
-      <mat-option *ngFor="let option of options" [value]="option.value" >
-        {{option.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" type="submit">Registrarse</button>
-  </mat-card-actions>
-</form>
-<p>¿ Ya tienes cuenta ?  <a (click)="changeBool()">Inicia sesión</a></p>
+
+<mat-card class="card">
+  <div class="left">
+    <mat-card-header>
+      <mat-card-title>Registro</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="dataUser" (ngSubmit)="signUp($event)">
+      <mat-card-content>
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Correo</mat-label>
+                <input matInput type="email" formControlName="email">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="role">
+                  <mat-option *ngFor="let option of options" [value]="option.value">
+                    {{option.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Registrarme</button>
+      </mat-card-actions>
+    </form>
+    <p>¿ Ya tienes cuenta ? <a (click)="changeBool()"><strong>Inicia sesión</strong></a></p>
+  </div>
+  <div class="container-image">
+    <img class="image-right" src="https://cdn.pixabay.com/photo/2014/07/31/22/50/photographer-407068_960_720.jpg" alt="">
+  </div>
+</mat-card>
