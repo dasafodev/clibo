@@ -10,17 +10,19 @@ import { Streaming } from 'src/app/shared/models/streaming';
 export class StreamingsListComponent implements OnInit {
 
   constructor(
-    private streamingService: StreamingService
+    private streamingService: StreamingService,
   ) { }
 
   streamings:any;
 
   ngOnInit(): void {
+
     this.streamingService.getStreamings(JSON.parse(localStorage.getItem('user')).uid)
       .subscribe(resp => {
         this.streamings= resp;
         console.log('resp:', resp)
       })
+    
   }
   fillDatabase(){
     this.streamingService.fillDatabase();
