@@ -1,4 +1,4 @@
-img {
+mat-grid-tile img {
     max-height: 200px;
     max-width: 200px;
     height: 15vw;
@@ -36,6 +36,35 @@ img {
     left: 5px;
 }
 
-.user-info{
+.user-info {
     margin: auto 2em;
+}
+
+.container-content {
+    margin: 20px;
+}
+
+.mat-card-avatar {
+    background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
+    background-size: cover;
+}
+
+.mat-card-actions {
+    display: flex;
+}
+
+.mat-card-actions .flex-spacer {
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.grid>div {
+    background: #EDE7F6;
+    padding: 1.5rem;
+    border-radius: 1rem;
 }

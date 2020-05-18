@@ -18,19 +18,60 @@
         </ng-template>
     </mat-tab>
     <mat-tab label="Videos">
-        <ng-template matTabContent>
-            Content 2 - Example
-        </ng-template>
+        <section class="container-content">
+            <div class="grid">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar
+                            style="background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');">
+                        </div>
+                        <mat-card-title>Dogchow para caninos</mat-card-title>
+                        <mat-card-subtitle>Comida</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                        alt="Video Image">
+                    <mat-card-content>
+                        <p>
+                            Comida para perros
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button color="secondary">SHARE</button>
+                    </mat-card-actions>
+                </mat-card>
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar
+                            style="background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');">
+                        </div>
+                        <mat-card-title>Entrenando perros</mat-card-title>
+                        <mat-card-subtitle>Comida</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                        alt="Video Image">
+                    <mat-card-content>
+                        <p>
+                            Para poder entrenar perros
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button color="secondary">SHARE</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </section>
     </mat-tab>
     <mat-tab label="About">
-        <ng-template matTabContent>
-            <mat-list class="user-info">
-                <div mat-subheader>Nombre</div>
-                <div mat-line>Santiago Forero</div>
-                <mat-divider></mat-divider>
-                <div mat-subheader>Email</div>
-                <div mat-line>sanfo09@gmail.com</div>
-            </mat-list>
-        </ng-template>
+        <section class="container-content">
+            <ng-template matTabContent>
+                <mat-list class="user-info">
+                    <div mat-subheader>Nombre</div>
+                    <div mat-line>Santiago Forero</div>
+                    <mat-divider></mat-divider>
+                    <div mat-subheader>Email</div>
+                    <div mat-line>sanfo09@gmail.com</div>
+                </mat-list>
+            </ng-template>
+        </section>
     </mat-tab>
 </mat-tab-group>
