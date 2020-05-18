@@ -7,20 +7,6 @@ mat-grid-tile img {
     flex-shrink: 0;
 }
 
-.g1 {
-    width: 30% !important;
-    /* height: 20% !important; */
-}
-
-.g2 {
-    width: 70% !important;
-    /* height: 20% !important; */
-}
-
-.fullWidth {
-    width: 100% !important;
-}
-
 #name {
     font-size: 1.5em;
     margin: 0.5em auto;

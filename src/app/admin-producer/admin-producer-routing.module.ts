@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { StreamingsListComponent } from './components/streamings-list/streamings-list.component';
 import { AddStreamingComponent } from './components/add-streaming/add-streaming.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path:'add-streaming',
         component: AddStreamingComponent
+      },
+      {
+        path:'profile',
+        component: ProfileComponent
       }
     ]
     
