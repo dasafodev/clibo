@@ -1,18 +1,36 @@
-<p>profile works!</p>
+<mat-grid-list [cols]="breakpoint" rowHeight="2:1" (window:resize)="onResize($event)">
+    <mat-grid-tile [class.fullWidth]="breakpoint == 1" class="g1">
+        <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="">
+    </mat-grid-tile>
+    <mat-grid-tile [class.fullWidth]="breakpoint == 1" class="g2">
+        <div class="info">
+            <mat-list>
+                <div mat-line id="name"><strong>Santiago Forero</strong></div>
+                <div mat-line id="email">sanfo09@gmail.com</div>
+            </mat-list>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
 <mat-tab-group>
-    <mat-tab label="First">
+    <mat-tab label="General">
         <ng-template matTabContent>
             Content 1 - Example
         </ng-template>
     </mat-tab>
-    <mat-tab label="Second">
+    <mat-tab label="Videos">
         <ng-template matTabContent>
             Content 2 - Example
         </ng-template>
     </mat-tab>
-    <mat-tab label="Third">
+    <mat-tab label="About">
         <ng-template matTabContent>
-            Content 3 - Example
+            <mat-list class="user-info">
+                <div mat-subheader>Nombre</div>
+                <div mat-line>Santiago Forero</div>
+                <mat-divider></mat-divider>
+                <div mat-subheader>Email</div>
+                <div mat-line>sanfo09@gmail.com</div>
+            </mat-list>
         </ng-template>
     </mat-tab>
 </mat-tab-group>

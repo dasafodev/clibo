@@ -1,0 +1,41 @@
+img {
+    max-height: 200px;
+    max-width: 200px;
+    height: 15vw;
+    width: 15vw;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.g1 {
+    width: 30% !important;
+    /* height: 20% !important; */
+}
+
+.g2 {
+    width: 70% !important;
+    /* height: 20% !important; */
+}
+
+.fullWidth {
+    width: 100% !important;
+}
+
+#name {
+    font-size: 1.5em;
+    margin: 0.5em auto;
+}
+
+#email {
+    margin: 0.5em auto;
+}
+
+.info {
+    position: absolute;
+    font-size: 1.1em;
+    left: 5px;
+}
+
+.user-info{
+    margin: auto 2em;
+}
