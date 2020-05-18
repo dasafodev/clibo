@@ -1,0 +1,10 @@
+.swiper-slide{
+    overflow: hidden!important;
+}
+
+.swiper-container{
+    height: 40vh;
+}
+.slide{
+    object-fit: cover;
+}

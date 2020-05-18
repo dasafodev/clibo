@@ -1,6 +1,6 @@
 <section class="container-content">
     <div class="grid">
-        <mat-card *ngFor="let v of videos">
+        <mat-card class="streaming-card" style="background-image: url({{v.coverURL}});" *ngFor="let v of videos">
             <mat-card-header>
                 <div mat-card-avatar style="background-image: url({{v.photo_producer}});"></div>
                 <mat-card-title>{{v.name}}</mat-card-title>
@@ -13,8 +13,10 @@
                     </ng-template>
                 </mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="{{v.coverURL}}"
-                alt="Video Image">
+            <br>
+            <span></span>
+            <!-- <img class="cover-image" mat-card-image src="{{v.coverURL}}"
+                alt="Video Image"> -->
             <mat-card-content>
                 <p>
                     {{v.short_description}}

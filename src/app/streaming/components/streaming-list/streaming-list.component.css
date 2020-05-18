@@ -3,6 +3,13 @@
     margin: 20px;
   
   }
+.streaming-card{
+  
+}
+.cover-image{
+  height: 50%;
+  object-fit: cover;
+}
 
   .mat-card{
       /* max-width: 30vw; */

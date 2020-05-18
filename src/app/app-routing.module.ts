@@ -9,13 +9,19 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'auth',
-        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full',
       },
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
+      {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+      },
+      
       {
         path: 'streaming',
         loadChildren: () => import('./streaming/streaming.module').then(m => m.StreamingModule)
