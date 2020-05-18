@@ -1,37 +1,39 @@
-
-  .container-content{
-    margin: 20px;
-  
-  }
-.cover-image{
-  height: 50%;
-  object-fit: cover;
-}
-.streaming-card{
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 0.5fr 0.5fr;
-  /* grid-template-columns:1fr ; */
-
+.container-content {
+  margin: 20px;
 }
 
-.mat-card-avatar{
-  background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
-  background-size: cover;
-}
-.mat-card-actions{
-  display:flex;
-}
-.mat-card-actions .flex-spacer{
-  width:100%;
-}
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
 }
 
-.grid > div {
-  background: #EDE7F6;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  }
+.streaming-card {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 0.5fr 0.5fr;
+  padding: 0;
+}
+
+.container-shadow {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  padding-bottom: 0;
+  color: white;
+  margin: 0;
+  border-radius: 4px 4px 0 0;
+}
+.container-shadow-actions{
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding-bottom: 16px;
+  border-radius:  0 0 4px 4px;
+
+}
+
+.mat-card>.mat-card-actions:last-child {
+  margin: 0;
+}
+
+.mat-card-avatar {
+  background-size: cover;
+}

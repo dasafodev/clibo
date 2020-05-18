@@ -1,7 +1,7 @@
 <section class="container-content">
     <div class="grid">
         <mat-card class="streaming-card" style="background-image: url({{v.coverURL}});" *ngFor="let v of videos">
-            <mat-card-header>
+            <mat-card-header class="container-shadow">
                 <div mat-card-avatar style="background-image: url({{v.photo_producer}});"></div>
                 <mat-card-title>{{v.name}}</mat-card-title>
                 <mat-card-subtitle>
@@ -15,21 +15,23 @@
             </mat-card-header>
             <br>
             <span></span>
-            <!-- <img class="cover-image" mat-card-image src="{{v.coverURL}}"
-                alt="Video Image"> -->
-            <mat-card-content>
+            <mat-card-content class="container-shadow">
                 <p>
                     {{v.short_description}}
                 </p>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button color="primary">LIKE</button>
-                <button mat-button color="secondary">SHARE</button>
+            <mat-card-actions class="container-shadow-actions">
                 <button mat-icon-button>
                     <mat-icon>
-                        publish
+                        favorite
                     </mat-icon>
                 </button>
+                <button mat-icon-button>
+                    <mat-icon>
+                        share
+                    </mat-icon>
+                </button>
+               
             </mat-card-actions>
         </mat-card>
     </div>
