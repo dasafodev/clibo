@@ -3,39 +3,35 @@
     margin: 20px;
   
   }
-.streaming-card{
-  
-}
 .cover-image{
   height: 50%;
   object-fit: cover;
 }
+.streaming-card{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 0.5fr 0.5fr;
+  /* grid-template-columns:1fr ; */
 
-  .mat-card{
-      /* max-width: 30vw; */
-      
-  }
-  .mat-card-avatar{
-      background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
-      background-size: cover;
-  }
-  .mat-card-actions{
-      display:flex;
-  }
-  .mat-card-actions .flex-spacer{
-      width:100%;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-  }
-  .grid > div {
-    background: #EDE7F6;
-    padding: 1.5rem;
-    border-radius: 1rem;
-  }
-  body {
-    margin: 2rem;
-    font: 12px system-ui;
+}
+
+.mat-card-avatar{
+  background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
+  background-size: cover;
+}
+.mat-card-actions{
+  display:flex;
+}
+.mat-card-actions .flex-spacer{
+  width:100%;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.grid > div {
+  background: #EDE7F6;
+  padding: 1.5rem;
+  border-radius: 1rem;
   }
