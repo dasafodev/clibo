@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { JitsiMeetComponent } from './jitsi-meet/jitsi-meet.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'producer',
     loadChildren: () => import('./admin-producer/admin-producer.module').then(m => m.AdminProducerModule)
+  },
+  {
+    path:'meet',
+    component:JitsiMeetComponent
   }
 
 ];
