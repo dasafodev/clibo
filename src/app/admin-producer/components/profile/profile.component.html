@@ -1,12 +1,12 @@
 <mat-grid-list [cols]="breakpoint" rowHeight="2:1" (window:resize)="onResize($event)">
     <mat-grid-tile [class.fullWidth]="breakpoint == 1" class="g1">
-        <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="">
+        <img src="{{photo}}" alt="User image">
     </mat-grid-tile>
     <mat-grid-tile [class.fullWidth]="breakpoint == 1" class="g2">
         <div class="info">
             <mat-list>
-                <div mat-line id="name"><strong>Santiago Forero</strong></div>
-                <div mat-line id="email">sanfo09@gmail.com</div>
+                <div mat-line id="name"><strong>{{name}}</strong></div>
+                <div mat-line id="email">{{email}}</div>
             </mat-list>
         </div>
     </mat-grid-tile>
@@ -66,10 +66,10 @@
             <ng-template matTabContent>
                 <mat-list class="user-info">
                     <div mat-subheader>Nombre</div>
-                    <div mat-line>Santiago Forero</div>
+                    <div mat-line>{{name}}</div>
                     <mat-divider></mat-divider>
                     <div mat-subheader>Email</div>
-                    <div mat-line>sanfo09@gmail.com</div>
+                    <div mat-line>{{email}}</div>
                 </mat-list>
             </ng-template>
         </section>
