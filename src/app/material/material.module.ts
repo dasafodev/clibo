@@ -10,6 +10,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatCardModule,
     MatSelectModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressBarModule
   ],
   exports: [
     MatInputModule,
@@ -38,7 +40,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatCardModule,
     MatSelectModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressBarModule
   ]
 })
 export class MaterialModule { }

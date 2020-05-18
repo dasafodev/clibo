@@ -25,6 +25,17 @@
           </tr>
           <tr>
             <td>
+              <input  type="file" accept=".png, .jpg " (change)="onUpload($event)" >
+            </td>
+          </tr>
+          <br>
+          <tr>
+            <td>
+              <mat-progress-bar mode="determinate" [value]="(upLoadPercent | async)"></mat-progress-bar>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <mat-form-field>
                 <mat-label>Role</mat-label>
                 <mat-select formControlName="role">
@@ -38,7 +49,12 @@
         </table>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Registrarme</button>
+        <input #imageUser type="hidden" [value]= "urlImage |async">
+        <button *ngIf="urlImage | async; else btnDisabled" mat-raised-button color="primary" type="submit">Registrarme</button>
+        <ng-template #btnDisabled >
+          <button mat-raised-button disabled=true color="primary" type="submit">Registrarme</button>
+        </ng-template>
+        
       </mat-card-actions>
     </form>
     <p>¿ Ya tienes cuenta ? <a (click)="changeBool()"><strong>Inicia sesión</strong></a></p>

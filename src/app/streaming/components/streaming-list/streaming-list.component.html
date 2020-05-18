@@ -2,7 +2,7 @@
     <div class="grid">
         <mat-card *ngFor="let v of videos">
             <mat-card-header>
-                <div mat-card-avatar></div>
+                <div mat-card-avatar style="background-image: url({{v.photo_producer}});"></div>
                 <mat-card-title>{{v.name}}</mat-card-title>
                 <mat-card-subtitle>
                     <div *ngIf="v.category; else elseBlock">
@@ -13,7 +13,7 @@
                     </ng-template>
                 </mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="{{v.photoURL}}"
+            <img mat-card-image src="{{v.coverURL}}"
                 alt="Video Image">
             <mat-card-content>
                 <p>

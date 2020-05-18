@@ -8,6 +8,7 @@ import { environment } from "./../environments/environment";
 //Firebase Module
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { LayoutComponent } from './layout/layout.component';
 import { MaterialModule } from './material/material.module';
@@ -29,7 +30,10 @@ import { SharedModule } from './shared/shared.module';
     AngularFirestoreModule,
     AngularFireAuthModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    AngularFireStorageModule
+    
+
 
   ],
   providers: [],

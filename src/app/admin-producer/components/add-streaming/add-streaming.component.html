@@ -14,10 +14,17 @@
     </mat-form-field>
     -->
         <br>
-        <mat-form-field class="input-add" appearance="fill">
-            <mat-label>Portada URL</mat-label>
-            <input formControlName="photoURL" matInput>
-        </mat-form-field>
+        <tr>
+            <td>
+              <input  type="file" accept=".png, .jpg " (change)="onUpload($event)" >
+            </td>
+        </tr>
+        <br>
+          <tr>
+            <td>
+              <mat-progress-bar mode="determinate" [value]="(upLoadPercent | async)"></mat-progress-bar>
+            </td>
+          </tr>
         <mat-form-field class="input-add" appearance="fill">
             <mat-label>Video URL</mat-label>
             <input formControlName="url" matInput>
@@ -31,6 +38,10 @@
             <mat-label>Descripcion Larga</mat-label>
             <textarea formControlName="long_description" matInput></textarea>
         </mat-form-field>
-        <button mat-raised-button  type="submit" color="primary">Primary</button>
+        <input #cover type="hidden" [value]= "urlImage |async">
+        <button *ngIf="urlImage | async; else btnDisabled" mat-raised-button color="primary" type="submit">Crear</button>
+        <ng-template #btnDisabled >
+          <button mat-raised-button disabled=true color="primary" type="submit">Crear</button>
+        </ng-template>
     </form>
 </div>

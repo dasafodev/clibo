@@ -26,12 +26,14 @@ export class AuthService {
 
   }
 
-  signUp(email: string, password: string, role: string) {
+  signUp(email: string, password: string, role: string, urlImage) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(result => {
         // this.sendVerificationEmail();
-        this.updateLocalStorage(result.user);
+        console.log('urlImage', urlImage)
+        //this.updateLocalStorage(result.user);
         this.setUserData(result.user, role);
+        console.log('result:', result)
       })
       .catch(err => console.error(err))
   }
@@ -49,6 +51,9 @@ export class AuthService {
       })
   }
 
+    isAuth(){
+      return this.afAuth.user;
+    }
 
   sendVerificationEmail() {
     return this.afAuth.currentUser
