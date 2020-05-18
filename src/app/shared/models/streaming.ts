@@ -1,14 +1,14 @@
 import { Tag } from './tag';
 
 export interface Streaming {
-    id:string;
     id_producer:string;
+    photo_producer:string;
     name:string;
-    url:string;
-    photoURL:string;
+    urlStreaming:string;
+    coverURL:string;
     short_description:string;
     long_description:string;
-    date_start: Date;
-    category:string;
-    tags:Tag[];
+    // date_start: Date;
+    // category:string;
+    // tags:Tag[];
 }

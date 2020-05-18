@@ -8,6 +8,14 @@
       <mat-card-content>
         <table class="full-width" cellspacing="0">
           <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <mat-label>Nombre</mat-label>
+              <input matInput type="text" formControlName="name">
+            </mat-form-field>
+          </td>
+        </tr>
+          <tr>
             <td>
               <mat-form-field class="full-width">
                 <mat-label>Correo</mat-label>
@@ -25,6 +33,19 @@
           </tr>
           <tr>
             <td>
+              Elige tu foto de perfil
+              <br>
+              <input  type="file" accept=".png, .jpg " (change)="onUpload($event)" >
+            </td>
+          </tr>
+          <br>
+          <tr>
+            <td>
+              <mat-progress-bar mode="determinate" [value]="(upLoadPercent | async)"></mat-progress-bar>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <mat-form-field>
                 <mat-label>Role</mat-label>
                 <mat-select formControlName="role">
@@ -38,12 +59,17 @@
         </table>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Registrarme</button>
+        <input #imageUser type="hidden" [value]= "urlImage |async">
+        <button *ngIf="urlImage | async; else btnDisabled" mat-raised-button color="primary" type="submit">Registrarme</button>
+        <ng-template #btnDisabled >
+          <button mat-raised-button disabled=true color="primary" type="submit">Registrarme</button>
+        </ng-template>
+        
       </mat-card-actions>
     </form>
     <p>¿ Ya tienes cuenta ? <a (click)="changeBool()"><strong>Inicia sesión</strong></a></p>
   </div>
   <div class="container-image">
-    <img class="image-right" src="https://cdn.pixabay.com/photo/2014/07/31/22/50/photographer-407068_960_720.jpg" alt="">
+    <img class="image-right" src="https://cdn.pixabay.com/photo/2020/03/11/10/08/camera-4921646_960_720.jpg" alt="">
   </div>
 </mat-card>
