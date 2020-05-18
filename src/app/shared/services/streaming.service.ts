@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Streaming } from '../models/streaming';
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ export class StreamingService {
 
   constructor(
     public afs: AngularFirestore,
+    public ngZone: NgZone,
+    public router: Router
 
   ) { }
 
@@ -22,6 +25,11 @@ export class StreamingService {
   }
   postStreaming(streaming){
     return this.afs.collection('streamings').add(streaming)
+    .then(()=> {
+      this.ngZone.run(() => {
+        this.router.navigate(['producer/list']);
+      });
+    })
     .catch(err => console.error( err));
   }
 

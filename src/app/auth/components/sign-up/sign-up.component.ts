@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from "rxjs/operators";
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -34,7 +35,9 @@ export class SignUpComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private toastService: ToastrService
+
   ) {
     this.buildForm();
   }
@@ -55,7 +58,7 @@ export class SignUpComponent implements OnInit {
           .subscribe( user => {
             if(user){
               user.updateProfile({
-                displayName:'pepito',
+                displayName:this.dataUser.value.name,
                 photoURL:this.inputImageUser.nativeElement.value
               })
               .then(()=>{
@@ -65,6 +68,11 @@ export class SignUpComponent implements OnInit {
             }
           })
       })
+      .catch(err => {
+        this.toastService.error("Registro incorrecto")
+        console.error(err)
+      })
+    this.toastService.success("Tu registro ha sido correcto")
     this.cerrarVentana.emit("cerrar");
 
   }
@@ -86,6 +94,7 @@ export class SignUpComponent implements OnInit {
 
   private buildForm() {
     this.dataUser = this.formBuilder.group({
+      name: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
       role: ['', [Validators.required]]

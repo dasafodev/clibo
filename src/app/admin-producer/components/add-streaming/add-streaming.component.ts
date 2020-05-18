@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Streaming } from 'src/app/shared/models/streaming';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-streaming',
@@ -22,7 +23,8 @@ export class AddStreamingComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private streamingService: StreamingService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private toastService: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -50,8 +52,9 @@ export class AddStreamingComponent implements OnInit {
         short_description:this.form.value.short_description,
         long_description:this.form.value.long_description
       }
-      console.log('streaming', streaming)
-      this.streamingService.postStreaming(streaming);
+      this.streamingService.postStreaming(streaming)
+      .then(()=> this.toastService.success("Se ha creado correctamente tu Streaming"))
+      .catch(() => this.toastService.error("Tuvimos problemas al crear tu Striming"));
     }
   }
 

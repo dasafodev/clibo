@@ -13,6 +13,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { LayoutComponent } from './layout/layout.component';
 import { MaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { SharedModule } from './shared/shared.module';
     AngularFireAuthModule,
     MaterialModule,
     SharedModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ToastrModule.forRoot()
     
 
 

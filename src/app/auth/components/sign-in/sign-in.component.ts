@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,7 +20,8 @@ export class SignInComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private toastService: ToastrService
   ) { 
     this.buildForm();
   }
@@ -32,7 +34,7 @@ export class SignInComponent implements OnInit {
     event.preventDefault();
     this.auth.signIn(this.dataUser.value.email,this.dataUser.value.password)
     this.cerrarVentana.emit("cerrar");
-    console.log('form :', this.dataUser.value.email)
+    this.toastService.success(`Bienvenido ${JSON.parse( localStorage.getItem('user')).displayName}`);
   }
 
   changeBool(){

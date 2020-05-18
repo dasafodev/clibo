@@ -41,7 +41,6 @@ export class AuthService {
   signIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log('result:', result)
         this.updateLocalStorage(result.user);
         this.ngZone.run(() => {
           this.router.navigate(['producer/list']);
