@@ -11,11 +11,16 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   slidesPerView: 3,
-  freeMode: true,
-  scrollbar:{
-    el: '.swiper-scrollbar',
-    hide:true
-  }
+  speed:1200,
+  autoplay: {
+    delay: 500,
+  },
+  // slidesPerColumn: 2,
+  spaceBetween: 0,
+  // pagination: {
+  //   el: '.swiper-pagination',
+  //   clickable: true,
+  // },
 };
 
 @NgModule({

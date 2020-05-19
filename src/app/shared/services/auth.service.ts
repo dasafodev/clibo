@@ -71,7 +71,8 @@ export class AuthService {
       emailVerified: user.emailVerified
     }
 
-    return this.afs.collection(role).add(temp);
+    // return this.afs.collection(role).add(temp); Si tenemos en cuenta el rol
+    return this.afs.collection('user').add(temp);
   }
 
   signOut() {
@@ -91,18 +92,6 @@ export class AuthService {
     }
 
     localStorage.setItem('user', JSON.stringify(temp));
-
-
-    // this.afAuth.authState.subscribe(user => {
-    //   if (user) {
-    //     this.userData = user;
-    //     localStorage.setItem('user', JSON.stringify(this.userData));
-    //     JSON.parse(localStorage.getItem('user'));
-    //   } else {
-    //     localStorage.setItem('user', null);
-    //     JSON.parse(localStorage.getItem('user'));
-    //   }
-    // })
   }
 
 

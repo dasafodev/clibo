@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { StreamingService } from 'src/app/shared/services/streaming.service';
+import { Component, OnInit, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-streaming-list',
@@ -8,18 +7,16 @@ import { StreamingService } from 'src/app/shared/services/streaming.service';
 })
 export class StreamingListComponent implements OnInit {
 
+  
   constructor(
-    private streamingService: StreamingService
   ) { }
 
+  
+  @Input()
   videos:any;
 
   ngOnInit(): void {
-    this.streamingService.getAllStreamings()
-    .subscribe(resp_vids => {
-      this.videos = resp_vids;
-      console.log('resp:', resp_vids)
-    })
+    
   }
 
 }
