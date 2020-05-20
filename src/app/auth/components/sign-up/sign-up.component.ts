@@ -1,10 +1,11 @@
-import { Component, OnInit, Output, EventEmitter , ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from "rxjs/operators";
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,7 @@ export class SignUpComponent implements OnInit {
   @Output()
   changeView = new EventEmitter<Boolean>();
 
-  @ViewChild('imageUser') inputImageUser:ElementRef;
+  @ViewChild('imageUser') inputImageUser: ElementRef;
 
   options = [
     { value: 'producer', viewValue: 'Producer' },
@@ -28,8 +29,8 @@ export class SignUpComponent implements OnInit {
 
 
   dataUser: FormGroup;
-  upLoadPercent:Observable<number>;
-  urlImage:Observable<string>;
+  upLoadPercent: Observable<number>;
+  urlImage: Observable<string>;
 
 
   constructor(
@@ -48,48 +49,38 @@ export class SignUpComponent implements OnInit {
 
   signUp(event: Event) {
     event.preventDefault();
-    this.auth.signUp(
-      this.dataUser.value.email, 
-      this.dataUser.value.password, 
-      this.dataUser.value.role,
-      this.urlImage)
+    const user: User = {
+      uid: '',
+      email: this.dataUser.value.email,
+      displayName: this.dataUser.value.name,
+      photoURL: this.inputImageUser.nativeElement.value,
+      emailVerified: false,
+      favorite_streamings: []
+    }
+    this.auth.signUp(user, this.dataUser.value.password)
       .then((res) => {
-        this.auth.isAuth()
-          .subscribe( user => {
-            if(user){
-              user.updateProfile({
-                displayName:this.dataUser.value.name,
-                photoURL:this.inputImageUser.nativeElement.value
-              })
-              .then(()=>{
-                this.auth.updateLocalStorage(user);
-              })
-              .catch(err => console.error(err))
-            }
-          })
+        this.toastService.success("Tu registro ha sido correcto")
+        this.cerrarVentana.emit("cerrar");
       })
       .catch(err => {
         this.toastService.error("Registro incorrecto")
         console.error(err)
       })
-    this.toastService.success("Tu registro ha sido correcto")
-    this.cerrarVentana.emit("cerrar");
-
   }
 
-  changeBool(){
+  changeBool() {
     this.changeView.emit(true);
   }
 
-  onUpload(e){
+  onUpload(e) {
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
     const filePhat = `profile/${id}`;
     const ref = this.storage.ref(filePhat);
-    const task = this.storage.upload(filePhat,file);
+    const task = this.storage.upload(filePhat, file);
     this.upLoadPercent = task.percentageChanges();
-    task.snapshotChanges().pipe(finalize(()=> this.urlImage = ref.getDownloadURL()))
-    .subscribe();
+    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL()))
+      .subscribe();
   }
 
   private buildForm() {
@@ -97,7 +88,7 @@ export class SignUpComponent implements OnInit {
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      role: ['', [Validators.required]]
+      // role: ['', [Validators.required]] Sin role
     })
   }
 

@@ -1,21 +1,26 @@
-.swiper-slide {
-    overflow: hidden !important;
+ .grid-section{
+    margin: 10px 10px 0 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 300px;
 }
-
+.text-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
 .swiper-container {
-    height: 40vh;
-}
+    width: 400px;
+    height: 300px;
+    /* padding: 50px; */
+  }
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    height: 300px;
+    border-radius: 5px;
+    overflow: hidden !important;
 
-.slide {
-    filter: blur(5px) grayscale(50%);
-    width: 100%;
-    object-fit: cover;
-}
-
-.banner-title{
-    text-align: center;
-    background-color: rgba(256, 256, 256, 0.5);
-    position: relative;
-    top: -20vh;
-    z-index: 2;
-}
+  }

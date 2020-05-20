@@ -10,17 +10,18 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
-  slidesPerView: 3,
-  speed:1200,
-  autoplay: {
-    delay: 500,
-  },
-  // slidesPerColumn: 2,
-  spaceBetween: 0,
-  // pagination: {
-  //   el: '.swiper-pagination',
-  //   clickable: true,
-  // },
+  effect: 'flip',
+      grabCursor: true,
+      // pagination: {
+      //   el: '.swiper-pagination',
+      // },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 2000,
+      },
 };
 
 @NgModule({

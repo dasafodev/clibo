@@ -1,6 +1,5 @@
 .container-content {
   margin: 20px;
-  margin-top: -30px;
 }
 
 .grid {
@@ -13,6 +12,8 @@
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 0.5fr 0.5fr;
   padding: 0;
+  max-height: 350px;
+  background-position: center top;
 }
 
 .container-shadow {
@@ -23,11 +24,12 @@
   margin: 0;
   border-radius: 4px 4px 0 0;
 }
-.container-shadow-actions{
+
+.container-shadow-actions {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   padding-bottom: 16px;
-  border-radius:  0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
 
 }
 
@@ -37,4 +39,13 @@
 
 .mat-card-avatar {
   background-size: cover;
+}
+
+.favorite-color{
+  transition:all 0.7s ;
+}
+
+.favorite-color:hover{
+  color: red;
+  transform:scale(1.3);
 }

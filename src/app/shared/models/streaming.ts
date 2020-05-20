@@ -1,4 +1,3 @@
-import { Tag } from './tag';
 
 export interface Streaming {
     id_producer:string;
@@ -9,6 +8,6 @@ export interface Streaming {
     short_description:string;
     long_description:string;
     // date_start: Date;
-    // category:string;
-    // tags:Tag[];
+    // category:string[];
+    // tags:string[];
 }

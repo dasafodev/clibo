@@ -1,9 +1,19 @@
-<section class="swiper-container">
-    <swiper >
-        <div *ngFor="let video of videos">
-            <img class="slide" src={{video.coverURL}} alt="">
+<section class="grid-section">
+    <div class="text-section">
+        <div>
+            <h2>Hola</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br> tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim <br> veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat. </p>
         </div>
-    </swiper>
+        
+    </div>
+    <div class="swiper-container">
+        <swiper>
+            <div *ngFor="let video of videos">
+                <img class="slide" src={{video.coverURL}} alt="">
+            </div>
+        </swiper>
+    </div>
 </section>
-<h2 class="banner-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
 <app-streaming-list [videos]="videos"></app-streaming-list>

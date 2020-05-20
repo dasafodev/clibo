@@ -10,6 +10,7 @@ export class StreamingsListComponent implements OnInit {
 
   constructor(
     private streamingService: StreamingService,
+
   ) { }
 
   streamings: any;
@@ -20,7 +21,6 @@ export class StreamingsListComponent implements OnInit {
     this.streamingService.getStreamings(JSON.parse(localStorage.getItem('user')).uid)
       .subscribe(resp => {
         this.streamings = resp;
-        console.log('resp:', resp)
       })
 
   }

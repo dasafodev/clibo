@@ -26,33 +26,57 @@ export class AuthService {
 
   }
 
-  signUp(email: string, password: string, role: string, urlImage) {
-    return this.afAuth.createUserWithEmailAndPassword(email, password)
+  signUp(user: User, password: string) {
+    return this.afAuth.createUserWithEmailAndPassword(user.email, password)
       .then(result => {
+        result.user.updateProfile({
+          displayName: user.displayName,
+          photoURL: user.photoURL
+        })
+        let userTemp = { ...user }
+        userTemp.uid = result.user.uid
         // this.sendVerificationEmail();
-        console.log('urlImage', urlImage)
-        //this.updateLocalStorage(result.user);
-        this.setUserData(result.user, role);
-        console.log('result:', result)
+        this.updateLocalStorage(userTemp);
+        this.ngZone.run(() => {
+          this.router.navigate(['producer/profile']);
+        });
+        this.setUserData(userTemp);
       })
       .catch(err => console.error(err))
   }
 
   signIn(email, password) {
-    return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.updateLocalStorage(result.user);
-        this.ngZone.run(() => {
-          this.router.navigate(['producer/list']);
+    try {
+      return this.afAuth.signInWithEmailAndPassword(email, password)
+        .then(result => {
+          this.afs.collection('user', query => query.where('uid', '==', result.user.uid)).valueChanges()
+            .subscribe(result_1 => {
+              let res = JSON.parse(JSON.stringify(result_1[0]));
+              const user: User = {
+                uid: res.uid,
+                email: res.email,
+                displayName: res.displayName,
+                photoURL: res.photoURL,
+                emailVerified: res.emailVerified,
+                favorite_streamings: res.favorite_streamings
+              };
+              this.updateLocalStorage(user);
+              this.ngZone.run(() => {
+                this.router.navigate(['producer/profile']);
+              });
+            });
+
         });
-      }).catch((error) => {
-        window.alert(error.message)
-      })
+    }
+    catch (error) {
+      window.alert(error.message);
+    }
   }
 
-    isAuth(){
-      return this.afAuth.user;
-    }
+
+  isAuth() {
+    return this.afAuth.user;
+  }
 
   sendVerificationEmail() {
     return this.afAuth.currentUser
@@ -61,16 +85,19 @@ export class AuthService {
       })
   }
 
-  setUserData(user: any, role: string) {
+  // setUserData(user: any, role: string) { Si tenemos en cuenta el rol
+  setUserData(user: User) {
 
     let temp: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      emailVerified: user.emailVerified,
+      favorite_streamings: user.favorite_streamings
     }
 
+    console.log('temp:', temp)
     // return this.afs.collection(role).add(temp); Si tenemos en cuenta el rol
     return this.afs.collection('user').add(temp);
   }
@@ -83,12 +110,13 @@ export class AuthService {
   }
 
   updateLocalStorage(user) {
-    let temp: User = {
+    const temp: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      emailVerified: user.emailVerified,
+      favorite_streamings: user.favorite_streamings
     }
 
     localStorage.setItem('user', JSON.stringify(temp));

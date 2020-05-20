@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-streaming-list',
@@ -9,6 +10,7 @@ export class StreamingListComponent implements OnInit {
 
   
   constructor(
+    private toast:ToastrService
   ) { }
 
   
@@ -17,6 +19,17 @@ export class StreamingListComponent implements OnInit {
 
   ngOnInit(): void {
     
+  }
+
+  clickFavorite(){
+    const user = JSON.parse(localStorage.getItem('usuario'));
+    if(!user){
+      this.toast.error("¡Inicia sesión para agregarlo a tus favoritos!")
+    }else{
+      
+    }
+    
+
   }
 
 }
