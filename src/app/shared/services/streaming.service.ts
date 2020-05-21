@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Streaming } from '../models/streaming';
 import { Router } from "@angular/router";
+import { firestore } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -25,12 +26,25 @@ export class StreamingService {
   }
   postStreaming(streaming){
     return this.afs.collection('streamings').add(streaming)
-    .then(()=> {
+    .then((resp )=> {
+      var res = this.afs.collection("streamings").doc(resp.id)
+        .update({
+        uid:resp.id
+      })
       this.ngZone.run(() => {
         this.router.navigate(['producer/list']);
       });
     })
     .catch(err => console.error( err));
+  }
+
+  selectFavorite(id_user:string,id_streaming:string){
+    var docRef = this.afs.collection("user").doc(id_user);
+    docRef.update({
+      favorite_streamings:firestore.FieldValue.arrayUnion(id_streaming)
+    })
+      
+
   }
 
   fillDatabase(){

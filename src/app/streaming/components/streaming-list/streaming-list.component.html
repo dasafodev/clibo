@@ -21,11 +21,20 @@
                 </p>
             </mat-card-content>
             <mat-card-actions class="container-shadow-actions">
-                <button mat-icon-button (click)="clickFavorite()">
-                    <mat-icon class="favorite-color">
-                        favorite
-                    </mat-icon>
-                </button>
+                <ng-container *ngIf="isFavorite(v.uid); else elseTemplate">
+                    <button mat-icon-button >
+                        <mat-icon  class="favorite-color-red">
+                            favorite
+                        </mat-icon>
+                    </button>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <button mat-icon-button (click)="clickFavorite(v.uid)">
+                        <mat-icon class="favorite-color">
+                            favorite
+                        </mat-icon>
+                    </button>
+                </ng-template>
                 <button mat-icon-button>
                     <mat-icon>
                         share

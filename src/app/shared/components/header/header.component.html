@@ -6,6 +6,14 @@
     <button mat-button routerLink="">Categorias</button>
     <button mat-button routerLink="/streaming/list">Tendencias</button>
     <span class="spacer"></span>
-    <a (click)="openDialog()"> <mat-icon class="icon" aria-hidden="false" >account_circle</mat-icon> </a>
+    <ng-container *ngIf="verifyUser(); else elseTemplate">
+      <a routerLink="/producer/profile"> <mat-icon class="icon" aria-hidden="false" >account_circle</mat-icon> </a>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <button mat-button>Iniciar Sesión</button>
+      <button mat-button>Registrarse</button>
+      <a (click)="openDialog()"> <mat-icon class="icon" aria-hidden="false" >account_circle</mat-icon> </a>
+    </ng-template>
+    
   </mat-toolbar-row>
 </mat-toolbar>

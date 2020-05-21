@@ -44,6 +44,10 @@
 .favorite-color{
   transition:all 0.7s ;
 }
+.favorite-color-red{
+  color: red;
+  transition:all 0.7s ;
+}
 
 .favorite-color:hover{
   color: red;

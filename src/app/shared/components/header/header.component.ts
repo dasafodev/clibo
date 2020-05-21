@@ -27,7 +27,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  
+  verifyUser(){
+    const user = JSON.parse(localStorage.getItem('user'));
+    return (user)? true:false ;
+  }
   
 
 }

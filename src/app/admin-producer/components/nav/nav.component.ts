@@ -24,7 +24,7 @@ export class NavComponent {
     private toastService: ToastrService
 
     ) {
-      this.toastService.success(`Bienvenido ${JSON.parse(localStorage.getItem('user')).displayName}`)
+      // this.toastService.success(`Bienvenido ${JSON.parse(localStorage.getItem('user')).displayName}`)
     }
 
   signOut(){

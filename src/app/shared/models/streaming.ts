@@ -1,5 +1,6 @@
 
 export interface Streaming {
+    uid:string,
     id_producer:string;
     photo_producer:string;
     name:string;

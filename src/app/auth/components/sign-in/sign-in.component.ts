@@ -1,6 +1,9 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, NgZone } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,6 +23,11 @@ export class SignInComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
+    public ngZone: NgZone,
+    public router: Router,
+    private toast:ToastrService,
+
+
   ) { 
     this.buildForm();
   }
@@ -28,12 +36,24 @@ export class SignInComponent implements OnInit {
   }
 
 
-  signIn(event:Event){
+  async signIn(event:Event){
+    let user:User;
     event.preventDefault();
-    this.auth.signIn(this.dataUser.value.email,this.dataUser.value.password)
-    .then(user => {
+    await this.auth.signIn(this.dataUser.value.email,this.dataUser.value.password)
+    .then((resp) => {
+      console.log( resp)
+      user = resp.user;
       this.cerrarVentana.emit("cerrar");
+    })
+    .then(()=> {
+      this.auth.updateLocalStorage2(user.uid).then(()=>{
+        this.toast.success(JSON.parse( localStorage.getItem('user')).displayName)
+
+      })
+
     });
+
+  
   }
 
   changeBool(){

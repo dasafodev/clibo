@@ -44,6 +44,7 @@ export class AddStreamingComponent implements OnInit {
     event.preventDefault();
     if(this.form.valid){
       const streaming :Streaming = {
+        uid:'',
         id_producer:JSON.parse( localStorage.getItem('user')).uid,
         photo_producer:JSON.parse( localStorage.getItem('user')).photoURL,
         name:this.form.value.name,
