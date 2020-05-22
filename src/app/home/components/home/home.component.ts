@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
         this.videos = resp_vids; //desordena la lista
         console.log('resp:', this.videos)
       })
-      this.videos.sort(function() {return Math.random() - 0.5});
+      // this.videos.sort(function() {return Math.random() - 0.5});
   }
 
 }
