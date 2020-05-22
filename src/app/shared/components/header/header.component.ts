@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogUser } from './dialog-user.component';
+import { DialogLogin } from './dialog-login.component';
+import { DialogSignUp } from './dialog-sign-up.component';
 
 @Component({
   selector: 'app-header',
@@ -14,13 +15,17 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  user;
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogUser, {
-      width: 'auto',
-      height:'auto'
-    //  data: {name: this.name, animal: this.animal}
+  openDialogLogIn(): void {
+    const dialogRef = this.dialog.open(DialogLogin);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
+  }
+  openDialogSignUp(): void {
+    const dialogRef = this.dialog.open(DialogSignUp);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -28,8 +33,8 @@ export class HeaderComponent implements OnInit {
   }
 
   verifyUser(){
-    const user = JSON.parse(localStorage.getItem('user'));
-    return (user)? true:false ;
+    this.user = JSON.parse(localStorage.getItem('user'));
+    return (this.user)? true:false ;
   }
   
 

@@ -4,19 +4,20 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from '../material/material.module';
 import { AuthModule } from '../auth/auth.module';
-import { DialogUser } from './components/header/dialog-user.component';
+import { DialogLogin } from './components/header/dialog-login.component';
 import { RouterModule } from '@angular/router';
+import { DialogSignUp } from './components/header/dialog-sign-up.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, DialogUser],
+  declarations: [HeaderComponent, FooterComponent, DialogLogin, DialogSignUp],
   imports: [
     CommonModule,
     MaterialModule,
     AuthModule,
     RouterModule
   ],
-  exports: [ HeaderComponent, FooterComponent, DialogUser]
+  exports: [ HeaderComponent, FooterComponent, DialogLogin,DialogSignUp]
 })
 export class SharedModule { }

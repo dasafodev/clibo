@@ -2,18 +2,17 @@ import { Component, Inject,  } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-    selector: 'dialog-user',
-    templateUrl: 'dialog-user.html',
-    styleUrls: ['./dialog-user.component.css']
+    selector: 'dialog-sign-up',
+    templateUrl: 'dialog-sign-up.html',
+    styleUrls: ['./dialog-sign-up.css']
 
   })
-  export class DialogUser {
+  export class DialogSignUp {
   
     signUp: Boolean = true;
 
     constructor(
-      public dialogRef: MatDialogRef<DialogUser>,
-      @Inject(MAT_DIALOG_DATA) public data) {}
+      public dialogRef: MatDialogRef<DialogSignUp>) {}
   
     onNoClick(): void {
       this.dialogRef.close();

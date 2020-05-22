@@ -16,9 +16,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.streamingService.getAllStreamings()
       .subscribe(resp_vids => {
-        this.videos = resp_vids.sort(function() {return Math.random() - 0.5});; //desordena la lista
+        this.videos = resp_vids; //desordena la lista
         console.log('resp:', this.videos)
       })
+      this.videos.sort(function() {return Math.random() - 0.5});
   }
 
 }

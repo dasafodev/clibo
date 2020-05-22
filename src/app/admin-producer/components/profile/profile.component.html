@@ -1,6 +1,6 @@
 <mat-grid-list [cols]="breakpoint" rowHeight="2:1" (window:resize)="onResize($event)">
     <mat-grid-tile [class.fullWidth]="breakpoint == 1" class="g1">
-        <img src="{{photo}}" alt="User image">
+        <img src="{{photo}}" style="object-fit: cover;" alt="User image">
     </mat-grid-tile>
     <mat-grid-tile [class.fullWidth]="breakpoint == 1" class="g2">
         <div class="info">

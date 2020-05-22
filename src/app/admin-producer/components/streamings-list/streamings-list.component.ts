@@ -28,6 +28,11 @@ export class StreamingsListComponent implements OnInit {
     this.streamingService.fillDatabase();
   }
 
+  deleteStreaming(id_streaming:string){
+    console.log('id_streaming', id_streaming)
+    this.streamingService.deleteStreaming(id_streaming);
+  }
+
 
 
 }

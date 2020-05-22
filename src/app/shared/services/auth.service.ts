@@ -56,30 +56,6 @@ export class AuthService {
       window.alert(error.message);
     }
   }
-  // signIn(email, password) {
-  //   try {
-  //     return  this.afAuth.signInWithEmailAndPassword(email, password)
-  //       .then( (result) => {
-  //           this.afs.collection('user').doc(result.user.uid).valueChanges()            
-  //           .subscribe(result_1 => {
-  //             let res = JSON.parse(JSON.stringify(result_1));
-  //             const user: User = {
-  //               uid: res.uid,
-  //               email: res.email,
-  //               displayName: res.displayName,
-  //               photoURL: res.photoURL,
-  //               emailVerified: res.emailVerified,
-  //               favorite_streamings: res.favorite_streamings
-  //             };
-  //             console.log('entra aqui de nuevo')
-  //             this.updateLocalStorage(user);
-  //           });
-  //       });
-  //   }
-  //   catch (error) {
-  //     window.alert(error.message);
-  //   }
-  // }
 
 
   isAuth() {
@@ -154,7 +130,6 @@ export class AuthService {
   updateFavoritesLocalStorage(id_user) {
     var res = this.afs.collection("user").doc(id_user).valueChanges()
       .subscribe(res => {
-        console.log('updateFavoritesLocalStorage:', res)
         this.updateLocalStorage(res);
       })
 

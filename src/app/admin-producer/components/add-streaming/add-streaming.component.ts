@@ -51,7 +51,8 @@ export class AddStreamingComponent implements OnInit {
         urlStreaming:this.form.value.url,
         coverURL:this.cover.nativeElement.value , 
         short_description:this.form.value.short_description,
-        long_description:this.form.value.long_description
+        long_description:this.form.value.long_description,
+        likes:0
       }
       this.streamingService.postStreaming(streaming)
       .then(()=> this.toastService.success("Se ha creado correctamente tu Streaming"))
