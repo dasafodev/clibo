@@ -44,13 +44,15 @@ export class AddStreamingComponent implements OnInit {
     event.preventDefault();
     if(this.form.valid){
       const streaming :Streaming = {
+        uid:'',
         id_producer:JSON.parse( localStorage.getItem('user')).uid,
         photo_producer:JSON.parse( localStorage.getItem('user')).photoURL,
         name:this.form.value.name,
         urlStreaming:this.form.value.url,
         coverURL:this.cover.nativeElement.value , 
         short_description:this.form.value.short_description,
-        long_description:this.form.value.long_description
+        long_description:this.form.value.long_description,
+        likes:0
       }
       this.streamingService.postStreaming(streaming)
       .then(()=> this.toastService.success("Se ha creado correctamente tu Streaming"))

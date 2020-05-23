@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { StreamingService } from 'src/app/shared/services/streaming.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-streaming-list',
@@ -8,28 +10,44 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class StreamingListComponent implements OnInit {
 
-  
+
   constructor(
-    private toast:ToastrService
+    private toast: ToastrService,
+    private streamingService: StreamingService,
+    private auth: AuthService
   ) { }
 
-  
+
   @Input()
-  videos:any;
+  videos: any;
 
   ngOnInit(): void {
-    
+
   }
 
-  clickFavorite(){
-    const user = JSON.parse(localStorage.getItem('usuario'));
-    if(!user){
+  clickFavorite(id_streaming) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
       this.toast.error("¡Inicia sesión para agregarlo a tus favoritos!")
-    }else{
-      
+    } else {
+      this.streamingService.selectFavorite(user.uid, id_streaming);
+      this.auth.updateFavoritesLocalStorage(JSON.parse(localStorage.getItem('user')).uid)
+
     }
-    
+  }
+
+  isFavorite(id_streaming: string) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      const list_favorites: string[] = user.favorite_streamings;
+      const finded = list_favorites.indexOf(id_streaming);
+      return (finded === -1) ? false : true;
+    }
+    return false;
 
   }
+
+
+
 
 }

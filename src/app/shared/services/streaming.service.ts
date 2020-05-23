@@ -1,8 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { Streaming } from '../models/streaming';
 import { Router } from "@angular/router";
+import { firestore } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -16,72 +15,94 @@ export class StreamingService {
 
   ) { }
 
-  getStreamings(id_producer:string){
-    return this.afs.collection('streamings', query => query.where('id_producer','==',id_producer)).valueChanges();
-  }
-  
-  getAllStreamings(){
-    return this.afs.collection('streamings').valueChanges();
-  }
-  postStreaming(streaming){
-    return this.afs.collection('streamings').add(streaming)
-    .then(()=> {
-      this.ngZone.run(() => {
-        this.router.navigate(['producer/list']);
-      });
-    })
-    .catch(err => console.error( err));
+  getStreamings(id_producer: string) {
+    return this.afs.collection('streamings', query => query.where('id_producer', '==', id_producer)).valueChanges();
   }
 
-  fillDatabase(){
+  getAllStreamings() {
+    return this.afs.collection('streamings').valueChanges();
+  }
+  postStreaming(streaming) {
+    return this.afs.collection('streamings').add(streaming)
+      .then((resp) => {
+        var res = this.afs.collection("streamings").doc(resp.id)
+          .update({
+            uid: resp.id
+          })
+        this.ngZone.run(() => {
+          this.router.navigate(['producer/list']);
+        });
+      })
+      .catch(err => console.error(err));
+  }
+
+  selectFavorite(id_user: string, id_streaming: string) {
+    var docRef = this.afs.collection("user").doc(id_user);
+    docRef.update({
+      favorite_streamings: firestore.FieldValue.arrayUnion(id_streaming)
+    })
+    var docRef = this.afs.collection("streamings").doc(id_streaming);
+    docRef.update({
+      likes: firestore.FieldValue.increment(1)
+    })
+  }
+
+  deleteStreaming(id_streaming:string){
+    this.afs.collection("streamings").doc(id_streaming).delete()
+      .then( () => {
+        console.log("Documento eliminado")
+      })
+  }
+
+  fillDatabase() {
     let data1 = [
       {
-          "id": 1,
-          "name": "Jerry Maguire",
-          "url": "https://npr.org/eu/felis/fusce/posuere/felis/sed/lacus.aspx",
-          "photoURL": "http://dummyimage.com/194x181.png/5fa2dd/ffffff",
-          "short_description": "Spontaneous rupture of extensor tendons, lower leg",
-          "long_description": "Neuroendocrine cell hyperplasia of infancy",
-          "date_start": "11/1/2020",
-          "category": "Drama|Romance",
-          "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
+        "id": 1,
+        "name": "Jerry Maguire",
+        "url": "https://npr.org/eu/felis/fusce/posuere/felis/sed/lacus.aspx",
+        "photoURL": "http://dummyimage.com/194x181.png/5fa2dd/ffffff",
+        "short_description": "Spontaneous rupture of extensor tendons, lower leg",
+        "long_description": "Neuroendocrine cell hyperplasia of infancy",
+        "date_start": "11/1/2020",
+        "category": "Drama|Romance",
+        "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
       },
       {
-          "id": 2,
-          "name": "Profit, The",
-          "url": "https://latimes.com/praesent/id/massa.jpg",
-          "photoURL": "http://dummyimage.com/124x128.png/ff4444/ffffff",
-          "short_description": "Cervicalgia",
-          "long_description": "Ureteral fistula",
-          "date_start": "27/7/2019",
-          "category": "Drama",
-          "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
+        "id": 2,
+        "name": "Profit, The",
+        "url": "https://latimes.com/praesent/id/massa.jpg",
+        "photoURL": "http://dummyimage.com/124x128.png/ff4444/ffffff",
+        "short_description": "Cervicalgia",
+        "long_description": "Ureteral fistula",
+        "date_start": "27/7/2019",
+        "category": "Drama",
+        "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
       },
       {
-          "id": 3,
-          "name": "Prince of Pennsylvania, The",
-          "url": "http://latimes.com/consectetuer/adipiscing/elit/proin/interdum/mauris.aspx",
-          "photoURL": "http://dummyimage.com/200x240.png/ff4444/ffffff",
-          "short_description": "Unsp pedl cyclst injured in nonclsn trnsp accident nontraf",
-          "long_description": "Sector or arcuate visual field defects",
-          "date_start": "28/8/2019",
-          "category": "Comedy|Drama",
-          "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
+        "id": 3,
+        "name": "Prince of Pennsylvania, The",
+        "url": "http://latimes.com/consectetuer/adipiscing/elit/proin/interdum/mauris.aspx",
+        "photoURL": "http://dummyimage.com/200x240.png/ff4444/ffffff",
+        "short_description": "Unsp pedl cyclst injured in nonclsn trnsp accident nontraf",
+        "long_description": "Sector or arcuate visual field defects",
+        "date_start": "28/8/2019",
+        "category": "Comedy|Drama",
+        "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
       },
       {
-          "id": 4,
-          "name": "Bad Sleep Well, The (Warui yatsu hodo yoku nemuru)",
-          "url": "https://va.gov/malesuada/in/imperdiet.js",
-          "photoURL": "http://dummyimage.com/176x171.png/dddddd/000000",
-          "short_description": "Toxic effect of venom of wasps, undetermined, init encntr",
-          "long_description": "Other fall",
-          "date_start": "1/4/2020",
-          "category": "Drama|Thriller",
-          "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
+        "id": 4,
+        "name": "Bad Sleep Well, The (Warui yatsu hodo yoku nemuru)",
+        "url": "https://va.gov/malesuada/in/imperdiet.js",
+        "photoURL": "http://dummyimage.com/176x171.png/dddddd/000000",
+        "short_description": "Toxic effect of venom of wasps, undetermined, init encntr",
+        "long_description": "Other fall",
+        "date_start": "1/4/2020",
+        "category": "Drama|Thriller",
+        "id_producer": "O3hlcp1OoZZvuf6j8FNJ3PE3SwD2"
       }
-  ]
-  let data2 =[
-    {
+    ]
+    let data2 = [
+      {
         "id": 1,
         "name": "Guy Named Joe, A",
         "url": "https://forbes.com/purus/eu/magna/vulputate/luctus.png",
@@ -91,8 +112,8 @@ export class StreamingService {
         "date_start": "17/5/2019",
         "category": "Drama|Fantasy|Romance|War",
         "id_producer": "KLWKv39qniOTf2MKPcDLdGRy1wx1"
-    },
-    {
+      },
+      {
         "id": 2,
         "name": "Pauline & Paulette (Pauline en Paulette)",
         "url": "http://fc2.com/mattis/odio/donec/vitae.html",
@@ -102,8 +123,8 @@ export class StreamingService {
         "date_start": "21/1/2020",
         "category": "Comedy|Drama",
         "id_producer": "KLWKv39qniOTf2MKPcDLdGRy1wx1"
-    },
-    {
+      },
+      {
         "id": 3,
         "name": "Knockout",
         "url": "http://who.int/felis/eu/sapien.json",
@@ -113,8 +134,8 @@ export class StreamingService {
         "date_start": "7/5/2020",
         "category": "Action|Drama",
         "id_producer": "KLWKv39qniOTf2MKPcDLdGRy1wx1"
-    },
-    {
+      },
+      {
         "id": 4,
         "name": "Mask of Dimitrios, The",
         "url": "http://unblog.fr/porta/volutpat/quam/pede.xml",
@@ -124,13 +145,13 @@ export class StreamingService {
         "date_start": "18/11/2019",
         "category": "Crime|Drama|Film-Noir|Mystery",
         "id_producer": "KLWKv39qniOTf2MKPcDLdGRy1wx1"
-    }
-]
-  data2.forEach(element => {
-    this.afs.collection('streamings').add(element)
-      .catch(err => console.error( err));
-    
-  });
+      }
+    ]
+    data2.forEach(element => {
+      this.afs.collection('streamings').add(element)
+        .catch(err => console.error(err));
+
+    });
 
 
   }

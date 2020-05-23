@@ -45,27 +45,11 @@ export class AuthService {
       .catch(err => console.error(err))
   }
 
-  signIn(email, password) {
+  signIn(email: string, password: string) {
     try {
       return this.afAuth.signInWithEmailAndPassword(email, password)
-        .then(result => {
-          this.afs.collection('user', query => query.where('uid', '==', result.user.uid)).valueChanges()
-            .subscribe(result_1 => {
-              let res = JSON.parse(JSON.stringify(result_1[0]));
-              const user: User = {
-                uid: res.uid,
-                email: res.email,
-                displayName: res.displayName,
-                photoURL: res.photoURL,
-                emailVerified: res.emailVerified,
-                favorite_streamings: res.favorite_streamings
-              };
-              this.updateLocalStorage(user);
-              this.ngZone.run(() => {
-                this.router.navigate(['producer/profile']);
-              });
-            });
-
+        .then(resp => {
+          return resp
         });
     }
     catch (error) {
@@ -99,7 +83,7 @@ export class AuthService {
 
     console.log('temp:', temp)
     // return this.afs.collection(role).add(temp); Si tenemos en cuenta el rol
-    return this.afs.collection('user').add(temp);
+    return this.afs.collection('user').doc(temp.uid).set(temp);
   }
 
   signOut() {
@@ -110,6 +94,7 @@ export class AuthService {
   }
 
   updateLocalStorage(user) {
+
     const temp: User = {
       uid: user.uid,
       email: user.email,
@@ -120,6 +105,54 @@ export class AuthService {
     }
 
     localStorage.setItem('user', JSON.stringify(temp));
+  }
+  updateLocalStorage2(user_id) {
+    return new Promise((resolve, rejected) => {
+      this.afs.collection('user').doc(user_id).valueChanges()
+        .subscribe(result_1 => {
+          let res = JSON.parse(JSON.stringify(result_1));
+          const user: User = {
+            uid: res.uid,
+            email: res.email,
+            displayName: res.displayName,
+            photoURL: res.photoURL,
+            emailVerified: res.emailVerified,
+            favorite_streamings: res.favorite_streamings
+          };
+          localStorage.setItem('user', JSON.stringify(user));
+          resolve();
+        })
+      console.log('entra en el update')
+    });
+
+  }
+
+  updateFavoritesLocalStorage(id_user) {
+    var res = this.afs.collection("user").doc(id_user).valueChanges()
+      .subscribe(res => {
+        this.updateLocalStorage(res);
+      })
+
+  }
+
+  updateDatabaseUser(userId,user_name,user_email) {
+    this.updateLocalStorage2(userId);
+    var docRef = this.afs.collection("user").doc(userId);
+
+    return docRef.update({
+      email: user_email,
+      displayName: user_name
+    })
+      .then(() => {
+        console.log("Document successfully updated!");
+        this.ngZone.run(() => {
+          this.router.navigate(['producer/profile']);
+        });
+      })
+      .catch(function (error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
   }
 
 

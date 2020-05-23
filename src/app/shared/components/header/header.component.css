@@ -1,24 +1,30 @@
 .icon {
-    padding: 0 14px;
-    cursor: pointer;
-  }
+  padding: 0 14px;
+  cursor: pointer;
+}
+.shadow{
+  box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.25);
 
-  span{
-    outline:none;
-    cursor:pointer;
-  }
-  
-  .spacer {
-    flex: 1 1 auto;
-  }
+}
+span {
+  outline: none;
+  cursor: pointer;
+}
 
-  a{
-      margin: 0;
-      padding: 0;
-      text-decoration: none;
-      color: white;
-      cursor: pointer;
+.spacer {
+  flex: 1 1 auto;
+}
 
-  }
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
 
- 
+}
+
+.header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

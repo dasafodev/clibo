@@ -1,6 +1,6 @@
 <mat-grid-list [cols]="breakpoint" rowHeight="2:1" (window:resize)="onResize($event)">
     <mat-grid-tile [class.fullWidth]="breakpoint == 1" class="g1">
-        <img src="{{photo}}" alt="User image">
+        <img src="{{photo}}" style="object-fit: cover;" alt="User image">
     </mat-grid-tile>
     <mat-grid-tile [class.fullWidth]="breakpoint == 1" class="g2">
         <div class="info">
@@ -11,59 +11,15 @@
         </div>
     </mat-grid-tile>
 </mat-grid-list>
-<mat-tab-group>
+<mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
     <mat-tab label="General">
         <ng-template matTabContent>
             Content 1 - Example
         </ng-template>
     </mat-tab>
-    <mat-tab label="Videos">
-        <section class="container-content">
-            <div class="grid">
-                <mat-card>
-                    <mat-card-header>
-                        <div mat-card-avatar
-                            style="background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');">
-                        </div>
-                        <mat-card-title>Dogchow para caninos</mat-card-title>
-                        <mat-card-subtitle>Comida</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                        alt="Video Image">
-                    <mat-card-content>
-                        <p>
-                            Comida para perros
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button color="secondary">SHARE</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card>
-                    <mat-card-header>
-                        <div mat-card-avatar
-                            style="background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');">
-                        </div>
-                        <mat-card-title>Entrenando perros</mat-card-title>
-                        <mat-card-subtitle>Comida</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                        alt="Video Image">
-                    <mat-card-content>
-                        <p>
-                            Para poder entrenar perros
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button color="secondary">SHARE</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-        </section>
-    </mat-tab>
-    <mat-tab label="About">
-        <section class="container-content">
-            <ng-template matTabContent>
+    <mat-tab label="Acerca de">
+        <ng-template matTabContent>
+            <section class="container-content">
                 <mat-list class="user-info">
                     <div mat-subheader>Nombre</div>
                     <div mat-line>{{name}}</div>
@@ -71,7 +27,43 @@
                     <div mat-subheader>Email</div>
                     <div mat-line>{{email}}</div>
                 </mat-list>
-            </ng-template>
-        </section>
+            </section>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Ajustes">
+        <ng-template matTabContent>
+            <section class="container-content">
+                <h2><strong>Editar información</strong></h2>
+                <p>Escribe aquí abajo la nueva información de tu perfil</p>
+                <form [formGroup]="dataUser" (ngSubmit)="editUserInfo($event)">
+                    <table>
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput placeholder="Ryan" type="text" formControlName="user_name">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput type="email" placeholder="ryan123@gmail.com"
+                                        formControlName="user_email">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button mat-raised-button color="primary"
+                                    type="submit">Guardar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+            </section>
+        </ng-template>
     </mat-tab>
 </mat-tab-group>

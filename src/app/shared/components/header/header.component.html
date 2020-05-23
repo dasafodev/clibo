@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="background-primary shadow">
 
 <mat-toolbar-row>
     <span routerLink="/home">Clibo</span>
@@ -6,6 +6,16 @@
     <button mat-button routerLink="">Categorias</button>
     <button mat-button routerLink="/streaming/list">Tendencias</button>
     <span class="spacer"></span>
-    <a (click)="openDialog()"> <mat-icon class="icon" aria-hidden="false" >account_circle</mat-icon> </a>
+    <ng-container *ngIf="verifyUser(); else elseTemplate">
+      <a routerLink="/producer/profile" mat-card-avatar style="background-image: url({{user.photoURL}});" class="header-image"></a>
+
+      <!-- <a routerLink="/producer/profile"> <mat-icon class="icon" aria-hidden="false" >account_circle</mat-icon> </a> -->
+    </ng-container>
+    <ng-template #elseTemplate>
+      <button mat-button (click)="openDialogLogIn()">Iniciar Sesión</button>
+      <button mat-button (click)="openDialogSignUp()">Registrarse</button>
+      <!-- <a (click)="openDialog()"> <mat-icon class="icon" aria-hidden="false" >account_circle</mat-icon> </a> -->
+    </ng-template>
+    
   </mat-toolbar-row>
 </mat-toolbar>
