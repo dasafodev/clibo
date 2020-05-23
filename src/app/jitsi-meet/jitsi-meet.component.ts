@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 
 declare var JitsiMeetExternalAPI: any;
 
@@ -13,18 +13,19 @@ export class JitsiMeetComponent implements OnInit, AfterViewInit {
   domain: string = "meet.jit.si";
   options: any;
   api: any;
+  @Input() userRoomName : string;
   constructor() { }
 
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
-
     this.options = {
-      roomName: "JitsiMeetAPIExample",
+      roomName: `Conference${this.userRoomName}`,
       width: 700,
       height: 700,
       parentNode: document.querySelector('#meet')
     }
+    console.log(this.options.roomName);
 
     this.api = new JitsiMeetExternalAPI(this.domain, this.options);
   }
