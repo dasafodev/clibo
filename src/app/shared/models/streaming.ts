@@ -13,3 +13,12 @@ export interface Streaming {
     // category:string[];
     // tags:string[];
 }
+
+
+export enum StreamingCategory {
+    ENTRETENIMIENTO,
+    CLASES,
+    COCINA,
+    ENTRENAMIENTO,
+    LECTURA
+}
