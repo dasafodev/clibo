@@ -135,6 +135,26 @@ export class AuthService {
 
   }
 
+  updateDatabaseUser(userId,user_name,user_email) {
+    this.updateLocalStorage2(userId);
+    var docRef = this.afs.collection("user").doc(userId);
+
+    return docRef.update({
+      email: user_email,
+      displayName: user_name
+    })
+      .then(() => {
+        console.log("Document successfully updated!");
+        this.ngZone.run(() => {
+          this.router.navigate(['producer/profile']);
+        });
+      })
+      .catch(function (error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
+  }
+
 
 
 }

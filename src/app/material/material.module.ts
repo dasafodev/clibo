@@ -13,6 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [],
@@ -31,6 +32,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTabsModule,
     MatProgressBarModule,
     MatGridListModule,
+    MatFormFieldModule,
   ],
   exports: [
     MatInputModule,
@@ -47,6 +49,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTabsModule,
     MatProgressBarModule,
     MatGridListModule,
+    MatFormFieldModule,
   ]
 })
 export class MaterialModule { }
