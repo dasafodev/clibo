@@ -67,17 +67,16 @@ export class ProfileComponent implements OnInit {
   private buildForm() {
     this.dataUser = this.formBuilder.group({
       user_name: ['', [Validators.required]],
-      user_email: ['', [Validators.required]],
       // role: ['', [Validators.required]] Sin role
     })
   }
 
   editUserInfo(event: Event) {
     event.preventDefault();
-    this.auth.updateDatabaseUser(this.uid, this.dataUser.value.user_name, this.dataUser.value.user_email)
+    this.auth.updateDatabaseUser(this.uid, this.dataUser.value.user_name)
       .then((res) => {
-        this.reLoad();
         this.toastService.success("Se ha guardado correctamente")
+        this.reLoad();
       })
       .catch(err => {
         this.toastService.error("Error al guardar")

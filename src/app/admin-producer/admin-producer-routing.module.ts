@@ -4,6 +4,10 @@ import { NavComponent } from './components/nav/nav.component';
 import { StreamingsListComponent } from './components/streamings-list/streamings-list.component';
 import { AddStreamingComponent } from './components/add-streaming/add-streaming.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuctionListComponent } from './components/auction-list/auction-list.component';
+import { ProposalListComponent } from './components/proposal-list/proposal-list.component';
+import { AddAuctionComponent } from './components/add-auction/add-auction.component';
+import { AddProposalComponent } from './components/add-proposal/add-proposal.component';
 
 
 const routes: Routes = [
@@ -20,8 +24,24 @@ const routes: Routes = [
         component: AddStreamingComponent
       },
       {
+        path:'add-auction',
+        component: AddAuctionComponent
+      },
+      {
+        path:'add-proposal',
+        component: AddProposalComponent
+      },
+      {
         path:'profile',
         component: ProfileComponent
+      },
+      {
+        path:'auctions',
+        component: AuctionListComponent
+      },
+      {
+        path:'proposals',
+        component: ProposalListComponent
       }
     ]
     
