@@ -25,6 +25,10 @@ const routes: Routes = [
       {
         path: 'streaming',
         component:  StreamingDetailComponent
+      },
+      {
+        path: 'privateSession',
+        component: JitsiMeetComponent
       }
     ]
   },
