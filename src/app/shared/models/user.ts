@@ -1,4 +1,3 @@
-import { Streaming } from './streaming';
 
 export interface User {
 

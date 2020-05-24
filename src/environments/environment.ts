@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: "1065922463713",
     appId: "1:1065922463713:web:23f9ad8e704c692c3df4a0",
     measurementId: "G-XDNSGRC92B"
-  }
+  },
+  imageProfileClassification: "https://us-central1-ibm-challenge-d1eaa.cloudfunctions.net/ImageProfileClassification"
 };
 
 /*

@@ -15,6 +15,7 @@ import { MaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { JitsiMeetComponent } from './jitsi-meet/jitsi-meet.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { JitsiMeetComponent } from './jitsi-meet/jitsi-meet.component';
     MaterialModule,
     SharedModule,
     AngularFireStorageModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule
     
 
 

@@ -30,7 +30,8 @@ export class SignUpComponent implements OnInit {
 
   dataUser: FormGroup;
   upLoadPercent: Observable<number>;
-  urlImage: Observable<string>;
+  // urlImage: Observable<string>;
+  urlImage: string;
 
 
   constructor(
@@ -79,8 +80,18 @@ export class SignUpComponent implements OnInit {
     const ref = this.storage.ref(filePhat);
     const task = this.storage.upload(filePhat, file);
     this.upLoadPercent = task.percentageChanges();
-    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL()))
-      .subscribe();
+    task.then(()=> {
+      ref.getDownloadURL()
+      .subscribe( urlResp=> {
+        this.urlImage=urlResp;
+        console.log('urlImage', this.urlImage);
+        this.auth.verifyImage(this.urlImage)
+        .subscribe(resp => {
+          console.log('Verify ', resp)
+        })
+        // console.log('urlImage', this.urlImage)
+      });
+    })
   }
 
   private buildForm() {

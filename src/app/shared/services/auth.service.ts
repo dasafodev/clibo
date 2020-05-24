@@ -3,7 +3,8 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { User } from '../models/user';
-
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { environment } from "./../../../environments/environment";
 
 
 @Injectable({
@@ -18,7 +19,8 @@ export class AuthService {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public ngZone: NgZone,
-    public router: Router
+    public router: Router,
+    private http: HttpClient
   ) {
     /**
      * Guardamos los datos en localstorage al iniciar sesion, se eliminan al cerrar sesion
@@ -155,6 +157,14 @@ export class AuthService {
         // The document probably doesn't exist.
         console.error("Error updating document: ", error);
       });
+  }
+
+  verifyImage(filePath:string){
+    const body = {
+      "url":filePath
+    };
+    console.log('environment.imageProfileClassification', environment.imageProfileClassification)
+    return this.http.post(environment.imageProfileClassification,body)
   }
 
 
