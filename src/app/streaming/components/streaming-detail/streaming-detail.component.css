@@ -38,3 +38,7 @@
 #commentsTitle{
     text-align: center;
 }
+#streamHeader {
+    display: flex;
+    justify-content: space-between;
+}

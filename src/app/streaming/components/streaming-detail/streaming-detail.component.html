@@ -1,7 +1,12 @@
 <section class="grid-container">
     <div class="frame">
-        <strong id="streamingName">{{streamingInfo?.name}}</strong>
-        <p id="shortDescription">{{streamingInfo?.short_description}}</p>
+        <div id="streamHeader">
+            <div>
+                <strong id="streamingName">{{streamingInfo?.name}}</strong>
+                <p id="shortDescription">{{streamingInfo?.short_description}}</p>
+            </div>
+            <button mat-raised-button color="primary" >Donar</button>
+        </div>
         <div id="meet">
         </div>
     </div>
