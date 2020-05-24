@@ -22,6 +22,10 @@ export class ProposalService {
     return this.afs.collection('user').doc(id_user).valueChanges();
   }
 
+  public getProposalAuction(id_auction: string) {
+    return this.afs.collection('auctions').doc(id_auction).valueChanges();
+  }
+
   getUserAuctions(user_id){
     return this.afs.collection('proposals', query => query.where('id_user', '==', user_id)).valueChanges();
   }
