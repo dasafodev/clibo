@@ -28,7 +28,7 @@ const routes: Routes = [
         component: AddAuctionComponent
       },
       {
-        path:'add-proposal',
+        path:'add-proposal/:id',
         component: AddProposalComponent
       },
       {

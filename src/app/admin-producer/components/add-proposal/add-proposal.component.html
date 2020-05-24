@@ -1,1 +1,17 @@
-<p>add-proposal works!</p>
+<div class="container">
+    <h2><strong>Crear Propuesta</strong></h2>
+    <form [formGroup]="form" (ngSubmit)="postProposal($event)">
+      <div class="form-container">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Precio</mat-label>
+          <input type="number" formControlName="price" matInput>
+          <span matPrefix>$&nbsp;</span>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Descripción</mat-label>
+          <textarea formControlName="description" matInput></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Crear</button>
+      </div>
+    </form>
+  </div>
