@@ -6,6 +6,7 @@
     gap: 15px;
     padding: 20px;
     height: 100vh;
+    font-family: 'Poppins', sans-serif !important;
 }
 .advertisement{
     grid-area:advertisement ;
@@ -20,6 +21,7 @@
 }
 .description{
     grid-area:description ;
+    font-style: italic;
 
 }
 .comments{
@@ -37,8 +39,33 @@
 }
 #commentsTitle{
     text-align: center;
+    margin-bottom: 7px;
 }
 #streamHeader {
     display: flex;
     justify-content: space-between;
+}
+
+.example-card{
+    padding: 3px
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+mat-card-title{
+    font-size: smaller !important;
+    text-align: left;
+}
+.flex{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+.stats{
+    padding: 2px;
+}
+.stats button{
+    margin: 7px;
 }

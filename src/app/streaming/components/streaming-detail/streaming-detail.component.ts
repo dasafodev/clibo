@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StreamingService } from 'src/app/shared/services/streaming.service';
-import { Streaming } from 'src/app/shared/models/streaming';
 import { Comments } from 'src/app/shared/models/comments';
+import { Observable, Subject } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 declare var JitsiMeetExternalAPI: any;
 @Component({
@@ -25,6 +26,8 @@ export class StreamingDetailComponent implements OnInit {
   streamingInfo: any;
   comments: Comments[];
   innerHeight;
+  participants: number;
+  
 
   ngOnInit(): void {
     this.innerHeight = window.innerHeight;
@@ -42,6 +45,7 @@ export class StreamingDetailComponent implements OnInit {
         });
     });
   }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerHeight = window.innerHeight;
@@ -58,5 +62,6 @@ export class StreamingDetailComponent implements OnInit {
       'displayName',
       JSON.parse(localStorage.getItem('user')).displayName
     );
+    }
   }
-}
+

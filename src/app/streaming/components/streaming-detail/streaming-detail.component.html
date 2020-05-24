@@ -5,7 +5,13 @@
                 <strong id="streamingName">{{streamingInfo?.name}}</strong>
                 <p id="shortDescription">{{streamingInfo?.short_description}}</p>
             </div>
-            <button mat-raised-button color="primary" >Donar</button>
+            <div class="flex stats">
+                   <div> <strong>{{participants}}</strong> <mat-icon>people</mat-icon></div>
+                <button mat-raised-button color="warn">
+                    DONAR <mat-icon>attach_money</mat-icon>
+                </button>
+            </div>
+            
         </div>
         <div id="meet">
         </div>
@@ -14,11 +20,14 @@
     <div class="item description">{{streamingInfo?.long_description}}</div>
     <div class="comments">
         <strong id="commentsTitle">Comentarios</strong>
-        <mat-card *ngFor="let comment of comments" class="card">
-                <div mat-card-avatar style="background-image: url('https://firebasestorage.googleapis.com/v0/b/ibm-challenge-d1eaa.appspot.com/o/assets%2Fuser.png?alt=media&token=39a08526-df97-4c53-b15a-b99e7f9c4162');"></div>
-            <mat-card-content class="container-shadow">
-                <p>{{comment.text}}</p>
-            </mat-card-content>
+        <mat-card class="example-card" *ngFor="let comment of comments">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{comment.user_name}}</mat-card-title>
+                <mat-card-subtitle> {{comment.text}}
+                </mat-card-subtitle>
+            </mat-card-header>
         </mat-card>
+
     </div>
 </section>
