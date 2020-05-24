@@ -40,9 +40,9 @@
         <strong class="commentsTitle">Comentarios</strong>
         <mat-card class="new-comment">
             <mat-card-header>
-                <div mat-card-avatar class="example-header-image" style="background-image: url({{user.photoURL}});
+                <div mat-card-avatar class="example-header-image" style="background-image: url({{user?.photoURL}});
                 "></div>
-                <mat-card-title>{{user.displayName}}</mat-card-title>
+                <mat-card-title>{{user?.displayName}}</mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <form [formGroup]="comment" (ngSubmit)="createComment($event)">

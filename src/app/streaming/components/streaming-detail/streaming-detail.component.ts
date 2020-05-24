@@ -5,6 +5,7 @@ import { Comments } from 'src/app/shared/models/comments';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 declare var JitsiMeetExternalAPI: any;
@@ -33,16 +34,19 @@ export class StreamingDetailComponent implements OnInit {
   streamingInfo: any;
   comments: Comments[];
   innerHeight;
-  participants: number;
+  participants: number = 0;
   user: any;
   suggestedVideos: any[];
   comment: FormGroup;
-  
+  updateUsers: Observable<number>;
+   
 
   ngOnInit(): void {
-    
     this.innerHeight = window.innerHeight;
     this.user = JSON.parse(localStorage.getItem('user'));
+    if( ! this.user ){
+      this.mainRouter.navigate(['home/']);
+    }
     this.router.queryParams.subscribe((params) => {
       this.streamingId = params.id;
       this.streamingService
@@ -57,9 +61,8 @@ export class StreamingDetailComponent implements OnInit {
         });
     });
     this.streamingService.getSuggestedStreamings(this.user.preferences).subscribe(streamings => {
-      console.log(streamings);
       this.suggestedVideos = streamings;
-    })
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -83,6 +86,15 @@ export class StreamingDetailComponent implements OnInit {
       'displayName',
       this.user.displayName
     );
+    this.updateUsers = new Observable(observer => {
+      observer.next(this.api.getNumberOfParticipants());
+      observer.complete();
+    })
+    }
+    ngAfterViewChecked(){
+      this.updateUsers.subscribe((parti:number) => {
+        this.participants = parti;
+      });
     }
     redirect(id:string){
       this.mainRouter.navigate(['/streaming'], { queryParams: {id}});
