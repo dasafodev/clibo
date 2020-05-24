@@ -1,11 +1,10 @@
 .grid-container{
     display: grid;
-    grid-template: 0.15fr 0.45fr 0.2fr 0.2fr /0.75fr 0.25fr;
+    grid-template: 0.65fr 0.35fr  /0.80fr 0.20fr;
     grid-template-areas: "frame comments" 
-                         "description suggested" 
-                         "description suggested";
+                         "description suggested" ;
     gap: 15px;
-    padding: 10px;
+    padding: 20px;
     height: 100vh;
 }
 .advertisement{
@@ -25,7 +24,17 @@
 }
 .comments{
     grid-area:comments ;   
+    text-align: center;
 }
 .mat-card-avatar {
     background-size: cover;
+}
+.item{
+    border-radius: 10px;
+    box-shadow: 0 .225rem .25rem rgba(0,0,0,.075)!important;
+    background-color: white;
+    padding: 5px;
+}
+#commentsTitle{
+    text-align: center;
 }

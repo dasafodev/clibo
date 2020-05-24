@@ -2,7 +2,7 @@
 
 html, body { 
     height: 100%;
-    background-color: #F8F3EA;
+    background-color: rgba(248, 247, 245, 0.863);
     /* background-image: url("./assets/back.png") ;
     background-repeat: repeat; */
  }
@@ -10,7 +10,8 @@ body {
 
     margin: 0;
     /* font-family: Roboto, "Helvetica Neue", sans-serif; */
-    font-family: 'Poppins', sans-serif; }
+    font-family: 'Poppins', sans-serif !important;  
+}
 
 .background-primary{
     background-color: #254E7B ;

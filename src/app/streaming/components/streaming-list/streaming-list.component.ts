@@ -37,7 +37,7 @@ export class StreamingListComponent implements OnInit {
     }
   }
   redirect(id:string){
-    this.router.navigate(['/streaming'], { queryParams: {id} });
+    this.router.navigate(['/streaming'], { queryParams: {id}});
   }
 
   isFavorite(id_streaming: string) {

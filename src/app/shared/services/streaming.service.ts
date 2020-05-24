@@ -22,6 +22,10 @@ export class StreamingService {
     return this.afs.collection('comments', query => query.where('streaming_id','==',streaming_id)).valueChanges();
   }
 
+    getStreamingInfo(streaming_id:string) {
+    return this.afs.collection('streamings', query => query.where('uid','==',streaming_id)).valueChanges();
+  }
+
   getStreamings(id_producer: string) {
     return this.afs.collection('streamings', query => query.where('id_producer', '==', id_producer)).valueChanges();
   }
