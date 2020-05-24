@@ -24,17 +24,10 @@ export class AuctionService {
 
   public getAuctionCreator(id_user: string) {
     return this.afs.collection('user').doc(id_user).valueChanges();
+  }
 
-    // .subscribe(resp => {
-    //   console.log('User es ', resp);
-    // var user_id = resp['id_user'];
-    // this.authService.getUser(user_id)
-    //   .subscribe(res => {
-    //     this.user = res;
-    // })
-    // });
-
-    // return this.user.displayName;
+  getUserAuctions(user_id){
+    return this.afs.collection('auctions', query => query.where('id_user', '==', user_id)).valueChanges();
   }
 
   public createAuction(auction: Auction) {

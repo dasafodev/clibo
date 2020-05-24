@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddProposalComponent } from '../add-proposal/add-proposal.component';
 import { AuctionService } from 'src/app/shared/services/auction.service';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-auction-list',
@@ -14,9 +15,11 @@ export class AuctionListComponent implements OnInit {
   ) { }
 
   auctions:any;
-  user:any;
+  logged_user_auctions:any;
+  user:User;
 
   ngOnInit(): void {
+    this.getUserAuctions();
     this.auctionService.getAuctions()
       .subscribe(resp => {
         this.auctions = resp;
@@ -25,12 +28,23 @@ export class AuctionListComponent implements OnInit {
           this.getCreatorName(auction.id_user, auction);
         }
       })
+    
+      this.user = JSON.parse( localStorage.getItem('user'));
+  }
+
+  getUserAuctions(){
+    var username = JSON.parse( localStorage.getItem('user')).uid;
+    this.auctionService.getUserAuctions(username)
+    .subscribe(resp => {
+      this.logged_user_auctions = resp;
+    })
   }
 
   getCreatorName(id_user:string, auction:any){
     this.auctionService.getAuctionCreator(id_user)
     .subscribe(resp => {
       auction.username = JSON.parse(JSON.stringify(resp)).displayName;
+      auction.image = JSON.parse(JSON.stringify(resp)).photoURL;
     });
   }
 

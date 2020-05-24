@@ -5,14 +5,15 @@
 
         <mat-card *ngFor="let a of auctions" class="example-card">
           <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
+            <div mat-card-avatar style="background-image: url({{a.image}});
+            background-size: cover;"></div>
             <mat-card-title>
               <!-- Subasta de <p id="a_user"></p> -->
               <!-- <script>
                 var auctionUser = document.getElementById('a_user');
                 auctionUser.innerHTML = getCreatorName(a.id_user);
               </script> -->
-              Subasta de {{a.username}}
+              Subasta - {{a.username}}
             </mat-card-title>
             <mat-card-subtitle>{{a.category}}</mat-card-subtitle>
           </mat-card-header>
@@ -36,15 +37,16 @@
         <button mat-fab color="primary" routerLink="/producer/add-auction">
           <mat-icon>add</mat-icon>
         </button>
-        <mat-card class="example-card">
+        <mat-card *ngFor="let auc of logged_user_auctions; let i = index" class="example-card">
           <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Subasta de Carlos</mat-card-title>
+            <div mat-card-avatar style="background-image: url({{user.photoURL}});
+            background-size: cover;"></div>
+            <mat-card-title>Subasta #{{i+1}}</mat-card-title>
             <mat-card-subtitle>Cocina</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
             <p>
-              Estoy buscando alguien que me ayude a cocinar tortillas españolas.
+              {{auc.description}}
             </p>
           </mat-card-content>
           <mat-card-actions>

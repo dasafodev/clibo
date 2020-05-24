@@ -81,7 +81,7 @@ export class AuthService {
       favorite_streamings: user.favorite_streamings
     }
 
-    console.log('temp:', temp)
+    // console.log('temp:', temp)
     // return this.afs.collection(role).add(temp); Si tenemos en cuenta el rol
     return this.afs.collection('user').doc(temp.uid).set(temp);
   }
@@ -126,7 +126,6 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(user));
           resolve();
         })
-      console.log('entra en el update')
     });
 
   }
