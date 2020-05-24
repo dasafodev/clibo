@@ -1,6 +1,5 @@
 .grid-container{
     display: grid;
-    grid-template: 0.65fr 0.35fr  /0.80fr 0.20fr;
     grid-template-areas: "frame comments" 
                          "description suggested" ;
     gap: 15px;
@@ -60,7 +59,7 @@ mat-card-title{
 }
 .flex{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 .stats{
@@ -68,4 +67,17 @@ mat-card-title{
 }
 .stats button{
     margin: 7px;
+}
+form{
+    width: 100%;
+}
+
+::ng-deep .mat-icon{
+    height:18px !important;
+    width:18px !important;
+    font-size:18px !important;
+}
+#sendComment{
+    background-color: #58db4c;
+    margin: 10px;
 }

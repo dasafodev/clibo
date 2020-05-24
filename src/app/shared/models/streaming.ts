@@ -9,7 +9,6 @@ export interface Streaming {
     short_description:string;
     long_description:string;
     likes:number;
-    comments?: Comments[];
     // date_start: Date;
     // category:string[];
     // tags:string[];

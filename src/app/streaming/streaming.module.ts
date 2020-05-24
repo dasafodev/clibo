@@ -5,6 +5,7 @@ import { StreamingRoutingModule } from './streaming-routing.module';
 import { StreamingDetailComponent } from './components/streaming-detail/streaming-detail.component';
 import { StreamingListComponent } from './components/streaming-list/streaming-list.component';
 import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [StreamingDetailComponent, StreamingListComponent],
@@ -12,6 +13,7 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     StreamingRoutingModule,
     MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [StreamingListComponent ]
 })
