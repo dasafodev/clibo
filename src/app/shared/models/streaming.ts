@@ -16,9 +16,9 @@ export interface Streaming {
 
 
 export enum StreamingCategory {
-    ENTRETENIMIENTO,
-    CLASES,
-    COCINA,
-    ENTRENAMIENTO,
-    LECTURA
+    ENTRETENIMIENTO='Entretenimiento',
+    CLASES='Clases',
+    COCINA='Cocina',
+    ENTRENAMIENTO='Entrenamiento',
+    LECTURA='Lectura'
 }

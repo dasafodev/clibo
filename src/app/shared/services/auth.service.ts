@@ -105,7 +105,8 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
-      favorite_streamings: user.favorite_streamings
+      favorite_streamings: user.favorite_streamings,
+      preferences: user.preferences
     }
 
     localStorage.setItem('user', JSON.stringify(temp));
@@ -115,13 +116,15 @@ export class AuthService {
       this.afs.collection('user').doc(user_id).valueChanges()
         .subscribe(result_1 => {
           let res = JSON.parse(JSON.stringify(result_1));
+          console.log(res);
           const user: User = {
             uid: res.uid,
             email: res.email,
             displayName: res.displayName,
             photoURL: res.photoURL,
             emailVerified: res.emailVerified,
-            favorite_streamings: res.favorite_streamings
+            favorite_streamings: res.favorite_streamings,
+            preferences: res.preferences
           };
           localStorage.setItem('user', JSON.stringify(user));
           resolve();

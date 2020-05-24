@@ -8,6 +8,7 @@ export interface User {
     photoURL: string;
     emailVerified: boolean;
     favorite_streamings:string[];
+    preferences?: string;
     
 }
  

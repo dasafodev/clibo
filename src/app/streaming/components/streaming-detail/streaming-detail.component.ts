@@ -4,6 +4,8 @@ import { StreamingService } from 'src/app/shared/services/streaming.service';
 import { Comments } from 'src/app/shared/models/comments';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 
 declare var JitsiMeetExternalAPI: any;
 @Component({
@@ -16,7 +18,8 @@ export class StreamingDetailComponent implements OnInit {
     private router: ActivatedRoute,
     private streamingService: StreamingService,
     private formBuilder: FormBuilder,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private mainRouter: Router,
   ) {
     this.buildForm();
   }
@@ -32,10 +35,12 @@ export class StreamingDetailComponent implements OnInit {
   innerHeight;
   participants: number;
   user: any;
+  suggestedVideos: any[];
   comment: FormGroup;
   
 
   ngOnInit(): void {
+    
     this.innerHeight = window.innerHeight;
     this.user = JSON.parse(localStorage.getItem('user'));
     this.router.queryParams.subscribe((params) => {
@@ -51,6 +56,10 @@ export class StreamingDetailComponent implements OnInit {
           this.streamingInfo = result[0];
         });
     });
+    this.streamingService.getSuggestedStreamings(this.user.preferences).subscribe(streamings => {
+      console.log(streamings);
+      this.suggestedVideos = streamings;
+    })
   }
 
   @HostListener('window:resize', ['$event'])
@@ -74,6 +83,9 @@ export class StreamingDetailComponent implements OnInit {
       'displayName',
       this.user.displayName
     );
+    }
+    redirect(id:string){
+      this.mainRouter.navigate(['/streaming'], { queryParams: {id}});
     }
 
     private buildForm(){

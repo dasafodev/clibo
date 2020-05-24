@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { firestore } from 'firebase/app';
 import { Comments } from '../models/comments';
+import { StreamingCategory } from '../models/streaming';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,13 @@ export class StreamingService {
       .then(() => {
         console.log("Documento eliminado")
       })
+  }
+  /**
+   * Get suggested streamings by user category
+   * @param category - Streaming category
+   */
+  getSuggestedStreamings(category: StreamingCategory) {
+    return this.afs.collection("streamings", query => query.where("category", "==", category).where("available","==",true)).valueChanges();
   }
 
   fillDatabase() {
