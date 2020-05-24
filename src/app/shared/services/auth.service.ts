@@ -135,12 +135,11 @@ export class AuthService {
 
   }
 
-  updateDatabaseUser(userId,user_name,user_email) {
+  updateDatabaseUser(userId,user_name) {
     this.updateLocalStorage2(userId);
     var docRef = this.afs.collection("user").doc(userId);
 
     return docRef.update({
-      email: user_email,
       displayName: user_name
     })
       .then(() => {

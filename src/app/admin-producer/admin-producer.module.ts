@@ -7,17 +7,29 @@ import { StreamingsListComponent } from './components/streamings-list/streamings
 import { AddStreamingComponent } from './components/add-streaming/add-streaming.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuctionListComponent } from './components/auction-list/auction-list.component';
+import { ProposalListComponent } from './components/proposal-list/proposal-list.component';
+import { AddAuctionComponent } from './components/add-auction/add-auction.component';
+import { AddProposalComponent } from './components/add-proposal/add-proposal.component';
 
 
 
 @NgModule({
-  declarations: [NavComponent, StreamingsListComponent, AddStreamingComponent, ProfileComponent],
+  declarations: [
+    NavComponent,
+    StreamingsListComponent,
+    AddStreamingComponent,
+    ProfileComponent,
+    AuctionListComponent,
+    ProposalListComponent,
+    AddAuctionComponent,
+    AddProposalComponent,
+  ],
   imports: [
     CommonModule,
     AdminProducerRoutingModule,
     MaterialModule,
     ReactiveFormsModule
-    
   ]
 })
 export class AdminProducerModule { }

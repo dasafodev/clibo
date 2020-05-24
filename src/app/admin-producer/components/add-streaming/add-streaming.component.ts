@@ -56,7 +56,7 @@ export class AddStreamingComponent implements OnInit {
       }
       this.streamingService.postStreaming(streaming)
       .then(()=> this.toastService.success("Se ha creado correctamente tu Streaming"))
-      .catch(() => this.toastService.error("Tuvimos problemas al crear tu Striming"));
+      .catch(() => this.toastService.error("Tuvimos problemas al crear tu Streaming"));
     }
   }
 

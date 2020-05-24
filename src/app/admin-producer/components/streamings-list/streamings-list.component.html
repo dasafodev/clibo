@@ -1,6 +1,6 @@
 <section class="container-content">
-  <button mat-icon-button color="primary"   routerLink="/producer/add-streaming" class="icon">
-    <mat-icon>add_circle_outline</mat-icon>
+  <button mat-fab color="primary" routerLink="/producer/add-streaming">
+    <mat-icon>add</mat-icon>
   </button>
   <section class="grid-container">
     <mat-card *ngFor="let streaming of streamings" class="card" style="background-image: url({{streaming.coverURL}});">
