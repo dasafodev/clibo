@@ -93,6 +93,10 @@ export class AuthService {
     })
   }
 
+  getUser(user_id){
+    return this.afs.collection('user', query => query.where('uid', '==', user_id)).valueChanges();
+  }
+
   updateLocalStorage(user) {
 
     const temp: User = {

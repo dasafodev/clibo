@@ -30,6 +30,9 @@ import { AddProposalComponent } from './components/add-proposal/add-proposal.com
     AdminProducerRoutingModule,
     MaterialModule,
     ReactiveFormsModule
+  ],
+  exports:[
+    AddProposalComponent
   ]
 })
 export class AdminProducerModule { }

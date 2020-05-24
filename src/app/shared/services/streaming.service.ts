@@ -18,12 +18,12 @@ export class StreamingService {
    * Get a stream of the streaming.
    * @param streaming_id - Streaming ID
    */
-  getStreamingComments(streaming_id:string) {
-    return this.afs.collection('comments', query => query.where('streaming_id','==',streaming_id)).valueChanges();
+  getStreamingComments(streaming_id: string) {
+    return this.afs.collection('comments', query => query.where('streaming_id', '==', streaming_id)).valueChanges();
   }
 
-    getStreamingInfo(streaming_id:string) {
-    return this.afs.collection('streamings', query => query.where('uid','==',streaming_id)).valueChanges();
+  getStreamingInfo(streaming_id: string) {
+    return this.afs.collection('streamings', query => query.where('uid', '==', streaming_id)).valueChanges();
   }
 
   getStreamings(id_producer: string) {
@@ -58,9 +58,9 @@ export class StreamingService {
     })
   }
 
-  deleteStreaming(id_streaming:string){
+  deleteStreaming(id_streaming: string) {
     this.afs.collection("streamings").doc(id_streaming).delete()
-      .then( () => {
+      .then(() => {
         console.log("Documento eliminado")
       })
   }
