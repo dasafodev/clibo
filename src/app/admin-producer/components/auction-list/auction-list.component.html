@@ -8,11 +8,6 @@
             <div mat-card-avatar style="background-image: url({{a.image}});
             background-size: cover;"></div>
             <mat-card-title>
-              <!-- Subasta de <p id="a_user"></p> -->
-              <!-- <script>
-                var auctionUser = document.getElementById('a_user');
-                auctionUser.innerHTML = getCreatorName(a.id_user);
-              </script> -->
               Subasta - {{a.username}}
             </mat-card-title>
             <mat-card-subtitle>{{a.category}}</mat-card-subtitle>
@@ -20,6 +15,9 @@
           <mat-card-content>
             <p>
               {{a.description}}
+            </p>
+            <p>
+              Precio: ${{a.price}}
             </p>
           </mat-card-content>
           <mat-card-actions>
@@ -48,6 +46,7 @@
             <p>
               {{auc.description}}
             </p>
+            <p>Precio: ${{auc.price}}</p>
           </mat-card-content>
           <mat-card-actions>
             <div class="proposals">

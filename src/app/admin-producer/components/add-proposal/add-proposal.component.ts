@@ -3,6 +3,9 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ProposalService } from 'src/app/shared/services/proposal.service';
 import { Proposal } from 'src/app/shared/models/proposal';
+import { Router, ActivatedRoute } from '@angular/router';
+import { takeUntil, pluck } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-add-proposal',
@@ -13,6 +16,8 @@ export class AddProposalComponent implements OnInit {
 
   form: FormGroup;
   selected: string;
+  auctionId: string;
+  private _destroyed$ = new Subject<any>();
   categories: string[] = [
     "Entretenimiento",
     "Entrenamiento",
@@ -24,14 +29,25 @@ export class AddProposalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private proposalService: ProposalService,
-    private toastService: ToastrService
-  ) { }
+    private toastService: ToastrService,
+    private router: ActivatedRoute
+  ) {
+    router.params
+      .pipe(
+        takeUntil(this._destroyed$),
+        pluck('id')
+      ).subscribe(id => this.auctionId = id);
+  }
 
-  auctionId:string;
 
   ngOnInit(): void {
     this.buildForm();
   }
+
+  ngOnDestroy() {
+    this._destroyed$.next();
+    this._destroyed$.complete();
+}
 
   private buildForm() {
     this.form = this.formBuilder.group({

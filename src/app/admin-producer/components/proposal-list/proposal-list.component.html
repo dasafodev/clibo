@@ -1,5 +1,60 @@
-<section class="container-content">
-    <button mat-fab color="primary" routerLink="/producer/add-proposal">
-      <mat-icon>add</mat-icon>
-    </button>
-</section>
+<mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
+    <mat-tab label="General">
+      <ng-template matTabContent>
+        <section class="container-content">
+  
+          <mat-card *ngFor="let p of proposals" class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar style="background-image: url({{p.image}});
+              background-size: cover;"></div>
+              <mat-card-title>
+                Propuesta - {{p.username}}
+              </mat-card-title>
+              <mat-card-subtitle>Clases</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                {{p.description}}
+              </p>
+              <p>
+                <strong>Oferta:</strong> ${{p.price}}
+              </p>
+            </mat-card-content>
+            <!-- <mat-card-actions>
+              <div class="proposals">
+                <button mat-raised-button routerLink="/producer/add-proposal/{{a.uid}}" color="primary">Hacer propuesta</button>
+              </div>
+            </mat-card-actions> -->
+          </mat-card>
+        </section>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Mis propuestas">
+      <ng-template matTabContent>
+        <section class="container-content">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>Subasta #1</mat-card-title>
+              <mat-card-subtitle>Clases</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                Yo desde hace 5 años que dicto clases de programación
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <div class="crud-buttons">
+                <button mat-mini-fab color="primary">
+                  <mat-icon>create</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </section>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>

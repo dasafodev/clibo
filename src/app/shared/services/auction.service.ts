@@ -2,7 +2,6 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Auction } from '../models/auction';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +11,8 @@ export class AuctionService {
   constructor(
     public afs: AngularFirestore,
     public ngZone: NgZone,
-    public router: Router,
-    public authService: AuthService
+    public router: Router
   ) { }
-
-  user: any;
 
   public getAuctions() {
     return this.afs.collection('auctions').valueChanges();
