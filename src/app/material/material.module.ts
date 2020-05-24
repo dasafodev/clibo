@@ -14,11 +14,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
-<<<<<<< HEAD
 import {MatStepperModule} from '@angular/material/stepper';
-=======
 import {MatChipsModule} from '@angular/material/chips';
->>>>>>> 635bc4c9c80c882295e8b1e7a39cc137566ed34d
 
 @NgModule({
   declarations: [],
@@ -38,11 +35,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatProgressBarModule,
     MatGridListModule,
     MatFormFieldModule,
-<<<<<<< HEAD
-    MatStepperModule
-=======
+    MatStepperModule,
     MatChipsModule,
->>>>>>> 635bc4c9c80c882295e8b1e7a39cc137566ed34d
   ],
   exports: [
     MatInputModule,
@@ -60,11 +54,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatProgressBarModule,
     MatGridListModule,
     MatFormFieldModule,
-<<<<<<< HEAD
-    MatStepperModule
-=======
+    MatStepperModule,
     MatChipsModule,
->>>>>>> 635bc4c9c80c882295e8b1e7a39cc137566ed34d
   ]
 })
 export class MaterialModule { }
