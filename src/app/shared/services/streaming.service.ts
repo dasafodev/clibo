@@ -14,6 +14,13 @@ export class StreamingService {
     public router: Router
 
   ) { }
+  /**
+   * Get a stream of the streaming.
+   * @param streaming_id - Streaming ID
+   */
+  getStreamingComments(streaming_id:string) {
+    return this.afs.collection('comments', query => query.where('streaming_id','==',streaming_id)).valueChanges();
+  }
 
   getStreamings(id_producer: string) {
     return this.afs.collection('streamings', query => query.where('id_producer', '==', id_producer)).valueChanges();

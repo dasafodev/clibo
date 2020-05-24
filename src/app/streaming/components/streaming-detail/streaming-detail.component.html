@@ -1,7 +1,16 @@
 <section class="grid-container">
-    <div class="item advertisement ">advertisement</div>
-    <div class="item frame">frame</div>
+    <div class="item frame">
+        <div id="meet">
+        </div>
+    </div>
     <div class="item suggested">suggested</div>
-    <div class="item description">description</div> 
-    <div class="item comments">Comments</div> 
+    <div class="item description">description</div>
+    <div class="item comments">
+        <mat-card *ngFor="let comment of comments" class="card">
+            <div mat-card-avatar style="background-image: url('https://firebasestorage.googleapis.com/v0/b/ibm-challenge-d1eaa.appspot.com/o/assets%2Fuser.png?alt=media&token=39a08526-df97-4c53-b15a-b99e7f9c4162');"></div>
+            <mat-card-content class="container-shadow">
+                <p>{{comment.text}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </section>

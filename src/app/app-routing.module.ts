@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { JitsiMeetComponent } from './jitsi-meet/jitsi-meet.component';
-
+import { StreamingDetailComponent } from './streaming/components/streaming-detail/streaming-detail.component';
 
 const routes: Routes = [
   {
@@ -22,22 +22,16 @@ const routes: Routes = [
         path: 'auth',
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
       },
-      
       {
         path: 'streaming',
-        loadChildren: () => import('./streaming/streaming.module').then(m => m.StreamingModule)
-      },
+        component:  StreamingDetailComponent
+      }
     ]
   },
   {
     path: 'producer',
     loadChildren: () => import('./admin-producer/admin-producer.module').then(m => m.AdminProducerModule)
-  },
-  {
-    path:'meet',
-    component:JitsiMeetComponent
   }
-
 ];
 
 @NgModule({

@@ -1,11 +1,11 @@
 .grid-container{
     display: grid;
     grid-template: 0.15fr 0.45fr 0.2fr 0.2fr /0.75fr 0.25fr;
-    grid-template-areas: "advertisement advertisement" 
-                         "frame suggested" 
+    grid-template-areas: "frame comments" 
                          "description suggested" 
-                         "comments suggested";
-    gap: 10px;
+                         "description suggested";
+    gap: 15px;
+    padding: 10px;
     height: 100vh;
 }
 .advertisement{
@@ -24,10 +24,8 @@
 
 }
 .comments{
-    grid-area:comments ;
-
+    grid-area:comments ;   
 }
-
-.item{
-    background-color: royalblue;
+.mat-card-avatar {
+    background-size: cover;
 }

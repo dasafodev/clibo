@@ -1,6 +1,6 @@
 export interface Comments {
     id:string,
-    id_streaming:string,
-    id_user:string
+    streaming_id:string,
+    user_id:string
     text:string
 }

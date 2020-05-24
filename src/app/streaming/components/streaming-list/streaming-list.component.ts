@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { StreamingService } from 'src/app/shared/services/streaming.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-streaming-list',
@@ -14,7 +15,8 @@ export class StreamingListComponent implements OnInit {
   constructor(
     private toast: ToastrService,
     private streamingService: StreamingService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router,
   ) { }
 
 
@@ -22,7 +24,6 @@ export class StreamingListComponent implements OnInit {
   videos: any;
 
   ngOnInit(): void {
-
   }
 
   clickFavorite(id_streaming) {
@@ -34,6 +35,9 @@ export class StreamingListComponent implements OnInit {
       this.auth.updateFavoritesLocalStorage(JSON.parse(localStorage.getItem('user')).uid)
 
     }
+  }
+  redirect(id:string){
+    this.router.navigate(['/streaming'], { queryParams: {id} });
   }
 
   isFavorite(id_streaming: string) {

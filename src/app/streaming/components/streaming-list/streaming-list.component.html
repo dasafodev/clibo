@@ -1,6 +1,6 @@
 <section class="container-content">
     <div class="grid">
-        <mat-card class="streaming-card" style="background-image: url({{v.coverURL}});" *ngFor="let v of videos">
+        <mat-card class="streaming-card" style="background-image: url({{v.coverURL}});" *ngFor="let v of videos" (click)="redirect(v.uid)">
             <mat-card-header class="container-shadow">
                 <div mat-card-avatar style="background-image: url({{v.photo_producer}});"></div>
                 <mat-card-title>{{v.name}}</mat-card-title>
