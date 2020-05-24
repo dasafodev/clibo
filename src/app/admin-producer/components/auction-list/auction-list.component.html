@@ -2,30 +2,32 @@
   <mat-tab label="General">
     <ng-template matTabContent>
       <section class="container-content">
-
-        <mat-card *ngFor="let a of auctions" class="example-card">
-          <mat-card-header>
-            <div mat-card-avatar style="background-image: url({{a.image}});
+        <section class="grid-container">
+          <mat-card *ngFor="let a of auctions" class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar style="background-image: url({{a.image}});
             background-size: cover;"></div>
-            <mat-card-title>
-              Subasta - {{a.username}}
-            </mat-card-title>
-            <mat-card-subtitle>{{a.category}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              {{a.description}}
-            </p>
-            <p>
-              Precio: ${{a.price}}
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <div class="proposals">
-              <button mat-raised-button routerLink="/producer/add-proposal/{{a.uid}}" color="primary">Hacer propuesta</button>
-            </div>
-          </mat-card-actions>
-        </mat-card>
+              <mat-card-title>
+                Subasta - {{a.username}}
+              </mat-card-title>
+              <mat-card-subtitle>{{a.category}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                {{a.description}}
+              </p>
+              <p>
+                Precio: ${{a.price}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <div class="proposals">
+                <button mat-raised-button routerLink="/producer/add-proposal/{{a.uid}}">Hacer propuesta</button>
+              </div>
+              <button mat-raised-button color="primary">Ver propuestas</button>
+            </mat-card-actions>
+          </mat-card>
+        </section>
       </section>
     </ng-template>
   </mat-tab>
@@ -49,8 +51,8 @@
             <p>Precio: ${{auc.price}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <div class="proposals">
-              <button mat-raised-button color="primary">Ver Propuestas</button>
+            <div class="user-proposals">
+              <button mat-raised-button color="primary">Ver propuestas</button>
             </div>
             <div class="crud-buttons">
               <button mat-mini-fab color="primary">

@@ -2,6 +2,8 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { firestore } from 'firebase/app';
+import { Comments } from '../models/comments';
+import { StreamingCategory } from '../models/streaming';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,10 @@ export class StreamingService {
 
   getStreamingInfo(streaming_id: string) {
     return this.afs.collection('streamings', query => query.where('uid', '==', streaming_id)).valueChanges();
+  }
+
+  postComment(comment: Comments) {
+    return this.afs.collection('comments').add(comment);
   }
 
   getStreamings(id_producer: string) {
@@ -63,6 +69,13 @@ export class StreamingService {
       .then(() => {
         console.log("Documento eliminado")
       })
+  }
+  /**
+   * Get suggested streamings by user category
+   * @param category - Streaming category
+   */
+  getSuggestedStreamings(category: StreamingCategory) {
+    return this.afs.collection("streamings", query => query.where("category", "==", category).where("available","==",true)).valueChanges();
   }
 
   fillDatabase() {

@@ -5,16 +5,16 @@
   <section class="grid-container">
     <mat-card *ngFor="let streaming of streamings" class="card" style="background-image: url({{streaming.coverURL}});">
       <div class="bottom-card">
-      <mat-card-content class="content">
-        <p>
-          {{streaming.short_description}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions class="button-card">
-        <button mat-raised-button color="primary">Edit</button>
-        <button mat-raised-button color="primary" (click)="deleteStreaming(streaming.uid)" >Delete</button>
-      </mat-card-actions>
-    </div>
+        <mat-card-content class="content">
+          <p>
+            {{streaming.short_description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="button-card">
+          <button mat-raised-button color="primary">Editar</button>
+          <button mat-raised-button color="warn" (click)="deleteStreaming(streaming.uid)">Eliminar</button>
+        </mat-card-actions>
+      </div>
     </mat-card>
   </section>
 </section>

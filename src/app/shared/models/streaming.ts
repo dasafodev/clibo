@@ -9,7 +9,6 @@ export interface Streaming {
     short_description:string;
     long_description:string;
     likes:number;
-    comments?: Comments[];
     // date_start: Date;
     // category:string[];
     // tags:string[];
@@ -17,9 +16,9 @@ export interface Streaming {
 
 
 export enum StreamingCategory {
-    ENTRETENIMIENTO,
-    CLASES,
-    COCINA,
-    ENTRENAMIENTO,
-    LECTURA
+    ENTRETENIMIENTO='Entretenimiento',
+    CLASES='Clases',
+    COCINA='Cocina',
+    ENTRENAMIENTO='Entrenamiento',
+    LECTURA='Lectura'
 }

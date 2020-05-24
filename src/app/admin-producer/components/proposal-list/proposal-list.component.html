@@ -1,60 +1,63 @@
 <mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
-    <mat-tab label="General">
-      <ng-template matTabContent>
-        <section class="container-content">
-  
-          <mat-card *ngFor="let p of proposals" class="example-card">
-            <mat-card-header>
-              <div mat-card-avatar style="background-image: url({{p.image}});
-              background-size: cover;"></div>
-              <mat-card-title>
-                Propuesta - {{p.username}}
-              </mat-card-title>
-              <mat-card-subtitle>Clases</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
+  <mat-tab label="Propuestas hechas">
+    <ng-template matTabContent>
+      <section class="container-content">
+        <h2><strong>Propuestas</strong></h2>
+        <mat-card *ngFor="let p of logged_user_proposals; let i = index" class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar style="background-image: url({{user.photoURL}});
+      background-size: cover;"></div>
+            <mat-card-title>Propuesta #{{i+1}}</mat-card-title>
+            <mat-card-subtitle>{{p.category}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <h3><strong>Ofertador</strong></h3>
+            <div class="proposal-info">
               <p>
-                {{p.description}}
+                <strong>Descripción: </strong>Yo desde hace 5 años que dicto clases de programación
               </p>
               <p>
-                <strong>Oferta:</strong> ${{p.price}}
+                <strong>Nombre: </strong> {{user.displayName}}
               </p>
-            </mat-card-content>
-            <!-- <mat-card-actions>
-              <div class="proposals">
-                <button mat-raised-button routerLink="/producer/add-proposal/{{a.uid}}" color="primary">Hacer propuesta</button>
+              <div class="offer-info">
+                <mat-chip-list selectable="false">
+                  <mat-chip>Oferta: ${{p.price}}</mat-chip>
+                </mat-chip-list>
               </div>
-            </mat-card-actions> -->
-          </mat-card>
-        </section>
-      </ng-template>
-    </mat-tab>
-    <mat-tab label="Mis propuestas">
-      <ng-template matTabContent>
-        <section class="container-content">
-          <mat-card class="example-card">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>Subasta #1</mat-card-title>
-              <mat-card-subtitle>Clases</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="owner-info">
+              <h3><strong>Dueño subasta</strong></h3>
               <p>
-                Yo desde hace 5 años que dicto clases de programación
+                <strong>Nombre: </strong> Andrés
               </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <div class="crud-buttons">
-                <button mat-mini-fab color="primary">
-                  <mat-icon>create</mat-icon>
-                </button>
-                <button mat-mini-fab color="warn">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </div>
-            </mat-card-actions>
-          </mat-card>
-        </section>
-      </ng-template>
-    </mat-tab>
-  </mat-tab-group>
+              <mat-chip-list selectable="false">
+                <mat-chip>Precio original: ${{p.original_price}}</mat-chip>
+              </mat-chip-list>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="user-proposals">
+              <button mat-raised-button routerLink="/producer/auctions" color="primary">Ver subasta</button>
+            </div>
+            <div class="crud-buttons">
+              <button mat-mini-fab color="primary">
+                <mat-icon>create</mat-icon>
+              </button>
+              <button mat-mini-fab color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </section>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Propuestas ganadas">
+    <ng-template matTabContent>
+      <section class="container-content">
+        
+      </section>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

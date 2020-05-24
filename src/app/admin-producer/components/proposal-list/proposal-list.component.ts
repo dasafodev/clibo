@@ -10,41 +10,45 @@ import { ProposalService } from 'src/app/shared/services/proposal.service';
 export class ProposalListComponent implements OnInit {
 
   constructor(
-    private proposalService: ProposalService
+    private proposalService: ProposalService,
+    private auctionService: ProposalService
   ) { }
 
-  proposals:any;
-  logged_user_proposals:any;
-  user:User;
+  proposals: any;
+  logged_user_proposals: any;
+  user: User;
 
   ngOnInit(): void {
     this.getUserProposals();
-    this.proposalService.getProposals()
+    this.user = JSON.parse(localStorage.getItem('user'));
+  }
+
+  getUserProposals() {
+    var username = JSON.parse(localStorage.getItem('user')).uid;
+    this.proposalService.getUserAuctions(username)
       .subscribe(resp => {
-        this.proposals = resp;
-        for (let i = 0; i < this.proposals.length; i++) {
-          const auction = this.proposals[i];
-          this.getCreatorName(auction.id_user, auction);
+        this.logged_user_proposals = resp;
+        for (let i = 0; i < this.logged_user_proposals.length; i++) {
+          const proposal = this.logged_user_proposals[i];
+          this.getAuction(proposal.id_auction, proposal);
         }
       })
-    
-      this.user = JSON.parse( localStorage.getItem('user'));
   }
 
-  getUserProposals(){
-    var username = JSON.parse( localStorage.getItem('user')).uid;
-    this.proposalService.getUserAuctions(username)
-    .subscribe(resp => {
-      this.logged_user_proposals = resp;
-    })
+  getAuction(id_auction: string, proposal: any) {
+    this.proposalService.getProposalAuction(id_auction)
+      .subscribe(resp => {
+        proposal.category = JSON.parse(JSON.stringify(resp)).category;
+        proposal.original_price = JSON.parse(JSON.stringify(resp)).price;
+      });
   }
 
-  getCreatorName(id_user:string, proposal:any){
+  getCreatorName(id_user: string, proposal: any) {
     this.proposalService.getProposalCreator(id_user)
-    .subscribe(resp => {
-      proposal.username = JSON.parse(JSON.stringify(resp)).displayName;
-      proposal.image = JSON.parse(JSON.stringify(resp)).photoURL;
-    });
+      .subscribe(resp => {
+        proposal.username = JSON.parse(JSON.stringify(resp)).displayName;
+        proposal.image = JSON.parse(JSON.stringify(resp)).photoURL;
+      });
   }
 
 }

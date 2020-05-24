@@ -2,8 +2,18 @@
     margin: 20px;
 }
 
-mat-card {
-    margin: 15px;
+mat-tab-group{
+    position: sticky;
+    height:100%;
+}
+
+mat-card{
+    margin: 15px auto;
+}
+
+.proposals button{
+    background-color: rgb(44, 165, 44);
+    color: white;
 }
 
 .example-card {

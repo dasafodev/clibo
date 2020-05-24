@@ -1,33 +1,71 @@
 <section class="grid-container">
     <div class="frame">
-        <div id="streamHeader">
+        <div class="streamHeader">
             <div>
                 <strong id="streamingName">{{streamingInfo?.name}}</strong>
                 <p id="shortDescription">{{streamingInfo?.short_description}}</p>
             </div>
             <div class="flex stats">
-                   <div> <strong>{{participants}}</strong> <mat-icon>people</mat-icon></div>
+                <div> <strong>{{participants}}</strong>
+                    <mat-icon>people</mat-icon>
+                </div>
                 <button mat-raised-button color="warn">
                     DONAR <mat-icon>attach_money</mat-icon>
                 </button>
             </div>
-            
+
         </div>
         <div id="meet">
         </div>
     </div>
-    <div class="item suggested">suggested</div>
+    <div class="suggested">
+        <strong class="commentsTitle">Sugerencias</strong>
+        <div class="scrollbar scrollbar-primary">
+            <mat-card class="example-card suggestionCard" *ngFor="let stream of suggestedVideos" (click)="redirect(stream.uid)">
+                <mat-card-content class="flex streamHeader align-items-center">
+                    <div mat-card-avatar class="streaming-image" style=" background-image: url({{stream.photo_producer}});">
+                    </div>
+                    <mat-card-title>{{stream.name}}</mat-card-title>
+                    <div id="likes">
+                        <span class="aligned-with-icon">{{stream.likes}}</span>
+                        <mat-icon class="favorite-color-red">
+                            favorite</mat-icon>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
     <div class="item description">{{streamingInfo?.long_description}}</div>
     <div class="comments">
-        <strong id="commentsTitle">Comentarios</strong>
-        <mat-card class="example-card" *ngFor="let comment of comments">
+        <strong class="commentsTitle">Comentarios</strong>
+        <mat-card class="new-comment">
             <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
+                <div mat-card-avatar class="example-header-image" style="background-image: url({{user?.photoURL}});
+                "></div>
+                <mat-card-title>{{user?.displayName}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="comment" (ngSubmit)="createComment($event)">
+                    <mat-form-field>
+                        <mat-label>Nuevo comentario</mat-label>
+                        <textarea matInput formControlName="comment" cdkTextareaAutosize
+                            placeholder="Escribe lo que piensas..."></textarea>
+                    </mat-form-field>
+                    <button mat-button mat-mini-fab id="sendComment" type="submit">
+                        <mat-icon>send</mat-icon>
+                    </button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+        <div class="scrollbar scrollbar-primary">
+        <mat-card class="example-card comment-card" *ngFor="let comment of comments">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image defaultPhoto"></div>
                 <mat-card-title>{{comment.user_name}}</mat-card-title>
                 <mat-card-subtitle> {{comment.text}}
                 </mat-card-subtitle>
             </mat-card-header>
         </mat-card>
-
+        </div>
     </div>
 </section>

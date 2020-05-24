@@ -14,6 +14,10 @@ export class AuctionService {
     public router: Router
   ) { }
 
+  getAuction(id: string) {
+    return this.afs.collection('auctions').doc(id).valueChanges();
+  }
+
   public getAuctions() {
     return this.afs.collection('auctions').valueChanges();
   }
