@@ -54,16 +54,27 @@ export class SignUpComponent implements OnInit, DoCheck {
 
   signUp(event: Event) {
     event.preventDefault();
-    const user: User = {
+    let user: User = {
       uid: '',
       email: this.dataUser.value.email,
       displayName: this.dataUser.value.name,
       photoURL: this.urlImage,
       emailVerified: false,
-      favorite_streamings: []
+      favorite_streamings: [],
     }
+    console.log('preferences', this.dataUser.value.preferences)
     this.auth.signUp(user, this.dataUser.value.password)
       .then((res) => {
+        user.uid=res.user.uid;
+        this.auth.updateProfile(res.user);
+        console.log('res', user);
+        this.auth.uploadData(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        console.log( res.user.uid,  this.dataUser.value.preferences)
+        this.auth.addPreferencesToUser(res.user.uid, this.dataUser.value.preferences)
+          .subscribe((resp) => {
+            console.log('resp', resp)
+          });
         this.toastService.success("Tu registro ha sido correcto")
         this.cerrarVentana.emit("cerrar");
       })
@@ -110,6 +121,7 @@ export class SignUpComponent implements OnInit, DoCheck {
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
+      preferences: ['', [Validators.required]],
     })
   }
 
