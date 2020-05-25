@@ -3,6 +3,18 @@
         <p><strong class="video-title">Nombre del streaming: </strong>{{streaming.name}}</p> 
         <div class="mat-card cover">
             <img src="{{streaming.coverURL}}" alt="Streaming name" class="responsive">
+            <mat-chip-list *ngIf="streaming.status else activa" >
+                <mat-chip color="accent" selected>{{streaming.status}}</mat-chip>
+            </mat-chip-list>          
+            <ng-template #activa>
+                <mat-chip-list >
+                    <mat-chip color="accent" selected>ACTIVO</mat-chip>
+                </mat-chip-list>   
+                <div class="align-right">
+                    <button mat-raised-button (click)="redirect()" id="startButton">Empezar</button>    
+                    <button mat-raised-button (click)="finish()" id="finishButton">Finalizar</button>        
+                </div>
+            </ng-template>
         </div>
     </div>
     <div class="detail">

@@ -3,6 +3,7 @@
     grid-template: 1fr / 0.40fr 0.60fr;
     grid-template-areas: "video detail";
     padding: 20px;
+    font-family: 'Poppins', sans-serif !important;
 }
 .video{
     grid-area: video;
@@ -64,4 +65,19 @@
 }
 .stats{
     margin: 0.7rem;
+}
+
+.align-right{
+    display: flex;
+    justify-content: flex-end;
+}
+#startButton{
+    background-color: #00ce34;
+    color: white;
+    margin: 0.1em;
+}
+#finishButton{
+    background-color: #ce0067;
+    color: white;
+    margin: 0.1em;
 }

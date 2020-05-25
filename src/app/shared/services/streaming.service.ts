@@ -91,6 +91,12 @@ export class StreamingService {
     }
     return this.http.post(`${environment.URL_FUNCTIONS}/toneAnalyser`,body, httpOptions);
   }
+
+  finishStreaming(streamingId){
+    return this.afs.collection('streamings').doc(streamingId).update({
+      status: 'FINALIZADO'
+    })
+  }
   fillDatabase() {
     let data1 = [
       {

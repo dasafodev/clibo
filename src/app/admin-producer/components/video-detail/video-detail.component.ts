@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { StreamingService } from 'src/app/shared/services/streaming.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-video-detail',
@@ -10,7 +11,7 @@ import { StreamingService } from 'src/app/shared/services/streaming.service';
 })
 export class VideoDetailComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private streamingService: StreamingService) { }
+  constructor(private activatedRoute: ActivatedRoute, private streamingService: StreamingService, private router: Router) { }
 
   streamingId:string;
   streaming: any;
@@ -39,4 +40,11 @@ export class VideoDetailComponent implements OnInit {
       });
     });
   }
+  redirect(){
+    this.router.navigate(['/streaming'], {queryParams : {id : this.streamingId}});
+  }
+  finish(){
+    this.streamingService.finishStreaming(this.streamingId).then(response =>
+      this.streaming.status = 'FINALIZADO'
+    )};
 }
