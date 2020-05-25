@@ -13,8 +13,7 @@ import { AddAuctionComponent } from './components/add-auction/add-auction.compon
 import { AddProposalComponent } from './components/add-proposal/add-proposal.component';
 import { VideoDetailComponent } from './components/video-detail/video-detail.component';
 import { AuctionDetailComponent } from './components/auction-detail/auction-detail.component';
-
-
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,8 @@ import { AuctionDetailComponent } from './components/auction-detail/auction-deta
     CommonModule,
     AdminProducerRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoogleChartsModule
   ],
   exports:[
     AddProposalComponent

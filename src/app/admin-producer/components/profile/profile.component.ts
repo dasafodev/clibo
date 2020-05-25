@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  reLoad(){
+  reLoad() {
     this.router.navigate([this.router.url])
   }
 
@@ -83,5 +83,6 @@ export class ProfileComponent implements OnInit {
         console.error(err)
       })
   }
+
 
 }
