@@ -3,53 +3,55 @@
     <ng-template matTabContent>
       <section class="container-content">
         <h2><strong>Propuestas</strong></h2>
-        <mat-card *ngFor="let p of logged_user_proposals; let i = index" class="example-card">
-          <mat-card-header>
-            <div mat-card-avatar style="background-image: url({{user.photoURL}});
-      background-size: cover;"></div>
-            <mat-card-title>Propuesta #{{i+1}}</mat-card-title>
-            <mat-card-subtitle>{{p.category}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <h3><strong>Ofertador</strong></h3>
-            <div class="proposal-info">
-              <p>
-                <strong>Descripción: </strong>Yo desde hace 5 años que dicto clases de programación
-              </p>
-              <p>
-                <strong>Nombre: </strong> {{user.displayName}}
-              </p>
-              <div class="offer-info">
+        <div class="grid-container">
+          <mat-card *ngFor="let p of logged_user_proposals; let i = index" class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar style="background-image: url({{user.photoURL}});
+        background-size: cover;"></div>
+              <mat-card-title>Propuesta #{{i+1}}</mat-card-title>
+              <mat-card-subtitle>{{p.category}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <h3><strong>Ofertador</strong></h3>
+              <div class="proposal-info">
+                <p>
+                  <strong>Descripción: </strong>Yo desde hace 5 años que dicto clases de programación
+                </p>
+                <p>
+                  <strong>Nombre: </strong> {{user.displayName}}
+                </p>
+                <div class="offer-info">
+                  <mat-chip-list selectable="false">
+                    <mat-chip>Oferta: ${{p.price}}</mat-chip>
+                  </mat-chip-list>
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="owner-info">
+                <h3><strong>Dueño subasta</strong></h3>
+                <p>
+                  <strong>Nombre: </strong> Andrés
+                </p>
                 <mat-chip-list selectable="false">
-                  <mat-chip>Oferta: ${{p.price}}</mat-chip>
+                  <mat-chip>Precio original: ${{p.original_price}}</mat-chip>
                 </mat-chip-list>
               </div>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="owner-info">
-              <h3><strong>Dueño subasta</strong></h3>
-              <p>
-                <strong>Nombre: </strong> Andrés
-              </p>
-              <mat-chip-list selectable="false">
-                <mat-chip>Precio original: ${{p.original_price}}</mat-chip>
-              </mat-chip-list>
-            </div>
-          </mat-card-content>
-          <mat-card-actions>
-            <div class="user-proposals">
-              <button mat-raised-button routerLink="/producer/auctions" color="primary">Ver subasta</button>
-            </div>
-            <div class="crud-buttons">
-              <button mat-mini-fab color="primary">
-                <mat-icon>create</mat-icon>
-              </button>
-              <button mat-mini-fab color="warn">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </div>
-          </mat-card-actions>
-        </mat-card>
+            </mat-card-content>
+            <mat-card-actions>
+              <div class="user-proposals">
+                <button mat-raised-button routerLink="/producer/auction/{{p.id_auction}}" color="primary">Ver subasta</button>
+              </div>
+              <div class="crud-buttons">
+                <button mat-mini-fab color="primary">
+                  <mat-icon>create</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </div>
       </section>
     </ng-template>
   </mat-tab>

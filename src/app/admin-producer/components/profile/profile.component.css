@@ -26,11 +26,6 @@ mat-grid-tile img {
     margin: 20px;
 }
 
-.mat-card-avatar {
-    background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
-    background-size: cover;
-}
-
 .mat-card-actions {
     display: flex;
 }
