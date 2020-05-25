@@ -26,9 +26,7 @@ export class StreamingsListComponent implements OnInit {
       })
 
   }
-  fillDatabase() {
-    this.streamingService.fillDatabase();
-  }
+  
 
   deleteStreaming(id_streaming:string){
     console.log('id_streaming', id_streaming)

@@ -1,49 +1,49 @@
 <div class="container">
-    <h2><strong>Crear Streaming</strong></h2>
-    <form action="" [formGroup]="form" (ngSubmit)="postStreaming($event)">
-        <mat-form-field class="input-add" appearance="outline">
-            <mat-label>Titulo</mat-label>
-            <input formControlName="name" matInput>
-        </mat-form-field>
-        <!-- <br>  Aqui iran los tags seleccionables
-    <mat-form-field class="input-add" appearance="fill">
-        <mat-label>Select</mat-label>
-        <mat-select>
-            <mat-option value="option">Option</mat-option>
-        </mat-select>
+  <h2><strong>Crear Streaming</strong></h2>
+  <form action="" [formGroup]="form" (ngSubmit)="postStreaming($event)">
+    <mat-form-field class="input-add" appearance="outline">
+      <mat-label>Titulo</mat-label>
+      <input formControlName="name" matInput>
     </mat-form-field>
-    -->
+    <!-- <br>
+    <mat-form-field class="input-add" appearance="fill">
+      <mat-label>Selecciona la categoria de tu Streaming</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categoriesOptions" value="option">{{category.value}}</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <br>
+    <tr>
+      <td>
+        Miniatura
         <br>
-        <tr>
-            <td>
-              Miniatura
-              <br>
-              <input  type="file" accept=".png, .jpg " (change)="onUpload($event)" >
-            </td>
-        </tr>
-        <br>
-          <tr>
-            <td>
-              <mat-progress-bar mode="determinate" [value]="(upLoadPercent | async)"></mat-progress-bar>
-            </td>
-          </tr>
+        <input type="file" accept=".png, .jpg " (change)="onUpload($event)">
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <mat-progress-bar style="margin-bottom: 10px;" mode="determinate" [value]="(upLoadPercent )"></mat-progress-bar>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <mat-form-field class="input-add" appearance="outline">
-            <mat-label>Video URL</mat-label>
-            <input formControlName="url" matInput>
-        </mat-form-field>
-        <br>
-        <mat-form-field class="input-add" appearance="outline">
-            <mat-label>Descripcion Corta</mat-label>
-            <textarea formControlName="short_description" matInput></textarea>
+          <mat-label>Descripcion Corta</mat-label>
+          <textarea formControlName="short_description" matInput></textarea>
         </mat-form-field>
         <mat-form-field class="input-add" appearance="outline">
-            <mat-label>Descripcion Larga</mat-label>
-            <textarea formControlName="long_description" matInput></textarea>
+          <mat-label>Descripcion Larga</mat-label>
+          <textarea formControlName="long_description" matInput></textarea>
         </mat-form-field>
-        <input #cover type="hidden" [value]= "urlImage |async">
-        <button *ngIf="urlImage | async; else btnDisabled" mat-raised-button color="primary" type="submit">Crear</button>
-        <ng-template #btnDisabled >
+        <button *ngIf="isValid && imageValid; else btnDisabled" mat-raised-button color="primary"
+          type="submit">Crear</button>
+        <ng-template #btnDisabled>
           <button mat-raised-button disabled=true color="primary" type="submit">Crear</button>
         </ng-template>
-    </form>
+      </td>
+    </tr>
+   
+  </form>
 </div>
