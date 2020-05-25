@@ -47,7 +47,7 @@ export class AddProposalComponent implements OnInit {
   ngOnDestroy() {
     this._destroyed$.next();
     this._destroyed$.complete();
-}
+  }
 
   private buildForm() {
     this.form = this.formBuilder.group({

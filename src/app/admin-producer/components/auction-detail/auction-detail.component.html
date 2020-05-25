@@ -1,0 +1,49 @@
+<section class="container-content">
+    <div id="title">
+        <p *ngIf="auction_user">Subasta - {{auction_user.displayName}}</p>
+        <h3>{{category}}</h3>
+    </div>
+    <div class="container">
+        <div class="item">
+            <img *ngIf="auction_user" src="{{auction_user.photoURL}}" alt="User image">
+        </div>
+        <div *ngIf="auction_user" class="item">
+            <div class="info">
+                <div id="descrip">
+                    <strong>Descripción: </strong> {{auc_description}}
+                </div>
+                <div id="price">
+                    <mat-chip-list selectable="false">
+                        <mat-chip>Precio original: ${{auc_price}}</mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="proposals">
+        <div id="prop-title">
+            <p>Propuestas</p>
+        </div>
+        <div class="prop-container">
+            <mat-card *ngFor="let p of proposals" class="prop-item">
+                <mat-card-header>
+                    <div mat-card-avatar style="background-image: url({{p.image}});
+                    background-size: cover;"></div>
+                    <mat-card-title>
+                        Subasta - {{p.username}}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        {{p.description}}
+                    </p>
+                    <div class="prop-price">
+                        <mat-chip-list selectable="false">
+                            <mat-chip>Precio: ${{p.price}}</mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</section>

@@ -7,17 +7,13 @@ mat-tab-group{
     height:100%;
 }
 
-mat-card{
-    margin: 15px auto;
-}
-
 .proposals button{
     background-color: rgb(44, 165, 44);
     color: white;
 }
 
-.example-card {
-    max-width: 400px;
+mat-card {
+    max-width: 300px;
 }
 
 mat-card-actions {
@@ -32,4 +28,11 @@ mat-card-actions {
 
 mat-card-actions button {
     margin: 0 5px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    margin-top: 10px;
 }
