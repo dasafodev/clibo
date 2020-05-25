@@ -14,7 +14,9 @@ export const environment = {
     appId: "1:1065922463713:web:23f9ad8e704c692c3df4a0",
     measurementId: "G-XDNSGRC92B"
   },
-  imageProfileClassification: "https://us-central1-ibm-challenge-d1eaa.cloudfunctions.net/ImageProfileClassification"
+  URL_FUNCTIONS: "https://us-central1-ibm-challenge-d1eaa.cloudfunctions.net/routes"
+  //"https://us-central1-ibm-challenge-d1eaa.cloudfunctions.net/ImageProfileClassification"
+  //"http://localhost:5001/ibm-challenge-d1eaa/us-central1/ImageProfileClassification"
 };
 
 /*
