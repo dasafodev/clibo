@@ -39,7 +39,7 @@ export class StreamingService {
   }
 
   getAllStreamings() {
-    return this.afs.collection('streamings').valueChanges();
+    return this.afs.collection('streamings', query => query.where('status', '==', true)).valueChanges();
   }
   postStreaming(streaming) {
     return this.afs.collection('streamings').add(streaming)
@@ -94,7 +94,7 @@ export class StreamingService {
 
   finishStreaming(streamingId){
     return this.afs.collection('streamings').doc(streamingId).update({
-      status: 'FINALIZADO'
+      status: false
     })
   }
   fillDatabase() {

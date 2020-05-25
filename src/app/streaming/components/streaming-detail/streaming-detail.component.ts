@@ -57,7 +57,11 @@ export class StreamingDetailComponent implements OnInit {
       this.streamingService
         .getStreamingInfo(this.streamingId)
         .subscribe((result) => {
+          console.log(result);
           this.streamingInfo = result[0];
+          if(this.streamingInfo.status === false) {
+            this.mainRouter.navigate(['home/']);
+          }
         });
     });
     this.streamingService.getSuggestedStreamings(this.user.preferences).subscribe(streamings => {

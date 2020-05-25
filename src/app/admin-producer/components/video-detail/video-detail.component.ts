@@ -45,6 +45,6 @@ export class VideoDetailComponent implements OnInit {
   }
   finish(){
     this.streamingService.finishStreaming(this.streamingId).then(response =>
-      this.streaming.status = 'FINALIZADO'
+      this.streaming.status = false
     )};
 }
