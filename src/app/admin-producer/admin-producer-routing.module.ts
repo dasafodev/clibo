@@ -8,6 +8,7 @@ import { AuctionListComponent } from './components/auction-list/auction-list.com
 import { ProposalListComponent } from './components/proposal-list/proposal-list.component';
 import { AddAuctionComponent } from './components/add-auction/add-auction.component';
 import { AddProposalComponent } from './components/add-proposal/add-proposal.component';
+import { VideoDetailComponent } from './components/video-detail/video-detail.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path:'proposals',
         component: ProposalListComponent
+      },
+      {
+        path: 'videos',
+        component: VideoDetailComponent
       }
     ]
     

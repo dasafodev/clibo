@@ -1,0 +1,45 @@
+<div class="grid-container" *ngIf="streamingId else loading">
+    <div class="video">
+        <p><strong class="video-title">Nombre del streaming: </strong>{{streaming.name}}</p> 
+        <div class="mat-card cover">
+            <img src="{{streaming.coverURL}}" alt="Streaming name" class="responsive">
+        </div>
+    </div>
+    <div class="detail">
+        <strong class="video-title">Estadísticas</strong>
+        <mat-card class="stats">
+            <p>Análisis de los comentarios</p>
+            <mat-card-content id="commentResults">
+                <div class="p-2">
+                    <mat-icon class="favorite-color-blue">
+                        thumb_up_alt</mat-icon>
+                    <span class="aligned-with-icon">{{likes}}%</span>        
+                </div>
+                <div class="p-2">
+                    <mat-icon class="favorite-color-blue">
+                        thumb_down_alt</mat-icon>
+                    <span class="aligned-with-icon">{{dislikes}}%</span>
+                </div>
+                <div class="p-2">
+                    <mat-icon class="favorite-color-blue">
+                        sentiment_satisfied</mat-icon>
+                    <span class="aligned-with-icon">{{undefine}}%</span>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <strong class="video-title">Comentarios</strong>
+        <div class="scrollbar scrollbar-primary">
+            <mat-card class="example-card comment-card" *ngFor="let comment of comments">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image defaultPhoto"></div>
+                    <mat-card-title>{{comment.user_name}}</mat-card-title>
+                    <mat-card-subtitle> {{comment.text}}
+                    </mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+            </div>
+    </div>
+</div>
+<ng-template #loading>
+    No hay videos
+</ng-template>

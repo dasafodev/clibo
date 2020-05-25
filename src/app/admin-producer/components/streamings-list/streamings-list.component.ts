@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StreamingService } from 'src/app/shared/services/streaming.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-streamings-list',
@@ -10,6 +11,7 @@ export class StreamingsListComponent implements OnInit {
 
   constructor(
     private streamingService: StreamingService,
+    private router: Router
 
   ) { }
 
@@ -33,6 +35,9 @@ export class StreamingsListComponent implements OnInit {
     this.streamingService.deleteStreaming(id_streaming);
   }
 
+  redirect(stream) {
+    this.router.navigate(['/producer/videos'], { queryParams: {id : stream.uid} , state: stream});
+  }
 
 
 }

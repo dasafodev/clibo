@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { firestore } from 'firebase/app';
 import { Comments } from '../models/comments';
 import { StreamingCategory } from '../models/streaming';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +15,8 @@ export class StreamingService {
   constructor(
     public afs: AngularFirestore,
     public ngZone: NgZone,
-    public router: Router
-
+    public router: Router,
+    private http: HttpClient
   ) { }
   /**
    * Get a stream of the streaming.
@@ -78,6 +80,17 @@ export class StreamingService {
     return this.afs.collection("streamings", query => query.where("category", "==", category).where("available","==",true)).valueChanges();
   }
 
+  getCommentsAnalysis(comments: any[]){
+    const httpOptions = {
+      headers : new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+      })
+    };
+    const body = {
+      comments: comments
+    }
+    return this.http.post(`${environment.URL_FUNCTIONS}/toneAnalyser`,body, httpOptions);
+  }
   fillDatabase() {
     let data1 = [
       {

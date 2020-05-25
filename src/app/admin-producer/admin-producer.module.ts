@@ -11,6 +11,7 @@ import { AuctionListComponent } from './components/auction-list/auction-list.com
 import { ProposalListComponent } from './components/proposal-list/proposal-list.component';
 import { AddAuctionComponent } from './components/add-auction/add-auction.component';
 import { AddProposalComponent } from './components/add-proposal/add-proposal.component';
+import { VideoDetailComponent } from './components/video-detail/video-detail.component';
 
 
 
@@ -24,6 +25,7 @@ import { AddProposalComponent } from './components/add-proposal/add-proposal.com
     ProposalListComponent,
     AddAuctionComponent,
     AddProposalComponent,
+    VideoDetailComponent,
   ],
   imports: [
     CommonModule,

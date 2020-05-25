@@ -1,20 +1,11 @@
 <section class="container-content">
-  <button mat-fab color="primary" routerLink="/producer/add-streaming">
+  <button id="addStreaming" mat-fab color="primary" routerLink="/producer/add-streaming">
     <mat-icon>add</mat-icon>
   </button>
-  <section class="grid-container">
-    <mat-card *ngFor="let streaming of streamings" class="card" style="background-image: url({{streaming.coverURL}});">
-      <div class="bottom-card">
-        <mat-card-content class="content">
-          <p>
-            {{streaming.short_description}}
-          </p>
-        </mat-card-content>
-        <mat-card-actions class="button-card">
-          <button mat-raised-button color="primary">Editar</button>
-          <button mat-raised-button color="warn" (click)="deleteStreaming(streaming.uid)">Eliminar</button>
-        </mat-card-actions>
-      </div>
-    </mat-card>
-  </section>
+  <mat-card *ngFor="let streaming of streamings" (click)="redirect(streaming)">
+    <mat-card-content class="item-list">
+      <strong>{{streaming.name}}</strong>
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </mat-card-content>
+  </mat-card>
 </section>
