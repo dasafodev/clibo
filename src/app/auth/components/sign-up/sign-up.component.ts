@@ -1,8 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, DoCheck } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { finalize } from "rxjs/operators";
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/shared/models/user';
@@ -12,7 +11,7 @@ import { User } from 'src/app/shared/models/user';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, DoCheck {
 
   @Output()
   cerrarVentana = new EventEmitter<string>();
@@ -20,18 +19,15 @@ export class SignUpComponent implements OnInit {
   @Output()
   changeView = new EventEmitter<Boolean>();
 
-  @ViewChild('imageUser') inputImageUser: ElementRef;
-
-  options = [
-    { value: 'producer', viewValue: 'Producer' },
-    { value: 'viewer', viewValue: 'Viewer' }
-  ]
+  // @ViewChild('imageUser') inputImageUser: ElementRef;
 
 
+  isLinear:boolean=true;
   dataUser: FormGroup;
   upLoadPercent: Observable<number>;
-  // urlImage: Observable<string>;
   urlImage: string;
+  isValid:boolean=false;
+  imageValid:boolean=false;
 
 
   constructor(
@@ -48,13 +44,21 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngDoCheck(){
+    if(!this.dataUser.valid){
+      this.isValid=false;
+    }else{
+      this.isValid=true;
+    }
+  }
+
   signUp(event: Event) {
     event.preventDefault();
     const user: User = {
       uid: '',
       email: this.dataUser.value.email,
       displayName: this.dataUser.value.name,
-      photoURL: this.inputImageUser.nativeElement.value,
+      photoURL: this.urlImage,
       emailVerified: false,
       favorite_streamings: []
     }
@@ -74,6 +78,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onUpload(e) {
+    this.imageValid=false;
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
     const filePhat = `profile/${id}`;
@@ -84,12 +89,18 @@ export class SignUpComponent implements OnInit {
       ref.getDownloadURL()
       .subscribe( urlResp=> {
         this.urlImage=urlResp;
-        console.log('urlImage', this.urlImage);
         this.auth.verifyImage(this.urlImage)
         .subscribe(resp => {
-          console.log('Verify ', resp)
+          if(resp===1){
+            this.toastService.error("Imagen invalida")
+            this.imageValid=false;
+            ref.delete();
+          }
+          if(resp===0){
+            this.imageValid=true;
+          }
+          
         })
-        // console.log('urlImage', this.urlImage)
       });
     })
   }
@@ -99,7 +110,6 @@ export class SignUpComponent implements OnInit {
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      // role: ['', [Validators.required]] Sin role
     })
   }
 
