@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
 
 @Injectable({
@@ -162,14 +162,16 @@ export class AuthService {
       });
   }
 
+  deleteImage(filePath:string){
+    this.afs.collection
+
+  }
   verifyImage(filePath: string) {
     const httpOptions = {
       headers : new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
-      //  'Content-Type' : 'application/json; charset=utf-8'
       })
     };
-    console.log("File path", filePath);
     const body = {
       url: filePath,
     };

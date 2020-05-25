@@ -1,44 +1,3 @@
-<!-- 
-<mat-horizontal-stepper linear #stepper>
-  <mat-step [stepControl]="firstFormGroup" [editable]="false">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup" [editable]="false">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper> -->
-
-
-
-
 <mat-card class="card">
   <div class="left">
     <mat-card-header>
@@ -46,54 +5,73 @@
     </mat-card-header>
     <form [formGroup]="dataUser" (ngSubmit)="signUp($event)">
       <mat-card-content>
-        <table class="full-width" cellspacing="0">
-          <tr>
-          <td>
-            <mat-form-field class="full-width">
-              <mat-label>Nombre</mat-label>
-              <input matInput type="text" formControlName="name">
-            </mat-form-field>
-          </td>
-        </tr>
-          <tr>
-            <td>
-              <mat-form-field class="full-width">
-                <mat-label>Correo</mat-label>
-                <input matInput type="email" formControlName="email">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="full-width">
-                <mat-label>Contraseña</mat-label>
-                <input matInput type="password" formControlName="password">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Elige tu foto de perfil
+        <mat-vertical-stepper [linear]="isLinear" #stepper>
+          <mat-step [stepControl]="dataUser">
+            <ng-template matStepLabel>Ingresa tus datos básicos</ng-template>
+            <table class="full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="full-width">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" formControlName="name">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field class="full-width">
+                    <mat-label>Correo</mat-label>
+                    <input matInput type="email" formControlName="email">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field class="full-width">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" formControlName="password">
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </mat-step>
+          <mat-step [stepControl]="dataUser">
+            <ng-template matStepLabel>Escríbenos mas de ti</ng-template>
+            <table>
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Háblanos de tus gustos</mat-label>
+                    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                  </mat-form-field>
+                </td>
+              </tr>
               <br>
-              <input  type="file" accept=".png, .jpg " (change)="onUpload($event)" >
-            </td>
-          </tr>
-          <br>
-          <tr>
-            <td>
-              <mat-progress-bar mode="determinate" [value]="(upLoadPercent | async)"></mat-progress-bar>
-            </td>
-          </tr>
-        </table>
+              <tr>
+                <td>
+                  Elige tu foto de perfil
+                  <br>
+                  <input type="file" accept=".png, .jpg " (change)="onUpload($event)">
+                </td>
+              </tr>
+              <br>
+              <tr>
+                <td>
+                  <mat-progress-bar mode="determinate" [value]="(upLoadPercent | async)"></mat-progress-bar>
+                </td>
+              </tr>
+            </table>
+          </mat-step>
+        </mat-vertical-stepper>
+
       </mat-card-content>
       <mat-card-actions>
-        <!-- <input #imageUser type="hidden" [value]= "urlImage |async"> -->
-        <!-- <button *ngIf="urlImage | async; else btnDisabled" mat-raised-button color="primary" type="submit">Registrarme</button> -->
-        <button  mat-raised-button color="primary" type="submit">Registrarme</button>
-        <ng-template #btnDisabled >
+        <button *ngIf="isValid && imageValid; else btnDisabled" mat-raised-button color="primary"
+          type="submit">Registrarme</button>
+        <ng-template #btnDisabled>
           <button mat-raised-button disabled=true color="primary" type="submit">Registrarme</button>
         </ng-template>
-        
+
       </mat-card-actions>
     </form>
     <p>¿ Ya tienes cuenta ? <a (click)="changeBool()"><strong>Inicia sesión</strong></a></p>

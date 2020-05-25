@@ -5,6 +5,11 @@
 .card {
     padding: 10px;
 }
+
+mat-card{
+    margin: 10px;
+}
+
 .item-list {
     display: flex;
     justify-content: space-between !important;
