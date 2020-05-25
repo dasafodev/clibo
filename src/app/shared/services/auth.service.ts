@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
+import { error } from 'protractor';
 
 @Injectable({
   providedIn: 'root',
@@ -24,24 +25,17 @@ export class AuthService {
      */
   }
 
-  signUp(user: User, password: string) {
-    return this.afAuth
-      .createUserWithEmailAndPassword(user.email, password)
-      .then((result) => {
-        result.user.updateProfile({
+  signUp(user: User, password: string){
+
+      return this.afAuth.createUserWithEmailAndPassword(user.email, password);
+     
+  }
+
+  updateProfile(user){
+    user.updateProfile({
           displayName: user.displayName,
           photoURL: user.photoURL,
         });
-        let userTemp = { ...user };
-        userTemp.uid = result.user.uid;
-        // this.sendVerificationEmail();
-        this.updateLocalStorage(userTemp);
-        this.ngZone.run(() => {
-          this.router.navigate(['producer/profile']);
-        });
-        this.setUserData(userTemp);
-      })
-      .catch((err) => console.error(err));
   }
 
   signIn(email: string, password: string) {
@@ -66,20 +60,8 @@ export class AuthService {
     });
   }
 
-  // setUserData(user: any, role: string) { Si tenemos en cuenta el rol
-  setUserData(user: User) {
-    let temp: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-      favorite_streamings: user.favorite_streamings,
-    };
-
-    // console.log('temp:', temp)
-    // return this.afs.collection(role).add(temp); Si tenemos en cuenta el rol
-    return this.afs.collection('user').doc(temp.uid).set(temp);
+  uploadData(user: User) {
+    return this.afs.collection('user').doc(user.uid).set(user);
   }
 
   signOut() {
@@ -160,10 +142,21 @@ export class AuthService {
       });
   }
 
-  deleteImage(filePath:string){
-    this.afs.collection
-
+ 
+  addPreferencesToUser(id_user:string,text:string){
+    const httpOptions = {
+      headers : new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+      })
+    };
+    const body = {
+        "clientId":id_user,
+        "preferences":text
+    };
+    return this.http.post(`${environment.URL_FUNCTIONS}/languageClassifier`, body, httpOptions);
   }
+  
+
   verifyImage(filePath: string) {
     const httpOptions = {
       headers : new HttpHeaders({
