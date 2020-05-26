@@ -1,5 +1,4 @@
 # Clibo
-https://ibm-challenge-d1eaa.web.app/
 
 Clibo repository for the IBM - IEEE challenge, made by CodingVirus team.
 
