@@ -30,7 +30,7 @@
                     <div mat-card-avatar style="background-image: url({{p.image}});
                     background-size: cover;"></div>
                     <mat-card-title>
-                        Subasta - {{p.username}}
+                        Propuesta - {{p.username}}
                     </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
@@ -41,6 +41,9 @@
                         <mat-chip-list selectable="false">
                             <mat-chip>Precio: ${{p.price}}</mat-chip>
                         </mat-chip-list>
+                        <div *ngIf="auction_user && auction_user.uid == logged_user"class="winner-button">
+                            <button mat-raised-button (click)="chooseWinner(p.uid, p.id_user)">Elegir ganador</button>
+                        </div>
                     </div>
                 </mat-card-content>
             </mat-card>

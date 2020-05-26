@@ -4,7 +4,7 @@
         <div class="mat-card cover">
             <img src="{{streaming.coverURL}}" alt="Streaming name" class="responsive">
             <mat-chip-list *ngIf="!streaming.status else activa" >
-                <mat-chip color="accent" selected>FINALIZADO</mat-chip>
+                <mat-chip color="warn" selected>FINALIZADO</mat-chip>
             </mat-chip-list>          
             <ng-template #activa>
                 <mat-chip-list >

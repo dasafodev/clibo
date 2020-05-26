@@ -4,4 +4,5 @@ export interface Proposal{
     id_auction:string,
     price:number,
     description:string
+    winner?: boolean;
 }
