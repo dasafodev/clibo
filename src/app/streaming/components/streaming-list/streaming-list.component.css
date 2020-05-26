@@ -1,56 +1,57 @@
 .container-content {
-  margin: 20px;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3em;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
+mat-chip {
+    font-size: 0.9em;
 }
 
 .streaming-card {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 0.5fr 0.5fr;
-  padding: 0;
-  max-height: 350px;
-  background-position: center top;
-  cursor: pointer;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 0.5fr 0.5fr;
+    padding: 0;
+    max-height: 350px;
+    background-position: center top;
+    cursor: pointer;
 }
 
 .container-shadow {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 16px;
-  padding-bottom: 0;
-  color: white;
-  margin: 0;
-  border-radius: 4px 4px 0 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 16px;
+    padding-bottom: 0;
+    color: white;
+    margin: 0;
+    border-radius: 4px 4px 0 0;
 }
 
 .container-shadow-actions {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding-bottom: 16px;
-  border-radius: 0 0 4px 4px;
-
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding-bottom: 16px;
+    border-radius: 0 0 4px 4px;
 }
 
 .mat-card>.mat-card-actions:last-child {
-  margin: 0;
+    margin: 0;
 }
 
 .mat-card-avatar {
-  background-size: cover;
+    background-size: cover;
 }
 
-.favorite-color{
-  transition:all 0.7s ;
-}
-.favorite-color-red{
-  color: red;
-  transition:all 0.7s ;
+.favorite-color {
+    transition: all 0.7s;
 }
 
-.favorite-color:hover{
-  color: red;
-  transform:scale(1.3);
+.favorite-color-red {
+    color: red;
+    transition: all 0.7s;
+}
+
+.favorite-color:hover {
+    color: red;
+    transform: scale(1.3);
 }

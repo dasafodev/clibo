@@ -1,48 +1,49 @@
 <section class="container-content">
-    <div class="grid">
-        <mat-card class="streaming-card" style="background-image: url({{v.coverURL}});" *ngFor="let v of videos" (click)="redirect(v.uid)">
-            <mat-card-header class="container-shadow">
-                <div mat-card-avatar style="background-image: url({{v.photo_producer}});"></div>
-                <mat-card-title>{{v.name}}</mat-card-title>
-                <mat-card-subtitle>
-                    <div *ngIf="v.category; else elseBlock">
-                        {{v.category}}
-                    </div>
-                    <ng-template #elseBlock>
-                        No category
-                    </ng-template>
-                </mat-card-subtitle>
-            </mat-card-header>
-            <br>
-            <span></span>
-            <mat-card-content class="container-shadow">
-                <p>
-                    {{v.short_description}}
-                </p>
-            </mat-card-content>
-            <mat-card-actions class="container-shadow-actions">
-                <ng-container *ngIf="isFavorite(v.uid); else elseTemplate">
-                    <button mat-icon-button >
-                        <mat-icon  class="favorite-color-red">
-                            favorite
-                        </mat-icon>
-                    </button>
-                </ng-container>
-                <ng-template #elseTemplate>
-                    <button mat-icon-button (click)="clickFavorite(v.uid)">
-                        <mat-icon class="favorite-color">
-                            favorite
-                        </mat-icon>
-                    </button>
+    <mat-card class="streaming-card" style="background-image: url({{v.coverURL}});" *ngFor="let v of videos"
+        (click)="redirect(v.uid)">
+        <mat-card-header class="container-shadow">
+            <div mat-card-avatar style="background-image: url({{v.photo_producer}});"></div>
+            <mat-card-title>{{v.name}}</mat-card-title>
+            <mat-card-subtitle>
+                <div class="category-text" *ngIf="v.category; else elseBlock">
+                    <mat-chip-list selectable="false">
+                        <mat-chip size="small">{{v.category}}</mat-chip>
+                    </mat-chip-list>
+                </div>
+                <ng-template class="category-text" #elseBlock>
+                    <mat-chip-list selectable="false">
+                        <mat-chip size="small">No category</mat-chip>
+                    </mat-chip-list>
                 </ng-template>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <br>
+        <span></span>
+        <mat-card-content class="container-shadow">
+            <p>
+                {{v.short_description}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions class="container-shadow-actions">
+            <ng-container *ngIf="isFavorite(v.uid); else elseTemplate">
                 <button mat-icon-button>
-                    <mat-icon>
-                        share
+                    <mat-icon class="favorite-color-red">
+                        favorite
                     </mat-icon>
                 </button>
-               
-            </mat-card-actions>
-        </mat-card>
-    </div>
-
+            </ng-container>
+            <ng-template #elseTemplate>
+                <button mat-icon-button (click)="clickFavorite(v.uid)">
+                    <mat-icon class="favorite-color">
+                        favorite
+                    </mat-icon>
+                </button>
+            </ng-template>
+            <button mat-icon-button>
+                <mat-icon>
+                    share
+                </mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
 </section>

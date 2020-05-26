@@ -1,33 +1,38 @@
  .grid-section {
-   margin: 20px 10px 0 10px;
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   height: 300px;
+     margin: 20px 10px 0 10px;
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     height: 300px;
  }
-
+ 
+ #welcome-text {
+     font-size: 3em;
+     line-height: 1.2em;
+ }
+ 
  .text-section {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin: 1em;
  }
-
+ 
  .swiper-container {
-   width: 400px;
-   height: 300px;
-   /* padding: 50px; */
+     width: 650px;
+     height: 300px;
+     /* padding: 50px; */
  }
-
+ 
  .swiper-slide {
-   background-position: center;
-   background-size: cover;
-   width: 400px;
-   height: 300px;
-   border-radius: 5px;
-   overflow: hidden !important;
+     background-position: center;
+     background-size: cover;
+     width: 400px;
+     height: 300px;
+     border-radius: 5px;
+     overflow: hidden !important;
  }
-
+ 
  .swiper-button-next,
  .swiper-button-prev {
-   display: none;
+     display: none;
  }
