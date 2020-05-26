@@ -25,5 +25,6 @@ a {
 }
 
 .header-image {
+  outline:none ;
   background-size: cover;
 }
