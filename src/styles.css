@@ -5,6 +5,7 @@ html, body {
     background-color: white;
     /* background-image: url("./assets/back.png") ;
     background-repeat: repeat; */
+    font-family: 'Poppins', sans-serif !important;  
  }
 body { 
 

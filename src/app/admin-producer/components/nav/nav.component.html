@@ -1,37 +1,56 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar class="menu-title">
+      <a mat-list-item routerLink="/home">
+        Clibo
+      </a>
+    </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/producer/profile">Mi perfil</a>
-      <a mat-list-item routerLink="/producer/list">Mis vídeos</a>
-      <a mat-list-item routerLink="/producer/auctions">Subastas</a>
-      <a mat-list-item routerLink="/producer/proposals">Mis propuestas</a>
-      <a mat-list-item disabled routerLink="">Suscriptores</a>
-      <a mat-list-item disabled routerLink="">Estadísticas</a>
+      <a mat-list-item routerLink="/producer/profile">
+        <mat-icon aria-hidden="false">account_circle</mat-icon>
+        Mi perfil
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/producer/list">
+        <mat-icon aria-hidden="false">videocam</mat-icon>
+        Mis vídeos
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/producer/auctions">
+        <mat-icon aria-hidden="false">book</mat-icon>
+        Bookies
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/producer/proposals">
+        <mat-icon aria-hidden="false">assignment</mat-icon>
+        Propuestas
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item disabled routerLink="">
+        <mat-icon aria-hidden="false">face</mat-icon>
+        Suscriptores
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item disabled routerLink="">
+        <mat-icon aria-hidden="false">equalizer</mat-icon>
+        Estadísticas
+      </a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content >
+  <mat-sidenav-content>
     <mat-toolbar class="upper-nav" color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <button mat-button routerLink="/home"><span>Clibo</span></button>
+      <!-- <button mat-button routerLink="/home"><span>Clibo</span></button> -->
       <span class="example-spacer"></span>
-      <button
-        routerLink="/home"
-        (click)="signOut()"
-        mat-icon-button>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">exit_to_app</mat-icon>
+      <button routerLink="/home" (click)="signOut()" mat-icon-button>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">exit_to_app
+        </mat-icon>
       </button>
     </mat-toolbar>
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
