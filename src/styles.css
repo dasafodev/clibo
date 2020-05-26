@@ -13,6 +13,10 @@ body {
     font-family: 'Poppins', sans-serif !important;  
 }
 
+h1,h2,h3,mat-chip,button,mat-card-subtitle{
+    font-family: 'Poppins', sans-serif !important; 
+}
+
 .mat-tab-label{
     font-family: 'Poppins', sans-serif !important;
     color: black;
