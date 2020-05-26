@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { Auction } from '../shared/models/auction';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuctionService } from '../shared/services/auction.service';
 
@@ -17,24 +17,28 @@ export class JitsiMeetComponent implements OnInit, AfterViewInit {
   options: any;
   api: any;
   auction: Auction;
-  @Input() auctionId: string;
+  auctionId: string;
   constructor(
     private router: Router,
     private toastService: ToastrService,
-    private auctionService: AuctionService
+    private auctionService: AuctionService,
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.auctionService.getAuction(this.auctionId).subscribe((auction: Auction) => {
-      this.auction = auction;
-      const user = JSON.parse(localStorage.getItem('user'));
-      if (
-        this.auction.id_user !== user.uid &&
-        this.auction.winner !== user.uid
-      ) {
-        this.toastService.error('No tiene permisos para acceder a esta sesión');
-        this.router.navigate(['/home']);
-      }
+    this.activeRoute.queryParams.subscribe(params => {
+      this.auctionId = params.id;
+      this.auctionService.getAuction(this.auctionId).subscribe((auction: Auction) => {
+        this.auction = auction;
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (
+          this.auction.id_user !== user.uid &&
+          this.auction.winner !== user.uid
+        ) {
+          this.toastService.error('No tiene permisos para acceder a esta sesión');
+          this.router.navigate(['/home']);
+        }
+      });
     });
   }
   ngAfterViewInit(): void {
