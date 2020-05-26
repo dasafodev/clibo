@@ -13,7 +13,7 @@ body {
     font-family: 'Poppins', sans-serif !important;  
 }
 
-h1,h2,h3,mat-chip,button,mat-card-subtitle{
+h1,h2,h3,mat-chip,button,mat-card-subtitle,section,div{
     font-family: 'Poppins', sans-serif !important; 
 }
 

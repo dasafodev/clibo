@@ -6,6 +6,11 @@ mat-grid-tile img {
     border-radius: 50%;
     flex-shrink: 0;
 }
+.mensajito{
+    margin: 20px;
+    font-size: 2em;
+    line-height: 1em;
+}
 
 #name {
     font-size: 1.5em;
