@@ -2,9 +2,8 @@
 
 html, body { 
     height: 100%;
-    background-color: white;
-    /* background-image: url("./assets/back.png") ;
-    background-repeat: repeat; */
+    background-color: #F8F3EA;
+    background-repeat: repeat;
     font-family: 'Poppins', sans-serif !important;  
  }
 body { 
@@ -21,10 +20,22 @@ body {
 
 .background-primary{
     /* background-color: #254E7B ; */
-    background-color: #3F51B5;
+    background-color: #254E7B!important;
     font-family: 'Poppins', sans-serif;
     color: white;
     /* background-color: #B8B8FF ; */
+}
+
+.btn--secondary{
+    background-color: #254E7B !important;
+}
+.btn--primary{
+    background-color: #CBE2EF !important;
+    color: black!important;
+}
+.btn--green{
+    background-color: rgb(44, 165, 44)!important;
+    color: white!important;
 }
 .mat-typography{
     font-family: 'Poppins', sans-serif;

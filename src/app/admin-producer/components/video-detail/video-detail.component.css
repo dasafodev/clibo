@@ -15,12 +15,14 @@
     box-shadow: 0 .225rem .25rem rgba(0,0,0,.075)!important;
 }
 .detail{
+    padding: 1em;
     grid-area: detail;
     width: 100%;
 }
 .responsive{
     width: 400px;
     height: 350px;  
+    object-fit: cover;
 }
 .video-title{
     font-weight: bolder;
@@ -71,13 +73,8 @@
     display: flex;
     justify-content: flex-end;
 }
-#startButton{
-    background-color: #00ce34;
-    color: white;
-    margin: 0.1em;
-}
+
 #finishButton{
-    background-color: #ce0067;
+    margin-left: 10px;
     color: white;
-    margin: 0.1em;
 }
