@@ -31,10 +31,17 @@ export class JitsiMeetComponent implements OnInit, AfterViewInit {
       this.auctionService.getAuction(this.auctionId).subscribe((auction: Auction) => {
         this.auction = auction;
         const user = JSON.parse(localStorage.getItem('user'));
-        if (
-          this.auction.id_user !== user.uid &&
-          this.auction.winner !== user.uid
-        ) {
+        if(user){
+          if (
+            this.auction.id_user !== user.uid &&
+            this.auction.winner !== user.uid
+          ) {
+            this.toastService.error('No tiene permisos para acceder a esta sesión');
+            this.router.navigate(['/home']);
+          }
+        }
+        else
+        {
           this.toastService.error('No tiene permisos para acceder a esta sesión');
           this.router.navigate(['/home']);
         }
