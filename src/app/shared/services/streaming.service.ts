@@ -41,13 +41,13 @@ export class StreamingService {
   getAllStreamings() {
     return this.afs.collection('streamings', query => query.where('status', '==', true)).valueChanges();
   }
-  postStreaming(streaming:Streaming) {
+  postStreaming(streaming: Streaming) {
     return this.afs.collection('streamings').add(streaming);
   }
-  
+
   verifyImage(filePath: string) {
     const httpOptions = {
-      headers : new HttpHeaders({
+      headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
       })
     };
@@ -57,9 +57,9 @@ export class StreamingService {
     return this.http.post(`${environment.URL_FUNCTIONS}/imageClassification`, body, httpOptions);
   }
 
-  imageClassifier(urlImage:string){
+  imageClassifier(urlImage: string) {
     const httpOptions = {
-      headers : new HttpHeaders({
+      headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
       })
     };
@@ -79,6 +79,12 @@ export class StreamingService {
     });
   }
 
+  increaseDonations(id_streaming: string, quantity: number) {
+    this.afs.collection("streamings").doc(id_streaming)
+      .update({
+        donations: firestore.FieldValue.increment(quantity)
+      })
+  }
   selectFavorite(id_user: string, id_streaming: string) {
     var docRef = this.afs.collection("user").doc(id_user);
     docRef.update({

@@ -104,6 +104,10 @@ form{
     background-color: #58db4c;
     margin: 10px;
 }
+.btn--donate{
+    background-color: #58db4c;
+    color: white;
+}
 .streaming-image{
     background-size: cover;
 }
