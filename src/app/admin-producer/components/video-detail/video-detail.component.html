@@ -4,15 +4,15 @@
         <div class="mat-card cover">
             <img src="{{streaming.coverURL}}" alt="Streaming name" class="responsive">
             <mat-chip-list *ngIf="!streaming.status else activa" >
-                <mat-chip color="warn" selected>FINALIZADO</mat-chip>
+                <mat-chip color="warn" selected>Finalizado</mat-chip>
             </mat-chip-list>          
             <ng-template #activa>
                 <mat-chip-list >
-                    <mat-chip color="accent" selected>ACTIVO</mat-chip>
+                    <mat-chip class="btn--green" selected>Activo</mat-chip>
                 </mat-chip-list>   
                 <div class="align-right">
-                    <button mat-raised-button (click)="redirect()" id="startButton">Empezar</button>    
-                    <button mat-raised-button (click)="finish()" id="finishButton">Finalizar</button>        
+                    <button mat-raised-button (click)="redirect()" class="btn--primary" id="startButton">Empezar</button>    
+                    <button mat-raised-button (click)="finish()" class="btn--secondary" id="finishButton">Finalizar</button>        
                 </div>
             </ng-template>
         </div>

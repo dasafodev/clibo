@@ -15,14 +15,22 @@ body {
 
 .background-primary{
     /* background-color: #254E7B ; */
-    background-color: #254E7B;
+    background-color: #254E7B!important;
     font-family: 'Poppins', sans-serif;
     color: white;
     /* background-color: #B8B8FF ; */
 }
 
+.btn--secondary{
+    background-color: #254E7B !important;
+}
 .btn--primary{
-    background-color: #254E7B ;
+    background-color: #CBE2EF !important;
+    color: black!important;
+}
+.btn--green{
+    background-color: rgb(44, 165, 44)!important;
+    color: white!important;
 }
 .mat-typography{
     font-family: 'Poppins', sans-serif;
