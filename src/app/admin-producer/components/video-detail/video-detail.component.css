@@ -21,6 +21,7 @@
 .responsive{
     width: 400px;
     height: 350px;  
+    object-fit: cover;
 }
 .video-title{
     font-weight: bolder;
