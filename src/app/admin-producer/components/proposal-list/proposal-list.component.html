@@ -4,7 +4,7 @@
       <section class="container-content">
         <h2><strong>Propuestas</strong></h2>
         <div class="grid-container">
-          <mat-card *ngFor="let p of logged_user_proposals; let i = index" class="example-card">
+          <mat-card *ngFor="let p of filterProposals; let i = index" class="example-card">
             <mat-card-header>
               <div mat-card-avatar style="background-image: url({{user.photoURL}});
         background-size: cover;"></div>
@@ -15,7 +15,7 @@
               <h3><strong>Ofertador</strong></h3>
               <div class="proposal-info">
                 <p>
-                  <strong>Descripción: </strong>Yo desde hace 5 años que dicto clases de programación
+                  <strong>Descripción: </strong>{{p.description}}
                 </p>
                 <p>
                   <strong>Nombre: </strong> {{user.displayName}}
@@ -29,8 +29,10 @@
               <mat-divider></mat-divider>
               <div class="owner-info">
                 <h3><strong>Dueño subasta</strong></h3>
+                <div mat-card-avatar style="background-image: url({{p.image}});
+        background-size: cover;"></div>
                 <p>
-                  <strong>Nombre: </strong> Andrés
+                  <strong>Nombre: </strong> {{p.username}}
                 </p>
                 <mat-chip-list selectable="false">
                   <mat-chip>Precio original: ${{p.original_price}}</mat-chip>
@@ -39,7 +41,8 @@
             </mat-card-content>
             <mat-card-actions>
               <div class="user-proposals">
-                <button mat-raised-button routerLink="/producer/auction/{{p.id_auction}}" color="primary">Ver subasta</button>
+                <button mat-raised-button routerLink="/producer/auction/{{p.id_auction}}" color="primary">Ver
+                  subasta</button>
               </div>
               <div class="crud-buttons">
                 <button mat-mini-fab color="primary">
@@ -58,7 +61,67 @@
   <mat-tab label="Propuestas ganadas">
     <ng-template matTabContent>
       <section class="container-content">
-        
+        <h2><strong>Propuestas Ganadoras</strong></h2>
+        <div class="grid-container">
+          <mat-card *ngFor="let p of winnerProposals; let i = index" class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar style="background-image: url({{user.photoURL}});
+        background-size: cover;"></div>
+              <mat-card-title>Propuesta ganadora #{{i+1}}</mat-card-title>
+              <mat-card-subtitle>{{p.category}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <h3><strong>Ofertador</strong></h3>
+              <div class="proposal-info">
+                <p>
+                  <strong>Descripción: </strong>{{p.description}}
+                </p>
+                <p>
+                  <strong>Nombre: </strong> {{user.displayName}}
+                </p>
+                <div class="offer-info">
+                  <mat-chip-list selectable="false">
+                    <mat-chip>Oferta: ${{p.price}}</mat-chip>
+                  </mat-chip-list>
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="owner-info">
+                <h3><strong>Dueño subasta</strong></h3>
+                <div mat-card-avatar style="background-image: url({{p.image}});
+        background-size: cover;"></div>
+                <p>
+                  <strong>Nombre: </strong> {{p.username}}
+                </p>
+                <mat-chip-list selectable="false">
+                  <mat-chip>Precio original: ${{p.original_price}}</mat-chip>
+                </mat-chip-list>
+              </div>
+            </mat-card-content>
+            <mat-card-actions>
+              <div class="action-container">
+                <div class="user-proposals action-item proposals-container">
+                  <div class="proposal-child">
+                    <button mat-raised-button routerLink="/producer/auction/{{p.id_auction}}" color="primary">Ver
+                      subasta</button>
+                  </div>
+                  <div *ngIf="p.winner" class="proposal-child">
+                    <button mat-raised-button (click)="redirect(p.id_auction)" id="private-button">Sesión
+                      privada</button>
+                  </div>
+                </div>
+                <div class="crud-buttons action-item">
+                  <button mat-mini-fab color="primary">
+                    <mat-icon>create</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </div>
       </section>
     </ng-template>
   </mat-tab>

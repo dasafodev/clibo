@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StreamingService } from 'src/app/shared/services/streaming.service';
 import { Comments } from 'src/app/shared/models/comments';
@@ -6,6 +6,12 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+
+export interface DialogData {
+  price: number;
+  message: string;
+}
 
 
 declare var JitsiMeetExternalAPI: any;
@@ -21,9 +27,13 @@ export class StreamingDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastService: ToastrService,
     private mainRouter: Router,
+    public dialog: MatDialog
   ) {
     this.buildForm();
   }
+
+  donatePrice:number;
+  message:string;
 
   // STREAMING VARS
   streamingId: string;
@@ -109,5 +119,34 @@ export class StreamingDetailComponent implements OnInit {
         comment:['',[Validators.required]],
       })
     }
-  }
+  
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogDonate, {
+      width: '250px',
+      data: {message: this.message, price: this.donatePrice}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.donatePrice = parseInt(result);
+      this.streamingService.increaseDonations(this.streamingId,this.donatePrice);
+    });
+  }
+}
+
+  @Component({
+    selector: 'dialog-donate',
+    templateUrl: 'dialog-donate.html',
+  })
+  export class DialogDonate {
+  
+    constructor(
+      public dialogRef: MatDialogRef<DialogDonate>,
+      @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+  
+  }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogLogin } from './dialog-login.component';
 import { DialogSignUp } from './dialog-sign-up.component';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,11 @@ import { DialogSignUp } from './dialog-sign-up.component';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private authService: AuthService,
+
+    ) { }
 
 
   ngOnInit(): void {
@@ -39,6 +44,9 @@ export class HeaderComponent implements OnInit {
     return (this.user)? true:false ;
   }
   
+  signOut(){
+    this.authService.signOut();
+  }
 
 }
 

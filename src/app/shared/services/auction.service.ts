@@ -22,6 +22,16 @@ export class AuctionService {
     return this.afs.collection('auctions').valueChanges();
   }
 
+  public getAuctionsWithoutLoggedLess(){
+    var user = JSON.parse(localStorage.getItem('user'))
+    return this.afs.collection('auctions', query => query.where('id_user', '<', user)).valueChanges();
+  }
+
+  public getAuctionsWithoutLoggedMore(){
+    var user = JSON.parse(localStorage.getItem('user'))
+    return this.afs.collection('auctions', query => query.where('id_user', '>', user)).valueChanges();
+  }
+
   public getAuctionCreator(id_user: string) {
     return this.afs.collection('user').doc(id_user).valueChanges();
   }
@@ -32,6 +42,20 @@ export class AuctionService {
 
   getUserAuctions(user_id) {
     return this.afs.collection('auctions', query => query.where('id_user', '==', user_id)).valueChanges();
+  }
+
+  selectWinner(id_auction: string, id_proposal: string, id_winner:string) {
+    var docRef = this.afs.collection("auctions").doc(id_auction);
+    docRef.update({
+      winner: id_winner
+    })
+    var docRef = this.afs.collection("proposals").doc(id_proposal);
+    docRef.update({
+      winner: true
+    })
+    this.ngZone.run(() => {
+      this.router.navigate(['producer/auctions']);
+    });
   }
 
   public createAuction(auction: Auction) {

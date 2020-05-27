@@ -1,32 +1,35 @@
 <mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
-  <mat-tab label="General">
+  <mat-tab label="General" class="general-tab">
     <ng-template matTabContent>
       <section class="container-content">
         <div class="grid-container">
-          <mat-card *ngFor="let a of auctions" class="example-card">
-            <mat-card-header>
-              <div mat-card-avatar style="background-image: url({{a.image}});
+          <div *ngFor="let a of filterAuctions">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar style="background-image: url({{a.image}});
               background-size: cover;"></div>
-              <mat-card-title>
-                Subasta - {{a.username}}
-              </mat-card-title>
-              <mat-card-subtitle>{{a.category}}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>
-                {{a.description}}
-              </p>
-              <p>
-                Precio: ${{a.price}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <div class="proposals">
-                <button mat-raised-button routerLink="/producer/add-proposal/{{a.uid}}">Hacer propuesta</button>
-              </div>
-              <button mat-raised-button routerLink="/producer/auction/{{a.uid}}" color="primary">Ver propuestas</button>
-            </mat-card-actions>
-          </mat-card>
+                <mat-card-title>
+                  Subasta - {{a.username}}
+                </mat-card-title>
+                <mat-card-subtitle>{{a.category}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  {{a.description}}
+                </p>
+                <p>
+                  Precio: ${{a.price}}
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <div class="proposals">
+                  <button mat-raised-button routerLink="/producer/add-proposal/{{a.uid}}">Hacer propuesta</button>
+                </div>
+                <button mat-raised-button routerLink="/producer/auction/{{a.uid}}" color="primary">Ver
+                  propuestas</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
         </div>
       </section>
     </ng-template>
@@ -52,20 +55,28 @@
               <p>Precio: ${{auc.price}}</p>
             </mat-card-content>
             <mat-card-actions>
-              <div class="user-proposals">
-                <button mat-raised-button color="primary">Ver propuestas</button>
-              </div>
-              <div class="crud-buttons">
-                <button mat-mini-fab color="primary">
-                  <mat-icon>create</mat-icon>
-                </button>
-                <button mat-mini-fab color="warn">
-                  <mat-icon>delete</mat-icon>
-                </button>
+              <div class="action-container">
+                <div class="user-proposals action-item proposals-container">
+                  <div class="proposal-child">
+                    <button mat-raised-button routerLink="/producer/auction/{{auc.uid}}" color="primary">Ver
+                      propuestas</button>
+                  </div>
+                  <div *ngIf="auc.winner" class="proposal-child">
+                    <button mat-raised-button id="private-button" (click)="redirect(auc.uid)">Sesión
+                      privada</button>
+                  </div>
+                </div>
+                <div class="crud-buttons action-item">
+                  <button mat-mini-fab color="primary">
+                    <mat-icon>create</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
               </div>
             </mat-card-actions>
           </mat-card>
-
         </div>
       </section>
     </ng-template>
