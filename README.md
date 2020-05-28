@@ -35,7 +35,7 @@ Run the project with the command ng serve
 * [Firebase](https://firebase.google.com/) - Services such as Firestore.
 * [GoogleFonts](https://fonts.google.com) - Font: Poppins
 
-## Autores ✒️
+## Authors ✒️
 
 * *Santiago Forero*
 * *Alvin Gregory*
