@@ -29,3 +29,12 @@ a{
 a > strong {
   text-decoration: underline;
 }
+
+button:enabled{
+  background-color: #254E7B!important;
+  color: white;
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+  background-color: #254E7B!important;
+}

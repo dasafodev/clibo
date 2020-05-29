@@ -6,7 +6,12 @@ mat-grid-tile img {
     border-radius: 50%;
     flex-shrink: 0;
 }
-.mensajito{
+
+.mat-subheader {
+    font-size: 1.2em;
+}
+
+.mensajito {
     margin: 20px;
     font-size: 2em;
     line-height: 1em;
@@ -49,4 +54,9 @@ mat-grid-tile img {
     background: #EDE7F6;
     padding: 1.5rem;
     border-radius: 1rem;
+}
+
+#save-button{
+    background-color: #254E7B!important;
+    color: white;
 }

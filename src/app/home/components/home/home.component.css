@@ -36,3 +36,10 @@
  .swiper-button-prev {
      display: none;
  }
+
+ .videos-label{
+     width: 100%;
+     margin: 40px 20px;
+     font-size: 2em;
+     font-weight: bold;
+ }

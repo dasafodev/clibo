@@ -75,3 +75,7 @@ mat-card-actions button {
     grid-gap: 1rem;
     margin-top: 10px;
 }
+
+.btn--secondary{
+    color:white;
+}

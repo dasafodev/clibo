@@ -1,18 +1,23 @@
+<button id="back-button" mat-fab color="primary" routerLink="/producer/list">
+    <mat-icon>arrow_back</mat-icon>
+</button>
 <div class="grid-container" *ngIf="streamingId else loading">
     <div class="video">
-        <p><strong class="video-title">{{streaming.name}}</strong></p> 
+        <p><strong class="video-title">{{streaming.name}}</strong></p>
         <div class="mat-card cover">
             <img src="{{streaming.coverURL}}" alt="Streaming name" class="responsive">
-            <mat-chip-list *ngIf="!streaming.status else activa" >
+            <mat-chip-list *ngIf="!streaming.status else activa">
                 <mat-chip color="warn" selected>Finalizado</mat-chip>
-            </mat-chip-list>          
+            </mat-chip-list>
             <ng-template #activa>
-                <mat-chip-list >
+                <mat-chip-list>
                     <mat-chip class="btn--green" selected>Activo</mat-chip>
-                </mat-chip-list>   
+                </mat-chip-list>
                 <div class="align-right">
-                    <button mat-raised-button (click)="redirect()" class="btn--primary" id="startButton">Empezar</button>    
-                    <button mat-raised-button (click)="finish()" class="btn--secondary" id="finishButton">Finalizar</button>        
+                    <button mat-raised-button (click)="redirect()" class="btn--primary"
+                        id="startButton">Empezar</button>
+                    <button mat-raised-button (click)="finish()" class="btn--secondary"
+                        id="finishButton">Finalizar</button>
                 </div>
             </ng-template>
         </div>
@@ -25,7 +30,7 @@
                 <div class="p-2">
                     <mat-icon class="favorite-color-blue">
                         thumb_up_alt</mat-icon>
-                    <span class="aligned-with-icon">{{likes}}%</span>        
+                    <span class="aligned-with-icon">{{likes}}%</span>
                 </div>
                 <div class="p-2">
                     <mat-icon class="favorite-color-blue">
@@ -49,7 +54,7 @@
                     </mat-card-subtitle>
                 </mat-card-header>
             </mat-card>
-            </div>
+        </div>
     </div>
 </div>
 <ng-template #loading>

@@ -41,11 +41,11 @@
             </mat-card-content>
             <mat-card-actions>
               <div class="user-proposals">
-                <button mat-raised-button routerLink="/producer/auction/{{p.id_auction}}" color="primary">Ver
-                  subasta</button>
+                <button mat-raised-button routerLink="/producer/auction/{{p.id_auction}}" class="btn--secondary">Ver
+                  bookie</button>
               </div>
               <div class="crud-buttons">
-                <button mat-mini-fab color="primary">
+                <button mat-mini-fab class="btn--secondary">
                   <mat-icon>create</mat-icon>
                 </button>
                 <button mat-mini-fab color="warn">
@@ -87,7 +87,7 @@
               </div>
               <mat-divider></mat-divider>
               <div class="owner-info">
-                <h3><strong>Dueño subasta</strong></h3>
+                <h3><strong>Dueño bookie</strong></h3>
                 <div mat-card-avatar style="background-image: url({{p.image}});
         background-size: cover;"></div>
                 <p>
@@ -102,8 +102,8 @@
               <div class="action-container">
                 <div class="user-proposals action-item proposals-container">
                   <div class="proposal-child">
-                    <button mat-raised-button routerLink="/producer/auction/{{p.id_auction}}" color="primary">Ver
-                      subasta</button>
+                    <button mat-raised-button routerLink="/producer/auction/{{p.id_auction}}" class="btn--secondary">Ver
+                      bookie</button>
                   </div>
                   <div *ngIf="p.winner" class="proposal-child">
                     <button mat-raised-button (click)="redirect(p.id_auction)" id="private-button">Sesión
@@ -111,7 +111,7 @@
                   </div>
                 </div>
                 <div class="crud-buttons action-item">
-                  <button mat-mini-fab color="primary">
+                  <button mat-mini-fab class="btn--secondary">
                     <mat-icon>create</mat-icon>
                   </button>
                   <button mat-mini-fab color="warn">
