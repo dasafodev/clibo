@@ -12,7 +12,7 @@ This project holds up a platform where people can upload the content that they m
 * NPM
 * Firebase credentials
 
-### Instalation 🔧
+### Installation 🔧
 Step 1
 
 
