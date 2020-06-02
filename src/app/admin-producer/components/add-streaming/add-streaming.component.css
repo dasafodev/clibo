@@ -1,7 +1,17 @@
-.container{
+.container {
     margin: 20px 25vw 20px 25vw;
 }
-.input-add{
+
+.input-add {
     margin-right: 10px;
     width: 100%;
+}
+
+#back-button {
+    margin: 20px;
+    background-color: #254E7B!important;
+}
+
+button:enabled{
+    background-color: #254E7B!important;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuctionService } from 'src/app/shared/services/auction.service';
 import { User } from 'firebase';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-auction-list',
@@ -19,6 +20,7 @@ export class AuctionListComponent implements OnInit {
   filterAuctions = new Array();
   logged_user_auctions: any;
   user: User;
+  selected = new FormControl(0);
 
   ngOnInit(): void {
     this.getUserAuctions();

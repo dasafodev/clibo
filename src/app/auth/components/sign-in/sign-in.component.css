@@ -29,3 +29,8 @@ a{
 a > strong {
     text-decoration: underline;
 }
+
+button{
+    background-color: #254E7B!important;
+    color: white;
+}

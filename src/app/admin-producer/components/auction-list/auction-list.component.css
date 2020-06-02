@@ -25,6 +25,10 @@ mat-tab-group {
     color: white;
 }
 
+#proposals-button{
+    color:white;
+}
+
 #private-button {
     background-color: rgb(70, 179, 28);
     color: white;
@@ -70,4 +74,12 @@ mat-card-actions button {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1rem;
     margin-top: 10px;
+}
+
+#add-button{
+    background-color: #254E7B!important;
+}
+
+#proposals-button {
+    color: white;
 }

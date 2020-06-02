@@ -1,3 +1,6 @@
+<button id="back-button" mat-fab color="primary" routerLink="/producer/auctions">
+  <mat-icon>arrow_back</mat-icon>
+</button>
 <div class="container">
     <h2><strong>Crear Propuesta</strong></h2>
     <form [formGroup]="form" (ngSubmit)="postProposal($event)">
@@ -11,7 +14,7 @@
           <mat-label>Descripción</mat-label>
           <textarea formControlName="description" matInput></textarea>
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Crear</button>
+        <button id="create-button" mat-raised-button type="submit">Crear</button>
       </div>
     </form>
   </div>

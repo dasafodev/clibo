@@ -1,6 +1,9 @@
+<button id="back-button" mat-fab color="primary" routerLink="/producer/auctions">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
 <section class="container-content">
     <div id="title">
-        <p *ngIf="auction_user">Subasta - {{auction_user.displayName}}</p>
+        <p *ngIf="auction_user">Bookie - {{auction_user.displayName}}</p>
         <h3>{{category}}</h3>
     </div>
     <div class="container">

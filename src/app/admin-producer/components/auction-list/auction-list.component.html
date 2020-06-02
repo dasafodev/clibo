@@ -1,5 +1,6 @@
-<mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
-  <mat-tab label="General" class="general-tab">
+<mat-tab-group mat-align-tabs="center" mat-stretch-tabs [selectedIndex]="selected.value"
+(selectedIndexChange)="selected.setValue($event)">
+  <mat-tab label="General" class="general-tab" (click)="this.selected.setValue(0)">
     <ng-template matTabContent>
       <section class="container-content">
         <div class="grid-container">
@@ -9,7 +10,7 @@
                 <div mat-card-avatar style="background-image: url({{a.image}});
               background-size: cover;"></div>
                 <mat-card-title>
-                  Subasta - {{a.username}}
+                  Bookie - {{a.username}}
                 </mat-card-title>
                 <mat-card-subtitle>{{a.category}}</mat-card-subtitle>
               </mat-card-header>
@@ -25,7 +26,7 @@
                 <div class="proposals">
                   <button mat-raised-button routerLink="/producer/add-proposal/{{a.uid}}">Hacer propuesta</button>
                 </div>
-                <button mat-raised-button routerLink="/producer/auction/{{a.uid}}" color="primary">Ver
+                <button mat-raised-button routerLink="/producer/auction/{{a.uid}}" id="proposals-button" class="btn--secondary">Ver
                   propuestas</button>
               </mat-card-actions>
             </mat-card>
@@ -34,10 +35,10 @@
       </section>
     </ng-template>
   </mat-tab>
-  <mat-tab label="Mis subastas">
+  <mat-tab label="Mis bookies" (click)="this.selected.setValue(1)">
     <ng-template matTabContent>
       <section class="container-content">
-        <button mat-fab color="primary" routerLink="/producer/add-auction">
+        <button id="add-button" mat-fab color="primary" routerLink="/producer/add-auction">
           <mat-icon>add</mat-icon>
         </button>
         <div class="grid-container">
@@ -45,7 +46,7 @@
             <mat-card-header>
               <div mat-card-avatar style="background-image: url({{user.photoURL}});
               background-size: cover;"></div>
-              <mat-card-title>Subasta #{{i+1}}</mat-card-title>
+              <mat-card-title>Bookie #{{i+1}}</mat-card-title>
               <mat-card-subtitle>Cocina</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -58,7 +59,7 @@
               <div class="action-container">
                 <div class="user-proposals action-item proposals-container">
                   <div class="proposal-child">
-                    <button mat-raised-button routerLink="/producer/auction/{{auc.uid}}" color="primary">Ver
+                    <button mat-raised-button routerLink="/producer/auction/{{auc.uid}}" id="proposals-button" class="btn--secondary">Ver
                       propuestas</button>
                   </div>
                   <div *ngIf="auc.winner" class="proposal-child">
@@ -67,7 +68,7 @@
                   </div>
                 </div>
                 <div class="crud-buttons action-item">
-                  <button mat-mini-fab color="primary">
+                  <button mat-mini-fab class="btn--secondary">
                     <mat-icon>create</mat-icon>
                   </button>
                   <button mat-mini-fab color="warn">
